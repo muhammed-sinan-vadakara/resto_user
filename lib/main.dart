@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:resto_user/features/authentication/presentation/page/login_page.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:resto_user/core/dependencies/setup_dependencies.dart';
 
 void main() {
+  setupDependencies();
+
   runApp(const MyApp());
 }
 
@@ -10,13 +14,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: GetIt.I.get<GoRouter>(),
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const LoginPage(),
+      theme: GetIt.I.get<ThemeData>(),
+      darkTheme: GetIt.I.get<ThemeData>(),
     );
   }
 }
