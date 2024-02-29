@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:resto_user/core/dependencies/setup_dependencies.dart';
 
 void main() {
+  setupDependencies();
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
+      routerConfig: GetIt.I.get<GoRouter>(),
       title: 'Flutter Demo',
-      home: ProfilePage(),
+      theme: GetIt.I.get<ThemeData>(),
+      darkTheme: GetIt.I.get<ThemeData>(),
+      
     );
   }
 }
