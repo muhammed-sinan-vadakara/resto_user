@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/dependencies/setup_dependencies.dart';
 
-
 void main() {
   setupDependencies();
 
@@ -16,12 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerConfig: GetIt.I.get<GoRouter>(),
       title: 'Flutter Demo',
-
       theme: GetIt.I.get<ThemeData>(),
       darkTheme: GetIt.I.get<ThemeData>(),
-
     );
   }
 }
