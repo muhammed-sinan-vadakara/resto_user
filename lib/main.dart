@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       routerConfig: GetIt.I.get<GoRouter>(),
       title: 'Flutter Demo',
       theme: GetIt.I.get<ThemeData>(),
+      darkTheme: GetIt.I.get<ThemeData>(),
     );
   }
 }
