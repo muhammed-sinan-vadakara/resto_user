@@ -39,6 +39,7 @@ dependencies:
   flutter_bloc: ^8.1.4
   get_it: ^7.6.7
   flutter_svg: ^2.0.10+1
+  google_maps_flutter: ^2.6.0
 
 
 dev_dependencies:

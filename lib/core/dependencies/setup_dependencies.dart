@@ -11,6 +11,5 @@ void setupDependencies() {
   /// Router dependencies
   getIt.registerSingleton<GoRouter>(router);
   getIt.registerSingleton<ThemeData>(lightTheme);
-  // getIt.registerSingleton<ThemeData>(darkTheme);
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
 }
