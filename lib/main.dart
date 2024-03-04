@@ -15,11 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: GetIt.I.get<GoRouter>(),
-      title: 'Flutter Demo',
-      theme: GetIt.I.get<ThemeData>(),
-      darkTheme: GetIt.I.get<ThemeData>(),
-    );
+        debugShowCheckedModeBanner: false,
+        routerConfig: GetIt.I.get<GoRouter>(),
+        theme: GetIt.I.get<ThemeData>(instanceName: 'light'));
   }
 }

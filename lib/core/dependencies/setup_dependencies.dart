@@ -10,6 +10,6 @@ final getIt = GetIt.instance;
 void setupDependencies() {
   /// Router dependencies
   getIt.registerSingleton<GoRouter>(router);
-  getIt.registerSingleton<ThemeData>(lightTheme);
-  getIt.registerSingleton<ThemeData>(darkTheme);
+  getIt.registerSingleton<ThemeData>(lightTheme, instanceName: 'light');
+  getIt.registerSingleton<ThemeData>(darkTheme, instanceName: 'dark');
 }
