@@ -16,13 +16,13 @@ class HomePage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(theme.spaces.space_700),
         child: Padding(
-          padding: const EdgeInsets.only(right: 12),
+          padding: EdgeInsets.only(right: theme.spaces.space_150),
           child: const AppBarWidget(),
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
           child: Column(
             children: [
               SizedBox(
