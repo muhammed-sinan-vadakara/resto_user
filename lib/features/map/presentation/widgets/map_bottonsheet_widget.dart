@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
-import 'package:resto_user/core/app_assets/app_asset_constant.dart';
+import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
 void viewModelBottomSheet(BuildContext context) {
@@ -12,7 +12,7 @@ void viewModelBottomSheet(BuildContext context) {
   final assets = GetIt.I.get<AppAssetConstants>();
   showModalBottomSheet(
     context: context,
-    builder: (context) => Container(
+    builder: (context) => SizedBox(
       height: 400,
       width: MediaQuery.sizeOf(context).width,
       child: Column(
