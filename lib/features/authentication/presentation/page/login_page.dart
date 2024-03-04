@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatelessWidget {
   static const routePath = "/loginPage";
@@ -6,9 +7,16 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [],
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              child:
+                  SvgPicture.asset("assets/images/login_background_image.svg"),
+            )
+          ],
+        ),
       ),
     );
   }
