@@ -15,5 +15,4 @@ void setupDependencies() {
   getIt.registerSingleton<ThemeData>(lightTheme);
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
-  // getIt.registerSingleton<ThemeData>(darkTheme);
 }
