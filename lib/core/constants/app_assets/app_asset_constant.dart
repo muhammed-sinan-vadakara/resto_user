@@ -8,7 +8,7 @@ class AppAssetConstants {
   final icGoogle = '${_iconsPath}google_icon.svg';
   final icHome = '${_iconsPath}home_icon.svg';
   final icLocation = '${_iconsPath}location_icon.svg';
-  final icNotification = '${_iconsPath}notification_icon.svg';
+  final icNotification = '${_iconsPath}notifications_icon.svg';
   final icPencil = '${_iconsPath}pencil_icon.svg';
   final icOffers = '${_iconsPath}offers_icon.svg';
   final icRemove = '${_iconsPath}remove_icon.svg';

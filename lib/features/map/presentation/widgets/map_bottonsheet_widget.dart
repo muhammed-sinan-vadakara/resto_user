@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
-import 'package:resto_user/core/app_assets/app_asset_constant.dart';
+import 'package:resto_user/core/constants/app_assets/app_asset_constant.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
 void viewModelBottomSheet(BuildContext context) {
