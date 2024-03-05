@@ -37,7 +37,7 @@ class AppBarWidget extends StatelessWidget {
                 ),
                 Text(
                   "Palazhi",
-                  style: theme.typography.h500,
+                  style: theme.typography.h100,
                 ),
               ],
             ),
