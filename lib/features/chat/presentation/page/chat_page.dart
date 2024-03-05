@@ -1,9 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/chat_page_constants/chat_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
-import 'package:resto_user/features/chat/data/models/message_model.dart';
+import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_event.dart';
@@ -27,24 +29,17 @@ class _ChatPageState extends State<ChatPage> {
     final constants = GetIt.I.get<ChatPageConstants>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(constants.txtChat),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notification_add_outlined),
-            onPressed: () {},
-          ),
-        ],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(theme.spaces.space_700),
+        child: AppBarWidget(title: constants.txtChat),
       ),
       body: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
           if (state is ChatLoading) {
+            print('not load: $state');
             return const Center(child: CircularProgressIndicator());
           } else if (state is ChatLoaded) {
+            print('Messages loaded: ${state.messages}');
             return Column(
               children: [
                 Expanded(
@@ -60,7 +55,7 @@ class _ChatPageState extends State<ChatPage> {
                   controller: _messageController,
                   onSend: (message) {
                     BlocProvider.of<ChatBloc>(context).add(
-                      SendMessage(message, 'helllo'),
+                      SendMessage(message, 'actual_chat_id_here'),
                     );
                     _messageController.clear();
                   },

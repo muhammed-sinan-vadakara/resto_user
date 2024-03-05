@@ -1,16 +1,16 @@
 import 'package:bloc/bloc.dart';
-import 'package:resto_user/features/chat/data/models/message_model.dart';
-import 'package:resto_user/features/chat/data/repository/message_repository.dart';
+import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
+import 'package:resto_user/features/chat/domain/repository/message_repository.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_event.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  final MessageRepository _messageRepository;
+  final MessageRepository messageRepository;
 
-  ChatBloc(this._messageRepository) : super(ChatLoading()) {
+  ChatBloc(this.messageRepository) : super(ChatLoading()) {
     on<GetMessages>((event, emit) async {
       try {
-        final messages = await _messageRepository.getMessages(event.chatId);
+        final messages = await messageRepository.getMessages(event.chatId);
         emit(ChatLoaded(messages));
       } catch (error) {
         emit(ChatError(error.toString()));
@@ -19,13 +19,15 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
     on<SendMessage>((event, emit) async {
       try {
-        await _messageRepository.sendMessage(Message(
+        await messageRepository.sendMessage(MessageEntity(
           message: event.message,
-          senderId: 'your_user_id', // Replace with actual user ID
-          receiverId: 'friend_user_id', // Replace with actual friend's ID
+          senderId: 'your_user_id',
+          receiverId: 'friend_user_id',
           timestamp: DateTime.now(),
         ));
-        emit(ChatLoading());
+
+        final messages = await messageRepository.getMessages(event.chatId);
+        emit(ChatLoaded(messages));
       } catch (error) {
         emit(ChatError(error.toString()));
       }

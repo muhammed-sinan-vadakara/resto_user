@@ -1,20 +1,17 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/widgets.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-@immutable
-class Message extends Equatable {
-  final String message;
-  final String senderId;
-  final String receiverId;
-  final DateTime timestamp;
+part 'message_model.g.dart';
+part 'message_model.freezed.dart';
 
-  const Message({
-    required this.message,
-    required this.senderId,
-    required this.receiverId,
-    required this.timestamp,
-  });
+@freezed
+class MessageModel with _$MessageModel {
+  const factory MessageModel({
+    required String message,
+    required String senderId,
+    required String receiverId,
+    required DateTime timestamp,
+  }) = _MessageModel;
 
-  @override
-  List<Object?> get props => [message, senderId, receiverId, timestamp];
+  factory MessageModel.fromJson(Map<String, dynamic> json) =>
+      _$MessageModelFromJson(json);
 }

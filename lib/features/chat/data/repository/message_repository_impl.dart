@@ -12,7 +12,7 @@ class MessageRepositoryImpl implements MessageRepository {
   @override
   Future<List<MessageEntity>> getMessages(String chatId) async {
     final messages = await _dataSource.getMessages(chatId);
-    // Convert Message to MessageEntity if necessary (assuming Message and MessageEntity have similar properties)
+
     return messages
         .map((message) => MessageEntity(
               message: message.message,
@@ -26,7 +26,6 @@ class MessageRepositoryImpl implements MessageRepository {
   @override
   @override
   Future<void> sendMessage(MessageEntity message) async {
-    // Convert MessageEntity to Message (assuming matching properties)
     final messageData = MessageModel(
       message: message.message,
       senderId: message.senderId,
@@ -34,7 +33,6 @@ class MessageRepositoryImpl implements MessageRepository {
       timestamp: message.timestamp,
     );
 
-    // Send the converted message to the data source
     await _dataSource.sendMessage(messageData);
   }
 }

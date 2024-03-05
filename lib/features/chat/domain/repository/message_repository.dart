@@ -1,6 +1,6 @@
-import 'package:resto_user/features/chat/data/models/message_model.dart';
+import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
 
 abstract class MessageRepository {
-  Future<List<Message>> getMessages(String chatId);
-  Future<void> sendMessage(Message message);
+  Future<List<MessageEntity>> getMessages(String chatId);
+  Future<void> sendMessage(MessageEntity message);
 }

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:resto_user/features/chat/data/models/message_model.dart';
+import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
 
 abstract class ChatState extends Equatable {
   const ChatState();
@@ -8,14 +8,10 @@ abstract class ChatState extends Equatable {
   List<Object?> get props => [];
 }
 
-class ChatLoading extends ChatState {
-  // final List<Message> messages;
-
-  // const ChatLoading(this.messages);
-}
+class ChatLoading extends ChatState {}
 
 class ChatLoaded extends ChatState {
-  final List<Message> messages;
+  final List<MessageEntity> messages;
 
   const ChatLoaded(this.messages);
 }
