@@ -41,7 +41,7 @@ class DetailsAddingPage extends StatelessWidget {
                     right: 190,
                   ),
                   child: Text(
-                    "Enter Mobile Number",
+                    "Enter Your Name",
                     style: theme.typography.uiSemibold
                         .copyWith(color: theme.colors.text),
                   ),
@@ -54,7 +54,7 @@ class DetailsAddingPage extends StatelessWidget {
       bottomNavigationBar: ElevatedButtonWidget(
         colours: theme.colors.primary,
         text: Text(
-          "Send OTP",
+          "Save",
           style: theme.typography.uiSemibold.copyWith(
             color: theme.colors.secondary,
           ),
