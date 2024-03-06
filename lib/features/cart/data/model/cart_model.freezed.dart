@@ -20,7 +20,6 @@ CartModel _$CartModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartModel {
-// ignore: invalid_annotation_target
   @JsonKey(name: 'product_id')
   String get productId => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
@@ -135,7 +134,6 @@ class _$CartModelImpl extends _CartModel {
   factory _$CartModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartModelImplFromJson(json);
 
-// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'product_id')
   final String productId;
@@ -189,7 +187,7 @@ abstract class _CartModel extends CartModel {
   factory _CartModel.fromJson(Map<String, dynamic> json) =
       _$CartModelImpl.fromJson;
 
-  @override // ignore: invalid_annotation_target
+  @override 
   @JsonKey(name: 'product_id')
   String get productId;
   @override
