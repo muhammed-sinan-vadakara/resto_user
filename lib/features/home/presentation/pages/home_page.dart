@@ -84,7 +84,7 @@ class HomePage extends HookWidget {
               SizedBox(
                 height: theme.spaces.space_250,
               ),
-              LoadingProductWidget()
+              const LoadingProductWidget()
             ],
           ),
         ),
