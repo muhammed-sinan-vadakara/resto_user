@@ -49,6 +49,9 @@ dependencies:
   json_annotation: ^4.8.1
   get_it: ^7.6.7
   google_maps_flutter: ^2.6.0
+  carousel_slider: ^4.2.1
+  shimmer: ^3.0.0
+  
 
 
 dev_dependencies:
