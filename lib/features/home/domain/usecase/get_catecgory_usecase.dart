@@ -1,5 +1,5 @@
 import 'package:resto_user/core/utils/firebase_storage_utils.dart';
-import 'package:resto_user/features/home/domain/entity/category_entity.dart';
+import 'package:resto_user/features/home/domain/entity/category_entity/category_entity.dart';
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 
 final class GetAllCategoryUseCase {

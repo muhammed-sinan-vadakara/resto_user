@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
-import 'package:resto_user/features/home/domain/entity/category_entity.dart';
+import 'package:resto_user/features/home/domain/entity/category_entity/category_entity.dart';
 
 class CategoryListViewWidget extends StatelessWidget {
   final List<CategoryEntity> entity;

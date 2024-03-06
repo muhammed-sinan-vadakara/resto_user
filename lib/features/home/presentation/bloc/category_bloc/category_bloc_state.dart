@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:resto_user/features/home/domain/entity/category_entity.dart';
+import 'package:resto_user/features/home/domain/entity/category_entity/category_entity.dart';
 
 part 'category_bloc_state.freezed.dart';
 

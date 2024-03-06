@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
-import 'package:resto_user/features/map/presentation/widgets/map_bottonsheet_widget.dart';
 
 class CartPage extends StatelessWidget {
   static const routPath = '/cart';
@@ -19,12 +18,6 @@ class CartPage extends StatelessWidget {
                   .h900
                   .copyWith(color: AppTheme.of(context).colors.primary)),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          viewModelBottomSheet(context);
-        },
-        child: Icon(Icons.add),
       ),
     );
   }
