@@ -8,8 +8,12 @@ import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource_impl.dart';
+import 'package:resto_user/features/home/data/data_source/product_firestore_datasource.dart';
+import 'package:resto_user/features/home/data/data_source/product_firestore_datasource_impl.dart';
 import 'package:resto_user/features/home/data/repository/category_repository_impl.dart';
+import 'package:resto_user/features/home/data/repository/product_repository_impl.dart';
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
+import 'package:resto_user/features/home/domain/repository/product_repository.dart';
 
 final getIt = GetIt.instance;
 
@@ -24,4 +28,8 @@ void setupDependencies() {
       CategoryFirestoreDatasourceImpl());
   getIt.registerSingleton<CategoryRepo>(
       CategoryRepoImpl(firestoreDataSource: GetIt.I.get()));
+  getIt.registerSingleton<ProductFirestoreDatasource>(
+      ProductFirestoreDatasourceImpl());
+  getIt.registerSingleton<ProductRepo>(
+      ProductRepoImpl(dataSource: GetIt.I.get()));
 }
