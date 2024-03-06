@@ -1,5 +1,6 @@
 class AppAssetConstants {
   static const _iconsPath = 'assets/icons/ic_';
+  static const _imagePath = "assets/images/img_";
 
   final icAdd = '${_iconsPath}add_icon.svg';
   final icAddImage = '${_iconsPath}add_image_icon.svg';
@@ -15,4 +16,7 @@ class AppAssetConstants {
   final icRemove = '${_iconsPath}remove_icon.svg';
   final icSearch = '${_iconsPath}search_icon.svg';
   final icUser = '${_iconsPath}user_icon.svg';
+
+  ///image
+  final image = "${_imagePath}login_background.svg";
 }

@@ -5,9 +5,9 @@ import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/elavated_Button_widget.dart';
 
-class LoginPage extends StatelessWidget {
-  static const routePath = "/loginPage";
-  const LoginPage({super.key});
+class DetailsAddingPage extends StatelessWidget {
+  static const routePath = "/DetailsAdding";
+  const DetailsAddingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,41 +51,15 @@ class LoginPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ElevatedButtonWidget(
-            colours: theme.colors.primary,
-            text: Text(
-              "Send OTP",
-              style: theme.typography.uiSemibold.copyWith(
-                color: theme.colors.secondary,
-              ),
-            ),
-            onPressed: () {},
+      bottomNavigationBar: ElevatedButtonWidget(
+        colours: theme.colors.primary,
+        text: Text(
+          "Send OTP",
+          style: theme.typography.uiSemibold.copyWith(
+            color: theme.colors.secondary,
           ),
-          ElevatedButtonWidget(
-            colours: theme.colors.textDisabled,
-            text: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: SvgPicture.asset(
-                    constants.icGoogle,
-                  ),
-                ),
-                Text(
-                  "Sign up with Google",
-                  style: theme.typography.uiSemibold.copyWith(
-                    color: theme.colors.text,
-                  ),
-                ),
-              ],
-            ),
-            onPressed: () {},
-          )
-        ],
+        ),
+        onPressed: () {},
       ),
     );
   }

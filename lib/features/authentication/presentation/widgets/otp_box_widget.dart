@@ -15,9 +15,13 @@ class OtpBoxWidget extends StatelessWidget {
       decoration: BoxDecoration(
           color: theme.colors.textDisabled,
           borderRadius: BorderRadius.circular(10)),
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: TextField(),
+      child: const Padding(
+        padding: EdgeInsets.all(4.0),
+        child: TextField(
+          decoration: InputDecoration(
+            border: InputBorder.none,
+          ),
+        ),
       ),
     );
   }

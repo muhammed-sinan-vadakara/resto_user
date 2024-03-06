@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/elavated_Button_widget.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/otp_box_widget.dart';
@@ -10,50 +12,81 @@ class OtpVerificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final constants = GetIt.I.get<AppAssetConstants>();
     final theme = AppTheme.of(context);
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
+            ),
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 24, bottom: 124),
-                  child: Container(
+                  padding: const EdgeInsets.only(
+                    top: 24,
+                    bottom: 104,
+                  ),
+                  child: SizedBox(
+                    // height: MediaQuery.sizeOf(context).height,
+                    width: MediaQuery.sizeOf(context).width,
                     child: SvgPicture.asset(
-                        "assets/images/login_background_image.svg"),
+                      constants.image,
+                    ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 270),
+                  padding: const EdgeInsets.only(
+                    right: 270,
+                  ),
                   child: Text(
                     "Enter OTP",
-                    style: TextStyle(
-                      color: theme.colors.text,
-                    ),
+                    style: theme.typography.uiSemibold
+                        .copyWith(color: theme.colors.text),
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    OtpBoxWidget(theme: theme),
-                    OtpBoxWidget(theme: theme),
-                    OtpBoxWidget(theme: theme),
-                    OtpBoxWidget(theme: theme),
-                    OtpBoxWidget(theme: theme),
-                    OtpBoxWidget(theme: theme),
+                    OtpBoxWidget(
+                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      theme: theme,
+                    ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: Text("00:00"),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        left: 5,
+                      ),
+                      child: Text(
+                        "00:00",
+                      ),
                     ),
-                    TextButton(onPressed: () {}, child: Text("Resend OTP"))
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "Resend OTP",
+                      ),
+                    )
                   ],
                 )
               ],
@@ -61,8 +94,15 @@ class OtpVerificationPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar:
-          ElevatedButtonWidget(text: "Verify OTP", onPressed: () {}),
+      bottomNavigationBar: ElevatedButtonWidget(
+        colours: theme.colors.primary,
+        text: Text(
+          "Verify OTP",
+          style: theme.typography.uiSemibold
+              .copyWith(color: theme.colors.secondary),
+        ),
+        onPressed: () {},
+      ),
     );
   }
 }

@@ -6,8 +6,8 @@ import 'package:resto_user/features/profile/presentation/pages/profile_page.dart
 
 final router = GoRouter(
   // initialLocation: ProfilePage.routePath,
-  // initialLocation: LoginPage.routePath,
-  initialLocation: OtpVerificationPage.routePath,
+  // initialLocation: OtpVerificationPage.routePath,
+  initialLocation: LoginPage.routePath,
   routes: [
     GoRoute(
       path: CartPage.routPath,
