@@ -3,7 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/dependencies/setup_dependencies.dart';
 
-void main() {
+void main()async {
+  
   setupDependencies();
 
   runApp(const MyApp());
@@ -19,7 +20,6 @@ class MyApp extends StatelessWidget {
       routerConfig: GetIt.I.get<GoRouter>(),
       title: 'Flutter Demo',
       theme: GetIt.I.get<ThemeData>(),
-      darkTheme: GetIt.I.get<ThemeData>(),
     );
   }
 }
