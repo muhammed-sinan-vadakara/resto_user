@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
-import 'package:resto_user/features/authentication/presentation/widgets/elavated_Button_widget.dart';
+import 'package:resto_user/features/authentication/presentation/widgets/elavated_button_widget.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/otp_box_widget.dart';
 
 class OtpVerificationPage extends StatelessWidget {
