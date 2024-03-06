@@ -1,4 +1,4 @@
-import 'package:resto_user/features/home/data/model/category_model.dart';
+import 'package:resto_user/features/home/data/model/category_model/category_model.dart';
 
 abstract class CategoryFirestoreDatasource {
   Stream<List<CategoryModel>> getAll();

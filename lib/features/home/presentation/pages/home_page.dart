@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/home_page/home_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
+import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc.dart';
+import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc_state.dart';
 import 'package:resto_user/features/home/presentation/widgets/appbar_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/carousel_slider_widget.dart';
+import 'package:resto_user/features/home/presentation/widgets/category_listview_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/category_loading_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/product_loading_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/search_field_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/title_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends HookWidget {
   static const routPath = '/home';
   const HomePage({super.key});
 
@@ -18,6 +23,15 @@ class HomePage extends StatelessWidget {
     final searchController = TextEditingController();
     final theme = AppTheme.of(context);
     final constants = GetIt.I.get<HomeConstants>();
+
+    useEffect(() {
+      Future.delayed(Duration.zero, () {
+        context.read<CategoryBloc>().add(GetCategoriesEvent());
+      });
+
+      return null;
+    }, []);
+
     return Scaffold(
       backgroundColor: theme.colors.secondary,
       appBar: PreferredSize(
@@ -51,7 +65,15 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(
                 height: theme.spaces.space_100 * 10,
-                child: const LoadingCategoryWidget(),
+                child: BlocBuilder<CategoryBloc, CategoryBlocState>(
+                    builder: (context, state) {
+                  if (state.categories == null) {
+                    return const LoadingCategoryWidget();
+                  } else {
+                    return CategoryListViewWidget(entity: state.categories!);
+                  }
+                }),
+                // child: const LoadingCategoryWidget(),
               ),
               SizedBox(
                 height: theme.spaces.space_250,

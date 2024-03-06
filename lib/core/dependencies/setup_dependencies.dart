@@ -8,6 +8,8 @@ import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource_impl.dart';
+import 'package:resto_user/features/home/data/repository/category_repository_impl.dart';
+import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 
 final getIt = GetIt.instance;
 
@@ -20,4 +22,6 @@ void setupDependencies() {
   getIt.registerSingleton<HomeConstants>(HomeConstants());
   getIt.registerSingleton<CategoryFirestoreDatasource>(
       CategoryFirestoreDatasourceImpl());
+  getIt.registerSingleton<CategoryRepo>(
+      CategoryRepoImpl(firestoreDataSource: GetIt.I.get()));
 }
