@@ -4,15 +4,16 @@ import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
 import 'package:resto_user/core/router/router.dart';
+import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
 
 final getIt = GetIt.instance;
-final appAssetConstants = AppAssetConstants();
 
 void setupDependencies() {
   /// Router dependencies
   getIt.registerSingleton<GoRouter>(router);
-  getIt.registerSingleton<ThemeData>(lightTheme);
+  getIt.registerSingleton<ThemeData>(lightTheme, instanceName: 'lightTheme');
+  getIt.registerSingleton<ThemeData>(darkTheme, instanceName: 'darkTheme');
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
 }

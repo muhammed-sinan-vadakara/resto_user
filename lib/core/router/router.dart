@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
+import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
 
 final router = GoRouter(
   initialLocation: ProfilePage.routePath,
@@ -12,6 +13,10 @@ final router = GoRouter(
     GoRoute(
       path: ProfilePage.routePath,
       builder: (context, state) => const ProfilePage(),
+    ),
+    GoRoute(
+      path: SupportPage.routePath,
+      builder: (context, state) => const SupportPage(),
     )
   ],
 );

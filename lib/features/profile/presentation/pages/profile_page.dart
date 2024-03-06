@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
+import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
 import 'package:resto_user/features/profile/presentation/widgets/dark_theme_widget.dart';
 import 'package:resto_user/features/profile/presentation/widgets/personal_info_widget.dart';
 import 'package:resto_user/features/profile/presentation/widgets/profile_image_widget.dart';
@@ -18,7 +20,7 @@ class ProfilePage extends StatelessWidget {
     final appTheme = AppTheme.of(context);
     final constants = GetIt.I.get<ProfilePageConstants>();
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: appTheme.colors.secondary,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(appTheme.spaces.space_700),
         child: AppBarWidget(title: constants.txtProfile),
@@ -46,9 +48,12 @@ class ProfilePage extends StatelessWidget {
               const SizedBox16(),
               const DarkThemeWidget(),
               const SizedBox16(),
-              Text(
-                constants.txtSupport,
-                style: appTheme.typography.h300,
+              InkWell(
+                onTap: () => context.push(SupportPage.routePath),
+                child: Text(
+                  constants.txtSupport,
+                  style: appTheme.typography.h300,
+                ),
               ),
               const SizedBox32(),
               Text(
@@ -59,6 +64,10 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
+      // bottomNavigationBar: ElevatedBottomButtonWidget(
+      //   text: constants.txtEdit,
+      //   onPressed: () {},
+      // ),
     );
   }
 }

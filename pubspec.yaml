@@ -49,6 +49,7 @@ dependencies:
   json_annotation: ^4.8.1
   get_it: ^7.6.7
   google_maps_flutter: ^2.6.0
+  shared_preferences: ^2.2.2
 
 
 dev_dependencies:
