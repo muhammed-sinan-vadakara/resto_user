@@ -35,10 +35,11 @@ class _ChatPageState extends State<ChatPage> {
       ),
       body: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
-          if (state is ChatLoading) {
-            print('not load: $state');
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is ChatLoaded) {
+          // if (state is ChatLoading) {
+          //   print('not load: $state');
+          //   return const Center(child: CircularProgressIndicator());
+          // } else
+          if (state is ChatLoaded) {
             print('Messages loaded: ${state.messages}');
             return Column(
               children: [
@@ -67,7 +68,26 @@ class _ChatPageState extends State<ChatPage> {
               child: Text('Error: ${state.error}'),
             );
           } else {
-            return const Text('Unexpected state');
+            return Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    reverse: true, itemCount: 3,
+                    // itemCount: state.messages.length,
+                    itemBuilder: (context, index) => ChatMessageTile(),
+                  ),
+                ),
+                MessageInputField(
+                  controller: _messageController,
+                  onSend: (message) {
+                    BlocProvider.of<ChatBloc>(context).add(
+                      SendMessage(message, 'actual_chat_id_here'),
+                    );
+                    _messageController.clear();
+                  },
+                ),
+              ],
+            );
           }
         },
       ),
@@ -87,37 +107,40 @@ class MessageInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: TextField(
-            controller: controller,
-            decoration: InputDecoration(
-              hintText: 'Type a message...',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                hintText: 'Type a message...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
             ),
           ),
-        ),
-        IconButton(
-          icon: const Icon(Icons.send),
-          onPressed: () => onSend(controller.text),
-        ),
-      ],
+          IconButton(
+            icon: const Icon(Icons.send),
+            onPressed: () => onSend(controller.text),
+          ),
+        ],
+      ),
     );
   }
 }
 
 class ChatMessageTile extends StatelessWidget {
-  final MessageEntity message;
+  final MessageEntity? message;
 
-  const ChatMessageTile({Key? key, required this.message}) : super(key: key);
+  const ChatMessageTile({Key? key, this.message}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: message.senderId == 'your_user_id'
+      alignment: message!.senderId == 'your_user_id'
           ? Alignment.centerRight
           : Alignment.centerLeft,
       child: Container(
@@ -125,11 +148,11 @@ class ChatMessageTile extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: message.senderId == 'your_user_id'
+          color: message!.senderId == 'your_user_id'
               ? Colors.blue[100]
               : Colors.grey[200],
         ),
-        child: Text(message.message),
+        child: Text(message!.message),
       ),
     );
   }
