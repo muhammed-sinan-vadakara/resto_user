@@ -22,14 +22,14 @@ class CheckOutPage extends StatelessWidget {
             SizedBox(
               height: theme.spaces.space_300,
             ),
-            BoxWidget(
+            const BoxWidget(
               leadingIcon: Icons.done,
               content: 'aslkdmk',
             ),
             SizedBox(
               height: theme.spaces.space_300,
             ),
-            BoxWidget(
+            const BoxWidget(
               leadingIcon: Icons.abc,
               content: 'asdqwd',
               trailingIcon: Icons.arrow_forward_ios_rounded,
