@@ -12,15 +12,6 @@ class ProductGridViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-
-    // final selectedCategory =
-    //     ref.watch(categoryProvider.select((value) => value.selectedCategory));
-
-    // return ref.watch(getAllProductsByCategoryProvider(selectedCategory)).when(
-    //       data: (data) {
-    //         final products =
-    //             ref.watch(productProvider).searchedProducts ?? data;
-
     return GridView.builder(
       physics: const ClampingScrollPhysics(),
       itemCount: entity.length,

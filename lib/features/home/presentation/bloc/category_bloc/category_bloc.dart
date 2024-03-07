@@ -54,7 +54,9 @@ class CategoryBloc extends Bloc<CategoriesBlocEvent, CategoryBlocState> {
 
         if (state.selectedCategory.isEmpty) {
           updateSelectedCategory(
-              SelectCategoryEvent(categories.first.id), emit);
+            SelectCategoryEvent(categories.first.id),
+            emit,
+          );
         }
       }
     }
