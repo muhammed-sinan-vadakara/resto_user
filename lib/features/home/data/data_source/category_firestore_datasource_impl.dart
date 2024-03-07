@@ -3,7 +3,6 @@ import 'package:resto_user/features/home/data/data_source/category_firestore_dat
 import 'package:resto_user/features/home/data/model/category_model/category_model.dart';
 
 class CategoryFirestoreDatasourceImpl implements CategoryFirestoreDatasource {
-  final firestore = FirebaseFirestore.instance;
   final collection = FirebaseFirestore.instance
       .collection('category')
       .withConverter(
@@ -12,8 +11,8 @@ class CategoryFirestoreDatasourceImpl implements CategoryFirestoreDatasource {
 
   @override
   Stream<List<CategoryModel>> getAll() async* {
-    final categorySteame = collection.snapshots(includeMetadataChanges: true);
-    await for (final categorys in categorySteame) {
+    final categoryStream = collection.snapshots(includeMetadataChanges: true);
+    await for (final categorys in categoryStream) {
       yield [
         for (final category in categorys.docs) category.data(),
       ];
