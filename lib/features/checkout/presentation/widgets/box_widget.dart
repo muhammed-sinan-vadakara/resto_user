@@ -1,17 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
 class BoxWidget extends StatelessWidget {
-  final IconData leadingIcon;
+  final String leadingIcon;
   final String content;
   final IconData? trailingIcon;
+  final void Function()? onPressed;
   const BoxWidget(
       {super.key,
       required this.leadingIcon,
       required this.content,
-      this.trailingIcon});
+      this.trailingIcon,
+      this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +28,14 @@ class BoxWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(leadingIcon),
+            SvgPicture.asset(
+              height: theme.spaces.space_300,
+              leadingIcon,
+              colorFilter:
+                  const ColorFilter.mode(Colors.black, BlendMode.srcATop),
+            ),
             SizedBox(
               width: theme.spaces.space_100,
             ),
@@ -36,7 +43,7 @@ class BoxWidget extends StatelessWidget {
             const Expanded(
               child: SizedBox(),
             ),
-            Icon(trailingIcon)
+            IconButton(onPressed: onPressed, icon: Icon(trailingIcon))
           ],
         ),
       ),
