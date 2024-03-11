@@ -5,7 +5,6 @@ import 'package:resto_user/core/dependencies/setup_dependencies.dart';
 
 void main() {
   setupDependencies();
-
   runApp(const MyApp());
 }
 

@@ -12,7 +12,7 @@ void viewModelBottomSheet(BuildContext context) {
   final assets = GetIt.I.get<AppAssetConstants>();
   showModalBottomSheet(
     context: context,
-    builder: (context) => Container(
+    builder: (context) => SizedBox(
       height: 400,
       width: MediaQuery.sizeOf(context).width,
       child: Column(
@@ -32,8 +32,9 @@ void viewModelBottomSheet(BuildContext context) {
             height: space.space_100,
           ),
           Text(
-            "Enable your device location for a better\n                   delivery experience",
+            "Enable your device location for a better\ndelivery experience",
             style: theme.h300,
+            textAlign: TextAlign.center,
           ),
           SizedBox(
             height: space.space_600,
