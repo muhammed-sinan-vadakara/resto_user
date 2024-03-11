@@ -1,5 +1,6 @@
 class AppAssetConstants {
   static const _iconsPath = 'assets/icons/ic_';
+
   final icAdd = '${_iconsPath}add_icon.svg';
   final icAddImage = '${_iconsPath}add_image_icon.svg';
   final icArrowBackward = '${_iconsPath}arrow_backward_icon.svg';

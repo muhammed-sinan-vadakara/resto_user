@@ -3,7 +3,17 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+
   geolocator_windows
+
+  cloud_firestore
+
+  file_selector_windows
+ 41d6d4fd34efe870b5b2e7ba25fe02a5a06f0c11
+  firebase_auth
+  firebase_core
+  firebase_storage
+
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
