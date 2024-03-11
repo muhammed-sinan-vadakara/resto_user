@@ -22,7 +22,7 @@ class AppBarWidget extends StatelessWidget {
           children: [
             InkWell(
                 onTap: () {},
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   radius: 25,
                 )),
             SizedBox(

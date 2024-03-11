@@ -39,6 +39,5 @@ class CategoryListViewWidget extends StatelessWidget {
           );
         },
         itemCount: entity.length);
-    ;
   }
 }

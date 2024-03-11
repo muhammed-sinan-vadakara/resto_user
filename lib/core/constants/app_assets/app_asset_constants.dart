@@ -15,4 +15,9 @@ class AppAssetConstants {
   final icRemove = '${_iconsPath}remove_icon.svg';
   final icSearch = '${_iconsPath}search_icon.svg';
   final icUser = '${_iconsPath}user_icon.svg';
+  final icTimer = '${_iconsPath}timer_icon.svg';
+  final icInstruction = '${_iconsPath}instruction_icon.svg';
+  final icGst = '${_iconsPath}gst_icon.svg';
+  final icDelivery = '${_iconsPath}delivery_icon.svg';
+  final icArrowRight = '${_iconsPath}arrow_right_icon.svg';
 }

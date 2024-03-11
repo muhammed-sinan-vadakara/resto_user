@@ -33,10 +33,9 @@ class CarouselSliderWidget extends StatelessWidget {
         aspectRatio: 16 / 9,
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: true,
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
+        autoPlayAnimationDuration: const Duration(milliseconds: 800),
         viewportFraction: 1,
       ),
     );
-    ;
   }
 }
