@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
+import 'package:resto_user/core/utils/shared_preference_utils.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
 import 'package:resto_user/features/profile/presentation/widgets/dark_theme_widget.dart';
@@ -11,7 +13,7 @@ import 'package:resto_user/features/profile/presentation/widgets/profile_image_w
 import 'package:resto_user/features/profile/presentation/widgets/sized_box_16.dart';
 import 'package:resto_user/features/profile/presentation/widgets/sized_box_32.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends HookWidget {
   static const routePath = '/profile';
   const ProfilePage({super.key});
 
@@ -59,15 +61,16 @@ class ProfilePage extends StatelessWidget {
               Text(
                 constants.txtLogout,
                 style: appTheme.typography.h300,
-              )
+              ),
+              FutureBuilder(
+                  future: SharedPreferencesUtils.getTheme(),
+                  builder: (context, snapshot) {
+                    return Text(snapshot.data.toString());
+                  })
             ],
           ),
         ),
       ),
-      // bottomNavigationBar: ElevatedBottomButtonWidget(
-      //   text: constants.txtEdit,
-      //   onPressed: () {},
-      // ),
     );
   }
 }

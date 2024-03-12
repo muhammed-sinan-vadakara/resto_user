@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
-import 'package:resto_user/features/profile/presentation/provider/theme_bloc.dart';
+import 'package:resto_user/features/profile/presentation/provider/theme/theme_bloc.dart';
+import 'package:resto_user/features/profile/presentation/provider/toggle_theme/toggle_theme_bloc.dart';
 
 class DarkThemeWidget extends StatelessWidget {
   const DarkThemeWidget({super.key});
@@ -19,20 +20,23 @@ class DarkThemeWidget extends StatelessWidget {
           constants.txtDarkTheme,
           style: appTheme.typography.h300,
         ),
-        Switch(
-          thumbIcon: const MaterialStatePropertyAll(Icon(
-            Icons.circle,
-            color: Colors.transparent,
-          )),
-          activeColor: appTheme.colors.primary,
-          thumbColor: MaterialStatePropertyAll(appTheme.colors.primary),
-          // trackColor: MaterialStatePropertyAll(appTheme.colors.textSubtle),
-          trackOutlineColor: const MaterialStatePropertyAll(Colors.transparent),
-          value: false,
-          onChanged: (value) {
-            context.read<ThemeBloc>().add(SwitchThemeEvent());
-          },
-        )
+        BlocBuilder<ToggleThemeBloc, bool>(
+          builder: (context, state) => Switch(
+            thumbIcon: const MaterialStatePropertyAll(Icon(
+              Icons.circle,
+              color: Colors.transparent,
+            )),
+            activeColor: appTheme.colors.primary,
+            thumbColor: MaterialStatePropertyAll(appTheme.colors.primary),
+            trackOutlineColor:
+                const MaterialStatePropertyAll(Colors.transparent),
+            value: context.watch<ToggleThemeBloc>().state,
+            onChanged: (value) {
+              context.read<ToggleThemeBloc>().add(ClickToggleThemeEvent());
+              context.read<ThemeBloc>().add(SwitchThemeEvent());
+            },
+          ),
+        ),
       ],
     );
   }
