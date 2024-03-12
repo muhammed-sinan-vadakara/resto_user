@@ -7,16 +7,24 @@ import 'package:resto_user/features/chat/domain/repository/message_repository.da
 class GetMessagesUseCase {
   final MessageRepository repository;
 
-  GetMessagesUseCase(this.repository);
+  GetMessagesUseCase({required this.repository});
 
-  Future<List<MessageEntity>> call(String chatId) async {
+  Stream<List<MessageEntity>> call(String chatId) async* {
     try {
-      final messages = await repository.getMessages(chatId);
-      return messages;
-    } on BaseException catch (e) {
-      throw e;
+      final messageStream = repository.getMessages(chatId);
+
+      await for (final messages in messageStream) {
+        yield [
+          for (final message in messages)
+            MessageEntity(
+                message: message.message,
+                senderId: message.senderId,
+                receiverId: message.receiverId,
+                timestamp: message.timestamp)
+        ];
+      }
     } catch (e) {
-      throw BaseException('An unexpected error occurred.');
+      throw Exception('No Comming Data');
     }
   }
 }

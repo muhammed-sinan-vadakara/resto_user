@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'message_model.g.dart';
@@ -14,4 +15,16 @@ class MessageModel with _$MessageModel {
 
   factory MessageModel.fromJson(Map<String, dynamic> json) =>
       _$MessageModelFromJson(json);
+
+  factory MessageModel.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data()!;
+    data['id'] = snapshot.id;
+    return MessageModel.fromJson(data);
+  }
+  Map<String, dynamic> toFirestore() {
+    return toJson()..remove('id');
+  }
 }

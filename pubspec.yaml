@@ -50,6 +50,9 @@ dependencies:
   get_it: ^7.6.7
   google_maps_flutter: ^2.6.0
   equatable: ^2.0.5
+  carousel_slider: ^4.2.1
+  shimmer: ^3.0.0
+  
 
 
 dev_dependencies:

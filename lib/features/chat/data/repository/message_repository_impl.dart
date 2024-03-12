@@ -5,34 +5,34 @@ import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
 import '../../domain/repository/message_repository.dart';
 
 class MessageRepositoryImpl implements MessageRepository {
-  final MessageDataSource _dataSource;
+  final MessageDataSource dataSource;
 
-  MessageRepositoryImpl(this._dataSource);
+  MessageRepositoryImpl(this.dataSource);
 
   @override
-  Future<List<MessageEntity>> getMessages(String chatId) async {
-    final messages = await _dataSource.getMessages(chatId);
-
-    return messages
-        .map((message) => MessageEntity(
-              message: message.message,
-              senderId: message.senderId,
-              receiverId: message.receiverId,
-              timestamp: message.timestamp,
-            ))
-        .toList();
+  Stream<List<MessageEntity>> getMessages(String chatId) async* {
+    final message = dataSource.getMessages(chatId);
+    await for (final snapshot in message) {
+      final docs = snapshot;
+      yield [
+        for (final chat in docs)
+          MessageEntity(
+              message: chat.message,
+              senderId: chat.senderId,
+              receiverId: chat.receiverId,
+              timestamp: chat.timestamp)
+      ];
+    }
   }
 
   @override
-  @override
   Future<void> sendMessage(MessageEntity message) async {
-    final messageData = MessageModel(
-      message: message.message,
-      senderId: message.senderId,
-      receiverId: message.receiverId,
-      timestamp: message.timestamp,
+    await dataSource.sendMessage(
+      MessageModel(
+          message: message.message,
+          senderId: message.senderId,
+          receiverId: message.receiverId,
+          timestamp: message.timestamp),
     );
-
-    await _dataSource.sendMessage(messageData);
   }
 }

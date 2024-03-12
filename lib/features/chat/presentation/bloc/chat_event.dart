@@ -1,21 +1,15 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-abstract class ChatEvent extends Equatable {
-  const ChatEvent();
+abstract class ChatEvent {}
 
-  @override
-  List<Object?> get props => [];
-}
-
-class GetMessages extends ChatEvent {
+class GetChatMessages extends ChatEvent {
   final String chatId;
 
-  const GetMessages(this.chatId);
+  GetChatMessages(this.chatId);
 }
 
 class SendMessage extends ChatEvent {
   final String message;
-  final String chatId;
 
-  const SendMessage(this.message, this.chatId);
+  SendMessage(this.message);
 }
