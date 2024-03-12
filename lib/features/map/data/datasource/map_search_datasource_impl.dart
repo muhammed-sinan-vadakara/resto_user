@@ -6,7 +6,6 @@ class SearchMapImpl implements SearchMap {
 
   @override
   Future<String> searchplace(String place) {
-    // TODO: implement searchplace
     throw UnimplementedError();
   }
 }
