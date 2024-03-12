@@ -49,15 +49,11 @@ dependencies:
   json_annotation: ^4.8.1
   get_it: ^7.6.7
   google_maps_flutter: ^2.6.0
-<<<<<<< HEAD
   geolocator: ^11.0.0
-  flutter_hooks: ^0.20.5
   geocoding: ^2.2.0
   dio: ^5.4.1
-=======
   carousel_slider: ^4.2.1
   shimmer: ^3.0.0
->>>>>>> 50d9f06970e245f7215cf100c25fe7093f1d1212
 
 
 dev_dependencies:
@@ -70,12 +66,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
-<<<<<<< HEAD
-=======
+
   build_runner: ^2.4.8
   freezed: ^2.4.7
   json_serializable: ^6.7.1
->>>>>>> 50d9f06970e245f7215cf100c25fe7093f1d1212
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
