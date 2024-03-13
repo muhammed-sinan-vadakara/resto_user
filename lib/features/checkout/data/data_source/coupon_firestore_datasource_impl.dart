@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource.dart';
 import 'package:resto_user/features/checkout/data/model/coupon_model.dart';
 
-class CouponFireStoreDatasourceImpl extends CouponFireStoreDatasource {
+class CouponFireStoreDatasourceImpl implements CouponFireStoreDatasource{
   final fireStore = FirebaseFirestore.instance;
   final collection =
       FirebaseFirestore.instance.collection('coupons').withConverter(
@@ -20,3 +20,4 @@ class CouponFireStoreDatasourceImpl extends CouponFireStoreDatasource {
     }
   }
 }
+
