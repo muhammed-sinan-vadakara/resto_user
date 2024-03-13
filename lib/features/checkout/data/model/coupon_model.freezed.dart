@@ -25,7 +25,7 @@ mixin _$CouponModel {
   String get code => throw _privateConstructorUsedError;
   CouponType get couponType => throw _privateConstructorUsedError;
   double get percentageOrAmount => throw _privateConstructorUsedError;
-  List<String> get condition => throw _privateConstructorUsedError;
+  List<Condition> get condition => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +45,7 @@ abstract class $CouponModelCopyWith<$Res> {
       String code,
       CouponType couponType,
       double percentageOrAmount,
-      List<String> condition});
+      List<Condition> condition});
 }
 
 /// @nodoc
@@ -92,7 +92,7 @@ class _$CouponModelCopyWithImpl<$Res, $Val extends CouponModel>
       condition: null == condition
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Condition>,
     ) as $Val);
   }
 }
@@ -111,7 +111,7 @@ abstract class _$$CouponModelImplCopyWith<$Res>
       String code,
       CouponType couponType,
       double percentageOrAmount,
-      List<String> condition});
+      List<Condition> condition});
 }
 
 /// @nodoc
@@ -156,7 +156,7 @@ class __$$CouponModelImplCopyWithImpl<$Res>
       condition: null == condition
           ? _value._condition
           : condition // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Condition>,
     ));
   }
 }
@@ -170,7 +170,7 @@ class _$CouponModelImpl extends _CouponModel {
       required this.code,
       required this.couponType,
       required this.percentageOrAmount,
-      required final List<String> condition})
+      required final List<Condition> condition})
       : _condition = condition,
         super._();
 
@@ -187,9 +187,9 @@ class _$CouponModelImpl extends _CouponModel {
   final CouponType couponType;
   @override
   final double percentageOrAmount;
-  final List<String> _condition;
+  final List<Condition> _condition;
   @override
-  List<String> get condition {
+  List<Condition> get condition {
     if (_condition is EqualUnmodifiableListView) return _condition;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_condition);
@@ -242,7 +242,7 @@ abstract class _CouponModel extends CouponModel {
       required final String code,
       required final CouponType couponType,
       required final double percentageOrAmount,
-      required final List<String> condition}) = _$CouponModelImpl;
+      required final List<Condition> condition}) = _$CouponModelImpl;
   _CouponModel._() : super._();
 
   factory _CouponModel.fromJson(Map<String, dynamic> json) =
@@ -259,7 +259,7 @@ abstract class _CouponModel extends CouponModel {
   @override
   double get percentageOrAmount;
   @override
-  List<String> get condition;
+  List<Condition> get condition;
   @override
   @JsonKey(ignore: true)
   _$$CouponModelImplCopyWith<_$CouponModelImpl> get copyWith =>

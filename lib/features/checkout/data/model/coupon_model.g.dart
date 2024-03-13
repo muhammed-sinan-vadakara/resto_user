@@ -13,8 +13,9 @@ _$CouponModelImpl _$$CouponModelImplFromJson(Map<String, dynamic> json) =>
       code: json['code'] as String,
       couponType: $enumDecode(_$CouponTypeEnumMap, json['couponType']),
       percentageOrAmount: (json['percentageOrAmount'] as num).toDouble(),
-      condition:
-          (json['condition'] as List<dynamic>).map((e) => e as String).toList(),
+      condition: (json['condition'] as List<dynamic>)
+          .map((e) => Condition.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$CouponModelImplToJson(_$CouponModelImpl instance) =>

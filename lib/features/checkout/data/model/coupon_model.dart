@@ -4,6 +4,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:resto_user/core/enums/coupon_type.dart';
+import 'package:resto_user/features/checkout/data/model/condition_model.dart';
 
 part 'coupon_model.freezed.dart';
 part 'coupon_model.g.dart';
@@ -17,7 +18,7 @@ class CouponModel with _$CouponModel {
     required String code,
     required CouponType couponType,
     required double percentageOrAmount,
-    required List<String> condition,
+    required List<Condition> condition,
   }) = _CouponModel;
 
     factory CouponModel.fromJson(Map<String, dynamic> json) =>
