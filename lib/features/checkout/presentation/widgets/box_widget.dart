@@ -20,30 +20,42 @@ class BoxWidget extends StatelessWidget {
     return Container(
       height: theme.spaces.space_700,
       decoration: BoxDecoration(
-        color: theme.colors.textInverse,
+        color: theme.colors.secondary,
+        boxShadow: [theme.boxShadow.secondary],
         borderRadius: BorderRadius.circular(
           theme.spaces.space_150,
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+        padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_250),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SvgPicture.asset(
-              height: theme.spaces.space_300,
-              leadingIcon,
-              colorFilter:
-                  const ColorFilter.mode(Colors.black, BlendMode.srcATop),
+            SizedBox(
+              height: 20,
+              width: 25,
+              child: SvgPicture.asset(
+                leadingIcon,
+                colorFilter:
+                    const ColorFilter.mode(Colors.black, BlendMode.srcATop),
+              ),
             ),
             SizedBox(
               width: theme.spaces.space_100,
             ),
-            Text(content),
+            Text(
+              content,
+              style: theme.typography.h400,
+            ),
             const Expanded(
               child: SizedBox(),
             ),
-            IconButton(onPressed: onPressed, icon: Icon(trailingIcon))
+            InkWell(
+                onTap: onPressed,
+                child: Icon(
+                  trailingIcon,
+                  size: 20,
+                ))
           ],
         ),
       ),
