@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/coupon_widget.dart';
+import 'package:resto_user/features/profile/presentation/widgets/sized_box_32.dart';
 
 class CouponsPage extends StatelessWidget {
   static const routePath = '/couponspage';
@@ -20,7 +21,15 @@ class CouponsPage extends StatelessWidget {
               horizontal: theme.spaces.space_300,
               vertical: theme.spaces.space_300),
           child: const Column(
-            children: [CouponWidget()],
+            children: [
+              CouponWidget(),
+              SizedBox32(),
+              CouponWidget(),
+              SizedBox32(),
+              CouponWidget(),
+              SizedBox32(),
+              CouponWidget(),
+            ],
           ),
         ),
       ),
