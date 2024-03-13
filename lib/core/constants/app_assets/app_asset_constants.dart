@@ -19,4 +19,13 @@ class AppAssetConstants {
 
   ///image
   final image = "${_imagePath}login_background.svg";
+  final icTimer = '${_iconsPath}timer_icon.svg';
+  final icInstruction = '${_iconsPath}instruction_icon.svg';
+  final icGst = '${_iconsPath}gst_icon.svg';
+  final icDelivery = '${_iconsPath}delivery_icon.svg';
+  final icArrowRight = '${_iconsPath}arrow_right_icon.svg';
+  final icCoupon = '${_iconsPath}coupon_icon.svg';
+  final icBuilding = '${_iconsPath}building_icon.svg';
+  final icCash = '${_iconsPath}cash_icon.svg';
+  final icLocationAddress = '${_iconsPath}location_address_icon.svg';
 }
