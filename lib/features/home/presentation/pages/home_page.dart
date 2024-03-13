@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -16,7 +14,6 @@ import 'package:resto_user/features/home/presentation/widgets/product_loading_wi
 import 'package:resto_user/features/home/presentation/widgets/search_field_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/title_widget.dart';
 import 'package:resto_user/features/profile/presentation/provider/theme/theme_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends HookWidget {
   static const routPath = '/home';
@@ -29,13 +26,9 @@ class HomePage extends HookWidget {
     final constants = GetIt.I.get<HomeConstants>();
 
     useEffect(() {
-      Future.delayed(Duration.zero, () async {
-        final prefs = await SharedPreferences.getInstance();
-        final isDarlActive = prefs.getBool("is_dark") ?? false;
-        log(isDarlActive.toString());
-        Future.sync(() => context.read<ThemeBloc>().add(InitialThemeEvent()));
-        Future.sync(
-            () => context.read<CategoryBloc>().add(GetCategoriesEvent()));
+      Future.delayed(Duration.zero, () {
+        context.read<ThemeBloc>().add(InitialThemeEvent());
+        context.read<CategoryBloc>().add(GetCategoriesEvent());
       });
       return null;
     }, []);
@@ -92,7 +85,7 @@ class HomePage extends HookWidget {
               SizedBox(
                 height: theme.spaces.space_250,
               ),
-              const LoadingProductWidget()
+              LoadingProductWidget()
             ],
           ),
         ),

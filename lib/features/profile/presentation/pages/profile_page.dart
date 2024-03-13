@@ -4,7 +4,6 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
-import 'package:resto_user/core/utils/shared_preference_utils.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
 import 'package:resto_user/features/profile/presentation/widgets/dark_theme_widget.dart';
@@ -62,11 +61,6 @@ class ProfilePage extends HookWidget {
                 constants.txtLogout,
                 style: appTheme.typography.h300,
               ),
-              FutureBuilder(
-                  future: SharedPreferencesUtils.getTheme(),
-                  builder: (context, snapshot) {
-                    return Text(snapshot.data.toString());
-                  })
             ],
           ),
         ),

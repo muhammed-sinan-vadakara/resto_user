@@ -33,6 +33,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       emit(
           isDark ? ThemeState(theme: lighTheme) : ThemeState(theme: darkTheme));
       SharedPreferencesUtils.setTheme(isDark);
+      log(isDark.toString());
     });
   }
 }

@@ -30,7 +30,7 @@ class DarkThemeWidget extends StatelessWidget {
             thumbColor: MaterialStatePropertyAll(appTheme.colors.primary),
             trackOutlineColor:
                 const MaterialStatePropertyAll(Colors.transparent),
-            value: context.watch<ToggleThemeBloc>().state,
+            value: state,
             onChanged: (value) {
               context.read<ToggleThemeBloc>().add(ClickToggleThemeEvent());
               context.read<ThemeBloc>().add(SwitchThemeEvent());

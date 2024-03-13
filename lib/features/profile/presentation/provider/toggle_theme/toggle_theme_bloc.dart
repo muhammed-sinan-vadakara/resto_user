@@ -9,7 +9,7 @@ class ToggleThemeBloc extends Bloc<ToggleThemeEvent, bool> {
   ToggleThemeBloc()
       : super(ThemeBloc().state.theme.brightness == Brightness.dark) {
     on<ClickToggleThemeEvent>((event, emit) {
-      return emit(!state);
+     emit(!state);
     });
   }
 }

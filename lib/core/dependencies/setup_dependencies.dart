@@ -15,6 +15,8 @@ import 'package:resto_user/features/home/data/repository/category_repository_imp
 import 'package:resto_user/features/home/data/repository/product_repository_impl.dart';
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
+import 'package:resto_user/features/profile/data/data_source/user_firestore_data_source.dart';
+import 'package:resto_user/features/profile/data/data_source/user_firestore_data_source_impl.dart';
 
 final getIt = GetIt.instance;
 
@@ -34,4 +36,6 @@ void setupDependencies() {
   getIt.registerSingleton<ProductRepo>(
       ProductRepoImpl(dataSource: GetIt.I.get()));
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
+  getIt.registerSingleton<UserFirestoreDataSource>(
+      UserFirestoreDataSourceImpl());
 }
