@@ -20,4 +20,8 @@ class AppAssetConstants {
   final icGst = '${_iconsPath}gst_icon.svg';
   final icDelivery = '${_iconsPath}delivery_icon.svg';
   final icArrowRight = '${_iconsPath}arrow_right_icon.svg';
+  final icCoupon = '${_iconsPath}coupon_icon.svg';
+  final icBuilding = '${_iconsPath}building_icon.svg';
+  final icCash = '${_iconsPath}cash_icon.svg';
+  final icLocationAddress = '${_iconsPath}location_address_icon.svg';
 }
