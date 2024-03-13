@@ -40,6 +40,6 @@ void setupDependencies() {
   getIt.registerSingleton<UserFirestoreDataSource>(
       UserFirestoreDataSourceImpl());
 
-  /// Set all the Bloc dependencies using tis function
+  /// Set all the Bloc dependencies using this function
   setupBlocDependencies();
 }
