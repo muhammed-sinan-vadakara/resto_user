@@ -23,7 +23,7 @@ class MyApp extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ThemeBloc>(
-      create: (context) => ThemeBloc(),
+      create: (context) => GetIt.I.get<ThemeBloc>(),
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) => MaterialApp.router(
           debugShowCheckedModeBanner: false,

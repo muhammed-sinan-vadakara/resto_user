@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/constants/home_page/home_constants.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
+import 'package:resto_user/core/dependencies/bloc_dependencies.dart';
 import 'package:resto_user/core/router/router.dart';
 import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
@@ -15,12 +16,12 @@ import 'package:resto_user/features/home/data/repository/category_repository_imp
 import 'package:resto_user/features/home/data/repository/product_repository_impl.dart';
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
-import 'package:resto_user/features/profile/data/data_source/user_firestore_data_source.dart';
-import 'package:resto_user/features/profile/data/data_source/user_firestore_data_source_impl.dart';
-
-final getIt = GetIt.instance;
+import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
+import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source_impl.dart';
 
 void setupDependencies() {
+  final getIt = GetIt.instance;
+
   /// Router dependencies
   getIt.registerSingleton<GoRouter>(router);
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
@@ -38,4 +39,7 @@ void setupDependencies() {
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
   getIt.registerSingleton<UserFirestoreDataSource>(
       UserFirestoreDataSourceImpl());
+
+  /// Set all the Bloc dependencies using tis function
+  setupBlocDependencies();
 }

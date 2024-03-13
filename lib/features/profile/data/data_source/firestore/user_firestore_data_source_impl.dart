@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:resto_user/features/profile/data/data_source/user_firestore_data_source.dart';
+import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
 import 'package:resto_user/features/profile/data/model/user_model.dart';
 
 class UserFirestoreDataSourceImpl implements UserFirestoreDataSource {

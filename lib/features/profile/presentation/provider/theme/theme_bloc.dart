@@ -16,6 +16,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       final isDarkActive = prefs.getBool("is_dark") ?? false;
       final lighTheme = GetIt.I.get<ThemeData>(instanceName: 'light');
       final darkTheme = GetIt.I.get<ThemeData>(instanceName: 'dark');
+      
       if (isDarkActive) {
         emit(ThemeState(theme: darkTheme));
         log(isDarkActive.toString());
