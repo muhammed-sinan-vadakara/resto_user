@@ -52,8 +52,8 @@ dependencies:
   carousel_slider: ^4.2.1
   shimmer: ^3.0.0
   google_sign_in: ^6.2.1
-  riverpod_annotation: ^2.3.4
-  flutter_riverpod: ^2.4.10
+  equatable: ^2.0.5
+  
 
 
 dev_dependencies:
@@ -65,12 +65,9 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-  build_runner: ^2.4.8
-  freezed: ^2.4.7
-  json_serializable: ^6.7.1
-  riverpod_generator: ^2.3.11
-  custom_lint: ^0.6.2
+  
+  
+ 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

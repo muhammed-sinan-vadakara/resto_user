@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
 class OtpBoxWidget extends StatelessWidget {
-  const OtpBoxWidget({super.key, required this.theme});
+  const OtpBoxWidget({
+    super.key,
+    required this.theme,
+    required this.textFields,
+  });
 
   final AppTheme theme;
+  final Widget textFields;
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +18,12 @@ class OtpBoxWidget extends StatelessWidget {
       height: 50,
       width: 50,
       decoration: BoxDecoration(
-          color: theme.colors.textDisabled,
-          borderRadius: BorderRadius.circular(10)),
-      child: const Padding(
-        padding: EdgeInsets.all(4.0),
-        child: TextField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-          ),
-        ),
+        color: theme.colors.textDisabled,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: textFields,
       ),
     );
   }

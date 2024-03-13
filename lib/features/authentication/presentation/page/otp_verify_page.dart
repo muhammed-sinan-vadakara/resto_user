@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/elavated_button_widget.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/otp_box_widget.dart';
+import 'package:resto_user/features/authentication/presentation/widgets/text_feild_widget.dart';
 
 class OtpVerificationPage extends StatelessWidget {
   static const routePath = "/OtpVerificationPage";
@@ -14,6 +16,7 @@ class OtpVerificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<AppAssetConstants>();
     final theme = AppTheme.of(context);
+    final otpController = useTextEditingController();
 
     return Scaffold(
       body: SafeArea(
@@ -51,21 +54,39 @@ class OtpVerificationPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     OtpBoxWidget(
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
+                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
+                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
+                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
                       theme: theme,
                     ),
                     OtpBoxWidget(
                       theme: theme,
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
                     ),
                     OtpBoxWidget(
-                      theme: theme,
-                    ),
-                    OtpBoxWidget(
-                      theme: theme,
-                    ),
-                    OtpBoxWidget(
-                      theme: theme,
-                    ),
-                    OtpBoxWidget(
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
                       theme: theme,
                     ),
                   ],
