@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
+import 'package:resto_user/features/home/presentation/widgets/overview_bottomsheet_widget.dart';
 
 class ProductGridViewWidget extends StatelessWidget {
   final List<ProductEntity> entity;
@@ -38,9 +39,24 @@ class ProductGridViewWidget extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    // context.push(OverViewItemsPage.routePath,
-                    //     extra: (selectedCategory, productData.id),
-                    //     );
+                    // showModalBottomSheet(
+                    //   context: context,
+                    //   builder: (context) => const OverviewBottomSheetWidget(),
+                    // );
+                    showModalBottomSheet<dynamic>(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext bc) {
+                          return Container(
+                            height: 750,
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20.0),
+                                    topRight: Radius.circular(20.0))),
+                            child: const OverviewBottomSheetWidget(),
+                          );
+                        });
                   },
                   child: Container(
                     width: theme.spaces.space_500 * 3.7,
