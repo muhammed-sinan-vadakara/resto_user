@@ -15,19 +15,20 @@ class CouponRepositoryImpl implements CouponRepository {
       yield [
         for (final coupon in docs)
           CouponEntity(
-              id: coupon.id,
-              title: coupon.title,
-              code: coupon.code,
-              couponType: coupon.couponType,
-              percentageOrAmount: coupon.percentageOrAmount,
-              condition: [
-                for (final c in coupon.condition)
-                  ConditionEntity(
-                      count: c.count,
-                      check: c.check,
-                      logic: c.logic,
-                      value: c.value),
-              ])
+            id: coupon.id,
+            title: coupon.title,
+            code: coupon.code,
+            couponType: coupon.couponType,
+            percentageOrAmount: coupon.percentageOrAmount,
+            condition: [
+              for (final c in coupon.condition)
+                ConditionEntity(
+                    count: c.count,
+                    check: c.check,
+                    logic: c.logic,
+                    value: c.value),
+            ],
+          ),
       ];
     }
   }
