@@ -1,12 +1,15 @@
 // ignore_for_file: avoid_print
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/chat_page_constants/chat_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_bloc.dart';
+import 'package:resto_user/features/chat/presentation/bloc/chat_event.dart';
 
 class ChatPage extends StatefulWidget {
   static const routPath = '/chat';
@@ -127,7 +130,21 @@ class MessageInputField extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.send),
             onPressed: () {
-              if (controller.text.isNotEmpty) {}
+              if (controller.text.isNotEmpty) {
+                final String senderId = FirebaseAuth.instance.currentUser!.uid;
+
+                const String receiverId = 'recipient_user_id';
+
+                BlocProvider.of<ChatBloc>(context).add(
+                  SendMessage(MessageEntity(
+                    message: controller.text,
+                    senderId: senderId,
+                    receiverId: receiverId,
+                    timestamp: DateTime.now(),
+                  )),
+                );
+                controller.clear();
+              }
             },
           ),
         ],
