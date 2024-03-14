@@ -4,8 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 
-class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({super.key});
+class HomeAppBarWidget extends StatelessWidget {
+  const HomeAppBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
