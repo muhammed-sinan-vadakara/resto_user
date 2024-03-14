@@ -16,13 +16,13 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       final isDarkActive = prefs.getBool("is_dark") ?? false;
       final lighTheme = GetIt.I.get<ThemeData>(instanceName: 'light');
       final darkTheme = GetIt.I.get<ThemeData>(instanceName: 'dark');
-      
+
       if (isDarkActive) {
         emit(ThemeState(theme: darkTheme));
-        log(isDarkActive.toString());
+        log('Initiial theme is dark');
       } else {
         emit(ThemeState(theme: lighTheme));
-        log(isDarkActive.toString());
+        log('Initial theme is light');
       }
     });
 
@@ -30,11 +30,11 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       final lighTheme = GetIt.I.get<ThemeData>(instanceName: 'light');
       final darkTheme = GetIt.I.get<ThemeData>(instanceName: 'dark');
       final isDark =
-          state.theme == GetIt.I.get<ThemeData>(instanceName: 'dark');
+          state.theme == GetIt.I.get<ThemeData>(instanceName: 'light');
       emit(
-          isDark ? ThemeState(theme: lighTheme) : ThemeState(theme: darkTheme));
+          isDark ? ThemeState(theme: darkTheme) : ThemeState(theme: lighTheme));
       SharedPreferencesUtils.setTheme(isDark);
-      log(isDark.toString());
+      log('SP is $isDark');
     });
   }
 }

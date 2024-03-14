@@ -11,6 +11,6 @@ class SharedPreferencesUtils {
 
   static Future<void> setTheme(bool isDark) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool("is_dark", !isDark);
+    prefs.setBool("is_dark", isDark);
   }
 }
