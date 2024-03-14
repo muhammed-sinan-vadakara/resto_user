@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'dart:developer';
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
     final hmacSha256 = Hmac(sha256, key);
     final generatedSignature = hmacSha256.convert(bytes);
     if (generatedSignature.toString() == response.signature) {
-      print("Payment was successful!");
+      log("Payment was successful!");
       //Handle what to do after a successful payment.
       showDialog(
         context: context,

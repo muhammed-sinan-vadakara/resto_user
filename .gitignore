@@ -1,3 +1,5 @@
+**/*.freezed.dart
+
 pubspec.lock
 
 #Generated code
