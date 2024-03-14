@@ -8,5 +8,6 @@ class CouponBlocState with _$CouponBlocState {
   factory CouponBlocState({
     required List<CouponEntity>? coupons,
     required String? eroor,
+    String? selectedCoupon,
   }) = _CouponBlocState;
 }

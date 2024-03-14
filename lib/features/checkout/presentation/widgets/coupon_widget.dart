@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/checkout/data/model/condition_model.dart';
 import 'package:resto_user/features/checkout/domain/entity/coupon_entity.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/profile/presentation/widgets/sized_box_16.dart';
 
 class CouponWidget extends StatelessWidget {
@@ -101,16 +103,21 @@ class CouponWidget extends StatelessWidget {
                   ),
                   const SizedBox16(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      final couponCode = entity[index].code.toString();
+                      BlocProvider.of<CouponBloc>(context)
+                          .selectedCoupon(couponCode);
+                      // context.pop();
+                    },
                     child: Container(
                       height: theme.spaces.space_500,
                       decoration: BoxDecoration(
-                          color: theme.colors.primary,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft:
-                                  Radius.circular(theme.spaces.space_100),
-                              bottomRight:
-                                  Radius.circular(theme.spaces.space_100))),
+                        color: theme.colors.primary,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(theme.spaces.space_100),
+                          bottomRight: Radius.circular(theme.spaces.space_100),
+                        ),
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

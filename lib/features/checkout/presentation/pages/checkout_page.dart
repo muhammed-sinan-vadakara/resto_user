@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/core/widgets/elevated_button_widget.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/pages/coupons_page.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/address_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/bill_details_widget.dart';
@@ -19,6 +21,8 @@ class CheckOutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
+    final selectedCouponCode =
+        context.select((CouponBloc bloc) => bloc.state.selectedCoupon);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(theme.spaces.space_700),
@@ -30,6 +34,7 @@ class CheckOutPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Text(selectedCouponCode.toString()),
               SizedBox(
                 height: theme.spaces.space_300,
               ),
@@ -54,7 +59,7 @@ class CheckOutPage extends StatelessWidget {
               ),
               BoxWidget(
                   leadingIcon: assets.icCoupon,
-                  content: 'Coupons',
+                  content: selectedCouponCode ?? "Coupons",
                   onPressed: () {
                     context.push(CouponsPage.routePath);
                   },
