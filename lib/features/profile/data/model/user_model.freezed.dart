@@ -20,10 +20,12 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  String get imgPath =>
-      throw _privateConstructorUsedError; 
+  String get imgPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_name')
   String get userName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mobile_number')
+  String get mobileNumber => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,11 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String imgPath, @JsonKey(name: 'user_name') String userName});
+  $Res call(
+      {String imgPath,
+      @JsonKey(name: 'user_name') String userName,
+      @JsonKey(name: 'mobile_number') String mobileNumber,
+      String email});
 }
 
 /// @nodoc
@@ -54,6 +60,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   $Res call({
     Object? imgPath = null,
     Object? userName = null,
+    Object? mobileNumber = null,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
       imgPath: null == imgPath
@@ -63,6 +71,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      mobileNumber: null == mobileNumber
+          ? _value.mobileNumber
+          : mobileNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -76,7 +92,11 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String imgPath, @JsonKey(name: 'user_name') String userName});
+  $Res call(
+      {String imgPath,
+      @JsonKey(name: 'user_name') String userName,
+      @JsonKey(name: 'mobile_number') String mobileNumber,
+      String email});
 }
 
 /// @nodoc
@@ -92,6 +112,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? imgPath = null,
     Object? userName = null,
+    Object? mobileNumber = null,
+    Object? email = null,
   }) {
     return _then(_$UserModelImpl(
       imgPath: null == imgPath
@@ -102,6 +124,14 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
+      mobileNumber: null == mobileNumber
+          ? _value.mobileNumber
+          : mobileNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -111,7 +141,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
 class _$UserModelImpl extends _UserModel {
   _$UserModelImpl(
       {required this.imgPath,
-      @JsonKey(name: 'user_name') required this.userName})
+      @JsonKey(name: 'user_name') required this.userName,
+      @JsonKey(name: 'mobile_number') required this.mobileNumber,
+      required this.email})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -122,10 +154,15 @@ class _$UserModelImpl extends _UserModel {
   @override
   @JsonKey(name: 'user_name')
   final String userName;
+  @override
+  @JsonKey(name: 'mobile_number')
+  final String mobileNumber;
+  @override
+  final String email;
 
   @override
   String toString() {
-    return 'UserModel(imgPath: $imgPath, userName: $userName)';
+    return 'UserModel(imgPath: $imgPath, userName: $userName, mobileNumber: $mobileNumber, email: $email)';
   }
 
   @override
@@ -135,12 +172,16 @@ class _$UserModelImpl extends _UserModel {
             other is _$UserModelImpl &&
             (identical(other.imgPath, imgPath) || other.imgPath == imgPath) &&
             (identical(other.userName, userName) ||
-                other.userName == userName));
+                other.userName == userName) &&
+            (identical(other.mobileNumber, mobileNumber) ||
+                other.mobileNumber == mobileNumber) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, imgPath, userName);
+  int get hashCode =>
+      Object.hash(runtimeType, imgPath, userName, mobileNumber, email);
 
   @JsonKey(ignore: true)
   @override
@@ -158,9 +199,10 @@ class _$UserModelImpl extends _UserModel {
 
 abstract class _UserModel extends UserModel {
   factory _UserModel(
-          {required final String imgPath,
-          @JsonKey(name: 'user_name') required final String userName}) =
-      _$UserModelImpl;
+      {required final String imgPath,
+      @JsonKey(name: 'user_name') required final String userName,
+      @JsonKey(name: 'mobile_number') required final String mobileNumber,
+      required final String email}) = _$UserModelImpl;
   _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -168,9 +210,14 @@ abstract class _UserModel extends UserModel {
 
   @override
   String get imgPath;
-  @override 
+  @override
   @JsonKey(name: 'user_name')
   String get userName;
+  @override
+  @JsonKey(name: 'mobile_number')
+  String get mobileNumber;
+  @override
+  String get email;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

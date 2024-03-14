@@ -7,6 +7,7 @@ part 'category_bloc_state.freezed.dart';
 class CategoryBlocState with _$CategoryBlocState {
   factory CategoryBlocState({
     required List<CategoryEntity>? categories,
+    required String selectedCategory,
     required String? error,
   }) = _CategoryBlocState;
 }

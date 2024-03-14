@@ -1,27 +1,27 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
+import 'package:resto_user/features/home/domain/entity/offer_entity/offer_entity.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
-  const CarouselSliderWidget({super.key});
+  final List<OfferEntity> entity;
+  const CarouselSliderWidget({super.key, required this.entity});
 
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return CarouselSlider.builder(
-      itemCount: 3,
+      itemCount: entity.length,
       itemBuilder: (context, index, realIndex) {
         return InkWell(
           onTap: () {},
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.amberAccent,
               borderRadius: BorderRadius.circular(8.0),
-
-              // image: DecorationImage(
-              //   image: ,
-              //   fit: BoxFit.fill,
-              // ),
+              image: DecorationImage(
+                image: NetworkImage(entity[index].imagePath),
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         );
@@ -37,5 +37,6 @@ class CarouselSliderWidget extends StatelessWidget {
         viewportFraction: 1,
       ),
     );
+    
   }
 }
