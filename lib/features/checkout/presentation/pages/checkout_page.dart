@@ -78,9 +78,10 @@ class CheckOutPage extends StatelessWidget {
                 height: theme.spaces.space_300,
               ),
               BoxWidget(
-                  leadingIcon: assets.icDelivery,
-                  content: constants.txtPaymentMethod,
-                  widget: SwitchWidget()),
+                leadingIcon: assets.icDelivery,
+                content: constants.txtPaymentMethod,
+                widget: const SwitchWidget(),
+              ),
               SizedBox(
                 height: theme.spaces.space_300,
               ),
