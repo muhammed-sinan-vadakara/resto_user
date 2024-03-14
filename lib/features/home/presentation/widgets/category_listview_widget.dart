@@ -4,8 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/category_entity/category_entity.dart';
 import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc.dart';
-import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc_state.dart';
-import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 
 class CategoryListViewWidget extends HookWidget {
   final List<CategoryEntity> entity;

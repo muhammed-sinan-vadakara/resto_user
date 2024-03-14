@@ -24,11 +24,14 @@ import 'package:resto_user/features/home/data/repository/product_repository_impl
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 import 'package:resto_user/features/home/domain/repository/offer_repository.dart';
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
-import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
+import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
+import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source_impl.dart';
 
 final getIt = GetIt.instance;
 
 void setupDependencies() {
+  final getIt = GetIt.instance;
+
   /// Router dependencies
   getIt.registerSingleton<GoRouter>(router);
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
@@ -63,11 +66,13 @@ void setupDependencies() {
       datasource: GetIt.I.get(),
     ),
   );
-  getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
 
-  /// Blocs
-  getIt.registerSingleton<ProductBloc>(ProductBloc());
-  ProductRepoImpl(dataSource: GetIt.I.get());
+  ///Profile
+  getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
+  getIt.registerSingleton<UserFirestoreDataSource>(
+      UserFirestoreDataSourceImpl());
+
+  ///Checkout
   getIt.registerSingleton<CouponFireStoreDatasource>(
       CouponFireStoreDatasourceImpl());
   getIt.registerSingleton<CouponRepository>(
@@ -75,5 +80,6 @@ void setupDependencies() {
 
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
 
+  /// Set all the Bloc dependencies using this function
   setupBlocDependencies();
 }

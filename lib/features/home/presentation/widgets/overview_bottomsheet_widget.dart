@@ -48,7 +48,7 @@ class OverviewBottomSheetWidget extends StatelessWidget {
                       style: theme.typography.h600,
                     ),
                     const SizedBox16(),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('data'),
@@ -57,7 +57,7 @@ class OverviewBottomSheetWidget extends StatelessWidget {
                       ],
                     ),
                     const SizedBox16(),
-                    Text(
+                    const Text(
                         'Biryani is a flavorful and aromatic rice dish that originated in the Indian subcontinent,but has gained popularity worldwide Biryani  a flavorful and aromatic rice dish that originated in the Indian subcontinent, but has gained popularity worldwide.')
                   ],
                 ),
