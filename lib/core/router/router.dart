@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 import 'package:resto_user/features/checkout/presentation/pages/checkout_page.dart';
@@ -29,7 +30,8 @@ final router = GoRouter(
     ),
     GoRoute(
       path: CheckOutPage.routePath,
-      builder: (context, state) => const CheckOutPage(),
+      builder: (context, state) => BlocProvider<ToggleSwitchBloc>(
+          create: (context) => ToggleSwitchBloc(), child: const CheckOutPage()),
     ),
     GoRoute(
       path: HomePage.routPath,

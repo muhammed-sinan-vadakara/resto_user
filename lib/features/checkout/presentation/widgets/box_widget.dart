@@ -5,14 +5,13 @@ import 'package:resto_user/core/themes/app_theme.dart';
 class BoxWidget extends StatelessWidget {
   final String leadingIcon;
   final String content;
-  final IconData? trailingIcon;
-  final void Function()? onPressed;
+
+  final Widget? widget;
   const BoxWidget(
       {super.key,
       required this.leadingIcon,
       required this.content,
-      this.trailingIcon,
-      this.onPressed});
+      this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +49,7 @@ class BoxWidget extends StatelessWidget {
             const Expanded(
               child: SizedBox(),
             ),
-            InkWell(
-                onTap: onPressed,
-                child: Icon(
-                  trailingIcon,
-                  size: 20,
-                ))
+            widget ?? const SizedBox(),
           ],
         ),
       ),

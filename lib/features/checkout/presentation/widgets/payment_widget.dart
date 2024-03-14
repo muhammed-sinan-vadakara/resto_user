@@ -47,7 +47,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
     final hmacSha256 = Hmac(sha256, key);
     final generatedSignature = hmacSha256.convert(bytes);
     if (generatedSignature.toString() == response.signature) {
-      print("Payment was successful!");
+     
       //Handle what to do after a successful payment.
       showDialog(
         context: context,
@@ -61,23 +61,23 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     Navigator.of(context).pop(true);
                     // PlaceOrderPrepaid();
                   },
-                  child: Text("OK"))
+                  child: const Text("OK"))
               // ),
             ],
           );
         },
       );
     } else {
-      print("The payment was unauthentic!");
+      
     }
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
-    print(response.message);
+  
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
-    print(response.walletName);
+ 
   }
 
   /// Create order id
@@ -107,7 +107,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
 
   Future<void> doPayment() async {
     final orderData = await createOrder();
-    print(orderData);
+   
     var options = {
       'key': apiKey,
       'amount': 100, //in the smallest currency sub-unit.
