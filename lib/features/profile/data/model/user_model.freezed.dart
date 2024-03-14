@@ -168,7 +168,7 @@ abstract class _UserModel extends UserModel {
 
   @override
   String get imgPath;
-  @override 
+  @override
   @JsonKey(name: 'user_name')
   String get userName;
   @override

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:resto_user/core/constants/cart_constants/cart_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
-class AppBarWidget extends StatelessWidget {
+class CartAppBarWidget extends StatelessWidget {
   final String title;
   final String? actionButtonName;
   final Function()? onPressed;
-  const AppBarWidget(
+  const CartAppBarWidget(
       {super.key, required this.title, this.actionButtonName, this.onPressed});
   @override
   Widget build(BuildContext context) {

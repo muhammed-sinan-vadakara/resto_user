@@ -18,4 +18,14 @@ class CartRepositoryImpl implements CartRepository {
       ];
     }
   }
+  
+  @override
+  Future<int> addQuantity(int currentQty) {
+    return dataSource.addQuantity(currentQty);
+  }
+  
+  @override
+  Future<int> decrementQty(int currentQty) {
+    return dataSource.decrementQty(currentQty);
+  }
 }

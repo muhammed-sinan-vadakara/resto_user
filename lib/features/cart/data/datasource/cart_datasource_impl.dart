@@ -8,9 +8,7 @@ class CartDataSourceImpl implements CartDataSource {
       fromFirestore: CartModel.fromFirestore,
       toFirestore: (model, _) => model.toFirestore());
   @override
-  Future<void> incrementCart(int qty) async {
-  
-  }
+ 
   
   @override
   Stream<List<CartModel>> getCartItems(String uid) async*{
@@ -18,6 +16,22 @@ class CartDataSourceImpl implements CartDataSource {
    await for(final cart in cartStream){
     yield [for(final item in cart.docs)item.data()];
    }
+  }
+  
+  @override
+  Future<int> addQuantity(int currentQty)async {
+    if(currentQty < 0){
+      throw Exception('Quantity cannot be negative.');
+    }
+    return currentQty +1;
+  }
+  
+  @override
+  Future<int> decrementQty(int currentQty) async{
+    if (currentQty <= 0) {
+    throw Exception('Quantity cannot be negative.');
+  }
+  return currentQty - 1;
   }
    
   }
