@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:resto_user/core/constants/cart_constants/cart_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
-import 'package:resto_user/features/cart/domain/entity/cart_entity.dart';
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/bloc/cart_state.dart';
 import 'package:resto_user/features/cart/presentation/widgets/cart_app_bar_widget.dart';
 import 'package:resto_user/features/cart/presentation/widgets/cart_list_view_widget.dart';
 
+
 class CartPage extends HookWidget {
+
   static const routPath = '/cart';
   const CartPage({super.key});
 
@@ -17,6 +18,7 @@ class CartPage extends HookWidget {
   Widget build(BuildContext context) {
     useEffect(() {
       context.read<CartBloc>().add(GetCartevent());
+      return null;
     }, []);
     final theme = AppTheme.of(context);
     return Scaffold(
