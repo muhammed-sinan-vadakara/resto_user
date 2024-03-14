@@ -50,9 +50,8 @@ class CouponWidget extends StatelessWidget {
           }
         }
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: theme.spaces.space_150),
           child: Container(
-            // height: theme.spaces.space_250 * 10,
             decoration: BoxDecoration(
               color: theme.colors.secondary,
               boxShadow: [theme.boxShadow.secondary],

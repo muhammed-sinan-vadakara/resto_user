@@ -5,6 +5,7 @@ import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc_state.dart';
+import 'package:resto_user/features/checkout/presentation/widgets/coupon_page_shimmer.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/coupon_widget.dart';
 
 class CouponsPage extends HookWidget {
@@ -39,7 +40,7 @@ class CouponsPage extends HookWidget {
                 builder: (context, state) {
                   if (state.coupons == null) {
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: CouponPageShimmer(),
                     );
                   } else {
                     return CouponWidget(
@@ -48,12 +49,6 @@ class CouponsPage extends HookWidget {
                   }
                 },
               )),
-              // SizedBox32(),
-              // CouponWidget(),
-              // SizedBox32(),
-              // CouponWidget(),
-              // SizedBox32(),
-              // CouponWidget(),
             ],
           ),
         ),
