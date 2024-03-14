@@ -20,7 +20,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  String get imgPath => throw _privateConstructorUsedError;
+  String get imgPath =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'user_name')
   String get userName => throw _privateConstructorUsedError;
 
@@ -118,7 +119,7 @@ class _$UserModelImpl extends _UserModel {
 
   @override
   final String imgPath;
-
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'user_name')
   final String userName;
@@ -168,7 +169,7 @@ abstract class _UserModel extends UserModel {
 
   @override
   String get imgPath;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'user_name')
   String get userName;
   @override

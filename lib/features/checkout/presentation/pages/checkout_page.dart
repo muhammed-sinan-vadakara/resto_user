@@ -68,7 +68,7 @@ class CheckOutPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return PaymentWidget();
+                      return const PaymentWidget();
                     },
                   ));
                 },
