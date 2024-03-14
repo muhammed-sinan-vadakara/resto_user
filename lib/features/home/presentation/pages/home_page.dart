@@ -6,17 +6,23 @@ import 'package:resto_user/core/constants/home_page/home_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc_state.dart';
+import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
+import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc_state.dart';
+import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
+import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc_state.dart';
 import 'package:resto_user/features/home/presentation/widgets/appbar_widget.dart';
+import 'package:resto_user/features/home/presentation/widgets/carousel_slider_loading_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/carousel_slider_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/category_listview_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/category_loading_widget.dart';
+import 'package:resto_user/features/home/presentation/widgets/product_griddview_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/product_loading_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/search_field_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/title_widget.dart';
 import 'package:resto_user/features/profile/presentation/provider/theme/theme_bloc.dart';
 
 class HomePage extends HookWidget {
-  static const routPath = '/home';
+  static const routePath = '/home';
   const HomePage({super.key});
 
   @override
@@ -29,6 +35,12 @@ class HomePage extends HookWidget {
       Future.delayed(Duration.zero, () {
         context.read<ThemeBloc>().add(InitialThemeEvent());
         context.read<CategoryBloc>().add(GetCategoriesEvent());
+        context.read<OfferBloc>().add(GetOfferesEvent());
+        context.read<ProductBloc>().add(
+              GetProductEvent(
+                context.read<CategoryBloc>().state.selectedCategory,
+              ),
+            );
       });
       return null;
     }, []);
@@ -39,7 +51,7 @@ class HomePage extends HookWidget {
         preferredSize: Size.fromHeight(theme.spaces.space_700),
         child: Padding(
           padding: EdgeInsets.only(right: theme.spaces.space_150),
-          child: const AppBarWidget(),
+          child: const HomeAppBarWidget(),
         ),
       ),
       body: SingleChildScrollView(
@@ -54,7 +66,14 @@ class HomePage extends HookWidget {
               SizedBox(
                 height: theme.spaces.space_400,
               ),
-              const CarouselSliderWidget(),
+              BlocBuilder<OfferBloc, OfferBlocState>(builder: (context, state) {
+                if (state.offers == null) {
+                  return const CarouselSliderLoadingWidget();
+                }
+                return CarouselSliderWidget(
+                  entity: state.offers!,
+                );
+              }),
               SizedBox(
                 height: theme.spaces.space_400,
               ),
@@ -74,7 +93,6 @@ class HomePage extends HookWidget {
                     return CategoryListViewWidget(entity: state.categories!);
                   }
                 }),
-                // child: const LoadingCategoryWidget(),
               ),
               SizedBox(
                 height: theme.spaces.space_250,
@@ -85,7 +103,15 @@ class HomePage extends HookWidget {
               SizedBox(
                 height: theme.spaces.space_250,
               ),
-              LoadingProductWidget()
+              BlocBuilder<ProductBloc, ProductBlocState>(
+                  builder: (context, state) {
+                if (state.products == null) {
+                  return const LoadingProductWidget();
+                }
+                return ProductGridViewWidget(
+                  entity: state.products!,
+                );
+              }),
             ],
           ),
         ),
