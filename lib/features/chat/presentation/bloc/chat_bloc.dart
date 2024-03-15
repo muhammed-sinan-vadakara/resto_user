@@ -12,11 +12,11 @@ class ChatBloc extends Bloc<ChatEvent, MessageBlocState> {
   bool streamLoaded = false;
 
   ChatBloc() : super(MessageBlocState(error: null, messages: null)) {
-    on<GetChatMessages>(fetchChatData);
+    on<GetChatMessagesEvent>(fetchChatData);
   }
 
   Future<void> fetchChatData(
-      GetChatMessages event, Emitter<MessageBlocState> emit) async {
+      GetChatMessagesEvent event, Emitter<MessageBlocState> emit) async {
     if (!streamLoaded) {
       streamLoaded = true;
 
