@@ -1,12 +1,11 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
 
-abstract class ChatEvent {}
+sealed class ChatEvent {}
 
 class GetChatMessages extends ChatEvent {
-  final String chatId;
+  final List<String> userIds;
 
-  GetChatMessages(this.chatId);
+  GetChatMessages(this.userIds);
 }
 
 class SendMessage extends ChatEvent {

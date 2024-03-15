@@ -5,6 +5,7 @@ import 'package:resto_user/core/constants/home_page/home_constants.dart';
 import 'package:resto_user/core/constants/chat_page_constants/chat_page_constants.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
+import 'package:resto_user/core/dependencies/bloc_dependencies.dart';
 import 'package:resto_user/core/router/router.dart';
 import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
@@ -29,7 +30,6 @@ void setupDependencies() {
   getIt.registerSingleton<ThemeData>(lightTheme);
   getIt.registerSingleton<ChatPageConstants>(ChatPageConstants());
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
-  // getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
   getIt.registerSingleton<ThemeData>(lightTheme, instanceName: 'light');
   getIt.registerSingleton<ThemeData>(darkTheme, instanceName: 'dark');
   getIt.registerSingleton<HomeConstants>(HomeConstants());
@@ -45,4 +45,6 @@ void setupDependencies() {
   getIt.registerSingleton<MessageDataSource>(MessageDataSourceImpl());
   getIt.registerSingleton<MessageRepository>(
       MessageRepositoryImpl(GetIt.I.get<MessageDataSource>()));
+
+  setupBlocDependencies();
 }

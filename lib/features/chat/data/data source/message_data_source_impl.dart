@@ -16,10 +16,14 @@ class MessageDataSourceImpl implements MessageDataSource {
   }
 
   @override
-  Stream<List<MessageModel>> getMessages(String chatId) async* {
+  Stream<List<MessageModel>> getMessages(List<String> userIds) async* {
     final messages = collection
-        .where('chat', isEqualTo: chatId)
-        .snapshots(includeMetadataChanges: true);
+        .where(Filter.and(
+            Filter.or(Filter('receiverId', isEqualTo: userIds.first),
+                Filter('receiverId', isEqualTo: userIds.last)),
+            Filter.or(Filter('senderId', isEqualTo: userIds.first),
+                Filter('senderId', isEqualTo: userIds.last))))
+        .snapshots();
 
     await for (var snapshot in messages) {
       yield snapshot.docs.map((doc) => doc.data()).toList();

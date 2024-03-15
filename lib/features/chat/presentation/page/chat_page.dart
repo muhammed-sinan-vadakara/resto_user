@@ -2,7 +2,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/chat_page_constants/chat_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
@@ -10,95 +12,102 @@ import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_event.dart';
+import 'package:resto_user/features/chat/presentation/bloc/chat_state.dart';
 
-class ChatPage extends StatefulWidget {
+class ChatPage extends HookWidget {
   static const routPath = '/chat';
 
   const ChatPage({super.key});
 
   @override
-  State<ChatPage> createState() => _ChatPageState();
-}
-
-class _ChatPageState extends State<ChatPage> {
-  final TextEditingController _messageController = TextEditingController();
-
-  @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     final constants = GetIt.I.get<ChatPageConstants>();
+    final TextEditingController _messageController = useTextEditingController();
+
+    useEffect(() {
+      Future.delayed(Duration.zero, () {
+        context.read<ChatBloc>().add(GetChatMessages(['user2', 'user1']));
+      });
+
+      return null;
+    }, []);
 
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(theme.spaces.space_700),
         child: AppBarWidget(title: constants.txtChat),
       ),
-      body: const Column(
-        children: [],
-      ),
-      bottomNavigationBar: MessageInputField(
-        controller: _messageController,
-      ),
-      // BlocBuilder<ChatBloc, MessageBlocState>(
+      body: BlocBuilder<ChatBloc, MessageBlocState>(
+        builder: (context, state) {
+          if (state.error != null) {
+            return Center(child: Text(state.error!));
+          }
 
-      //     builder: (context, state) {
-      //       // if (state is ChatLoading) {
-      //       //   print('not load: $state');
-      //       //   return const Center(child: CircularProgressIndicator());
-      //       // } else
-      //       if (state is ChatLoaded) {
-      //         print('Messages loaded: ${state.messages}');
-      //         return Column(
-      //           children: [
-      //             // Expanded(
-      //             //   // child: ListView.builder(
-      //             //   //   reverse: true,
-      //             //   //   itemCount: state.messages.length,
-      //             //   //   itemBuilder: (context, index) => ChatMessageTile(
-      //             //   //     message: state.messages[index],
-      //             //   //   ),
-      //             //   // ),
-      //             // ),
-      //             MessageInputField(
-      //               controller: _messageController,
-      //               onSend: (message) {
-      //                 BlocProvider.of<ChatBloc>(context).add(
-      //                   SendMessage(message),
-      //                 );
-      //                 _messageController.clear();
-      //               },
-      //             ),
-      //           ],
-      //         );
-      //       } else if (state is ChatError) {
-      //         return Center(
-      //           child: Text('Error: ${state.error}'),
-      //         );
-      //       } else {
-      //         return Column(
-      //           children: [
-      //             ListView.builder(
-      //               reverse: true, itemCount: 3,
-      //               // itemCount: state.messages.length,
-      //               itemBuilder: (context, index) => const ChatMessageTile(),
-      //             ),
-      //           ],
-      //         );
-      //       }
-      //     },
-      //   ),
+          if (state.messages == null) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return ListView.builder(
+              reverse: true,
+              itemCount: state.messages!.length,
+              itemBuilder: (context, index) {
+                final message = state.messages![index];
+
+                return Align(
+                  alignment: message.receiverId == "user1"
+                      ? Alignment.centerLeft
+                      : Alignment.centerRight,
+                  child: Container(
+                    padding: EdgeInsets.all(theme.spaces.space_200),
+                    margin: EdgeInsets.only(
+                      top: 8.0,
+                      bottom: 8.0,
+                      left: message.senderId != "user1" ? 16.0 : 8.0,
+                      right: message.senderId != "user1" ? 8.0 : 16.0,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(theme.spaces.space_100),
+                      color: message.senderId == "user1"
+                          ? Colors.blue[100]
+                          : Colors.grey[200],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(message.receiverId),
+
+                        Text(message.message),
+                        // SizedBox(height: 4.0),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              ('${message.timestamp.hour}:${message.timestamp.minute}'),
+                              style:
+                                  TextStyle(fontSize: 12.0, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          }
+        },
+      ),
+      bottomNavigationBar: Padding(
+        padding: MediaQuery.of(context).viewInsets,
+        child: MessageInputField(
+          controller: _messageController,
+        ),
+      ),
     );
   }
-}
-
-class ChatError {}
-
-class ChatLoaded {
-  final List<MessageEntity> messages;
-
-  const ChatLoaded(this.messages);
-
-  List<Object> get props => [messages];
 }
 
 class MessageInputField extends StatelessWidget {
@@ -153,28 +162,28 @@ class MessageInputField extends StatelessWidget {
   }
 }
 
-class ChatMessageTile extends StatelessWidget {
-  final MessageEntity? message;
+// class ChatMessageTile extends StatelessWidget {
+//   final MessageEntity? message;
 
-  const ChatMessageTile({Key? key, this.message}) : super(key: key);
+//   const ChatMessageTile({Key? key, this.message}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: message!.senderId == 'your_user_id'
-          ? Alignment.centerRight
-          : Alignment.centerLeft,
-      child: Container(
-        padding: const EdgeInsets.all(16.0),
-        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: message!.senderId == 'your_user_id'
-              ? Colors.blue[100]
-              : Colors.grey[200],
-        ),
-        child: Text(message!.message),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Align(
+//       alignment: message!.senderId == 'your_user_id'
+//           ? Alignment.centerRight
+//           : Alignment.centerLeft,
+//       child: Container(
+//         padding: const EdgeInsets.all(16.0),
+//         margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(10.0),
+//           color: message!.senderId == 'your_user_id'
+//               ? Colors.blue[100]
+//               : Colors.grey[200],
+//         ),
+//         child: Text(message!.message),
+//       ),
+//     );
+//   }
+// }

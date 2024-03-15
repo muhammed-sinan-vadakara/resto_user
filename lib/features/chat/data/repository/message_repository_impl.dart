@@ -10,8 +10,8 @@ class MessageRepositoryImpl implements MessageRepository {
   MessageRepositoryImpl(this.dataSource);
 
   @override
-  Stream<List<MessageEntity>> getMessages(String chatId) async* {
-    final message = dataSource.getMessages(chatId);
+  Stream<List<MessageEntity>> getMessages(List<String> userIds) async* {
+    final message = dataSource.getMessages(userIds);
     await for (final snapshot in message) {
       final docs = snapshot;
       yield [
