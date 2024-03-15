@@ -1,7 +1,10 @@
 
+
+pubspec.lock
+
+#Generated code
 **/*.g.dart
 **/*.freezed.dart
-pubspec.lock
 
 # Miscellaneous
 *.class
