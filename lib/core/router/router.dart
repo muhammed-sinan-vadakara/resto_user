@@ -8,7 +8,7 @@ import 'package:resto_user/features/home/presentation/bloc/category_bloc/categor
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 
 final router = GoRouter(
-  initialLocation: HomePage.routPath,
+  initialLocation: Map.routePath,
   routes: [
     GoRoute(
       path: CartPage.routPath,

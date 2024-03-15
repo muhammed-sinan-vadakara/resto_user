@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
+import 'package:resto_user/features/map/data/datasource/map_search_datasource_impl.dart';
 
 class MapTextFieldWidget extends StatelessWidget {
   final TextEditingController searchcontroller;
@@ -15,11 +16,17 @@ class MapTextFieldWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: TextField(
         controller: searchcontroller,
+        textCapitalization: TextCapitalization.words,
+        onChanged: (value) {
+          print(value);
+        },
         decoration: InputDecoration(
           suffixIcon: Padding(
             padding: const EdgeInsets.all(10),
-            child: SvgPicture.asset(
-              assets.icSearch,
+            child: InkWell(
+              child: SvgPicture.asset(
+                assets.icSearch,
+              ),
             ),
           ),
           filled: true,
