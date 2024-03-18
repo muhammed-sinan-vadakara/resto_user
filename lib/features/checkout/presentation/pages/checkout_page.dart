@@ -92,7 +92,9 @@ class CheckOutPage extends StatelessWidget {
       ),
       bottomNavigationBar: ElevatedButtonWidget(
         text: constants.txtConfirmOrder,
-        onPressed: () {},
+        onPressed: () {
+      
+        },
       ),
     );
   }
