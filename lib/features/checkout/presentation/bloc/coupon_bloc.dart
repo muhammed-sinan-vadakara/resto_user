@@ -18,10 +18,10 @@ class CouponBloc extends Bloc<CouponsBlocEvent, CouponBlocState> {
   CouponBloc()
       : super(
           CouponBlocState(
-              coupons: null,
-              error: null,
-              selectedCoupon: null,
-              selectedCouponIndex: -1),
+            coupons: null,
+            error: null,
+            selectedCoupon: null,
+          ),
         ) {
     on<GetCouponsEvent>((event, emit) async {
       await fetchCoupons(emit);
@@ -32,10 +32,15 @@ class CouponBloc extends Bloc<CouponsBlocEvent, CouponBlocState> {
 
   void selectedCoupon(
       SetSelectedCouponEvent event, Emitter<CouponBlocState> emit) {
-    final newIndex = state.coupons
-        ?.indexWhere((coupons) => coupons.code == event.couponCode);
-    emit(state.copyWith(
-        selectedCoupon: event.couponCode, selectedCouponIndex: newIndex));
+    if (event.couponCode == state.selectedCoupon) {
+      emit(state.copyWith(
+        selectedCoupon: null,
+      ));
+    } else {
+      emit(state.copyWith(
+        selectedCoupon: event.couponCode,
+      ));
+    }
   }
 
   Future<void> fetchCoupons(Emitter<CouponBlocState> emit) async {

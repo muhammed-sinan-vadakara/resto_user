@@ -106,6 +106,7 @@ class CouponWidget extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       final couponCode = entity[index].code.toString();
+
                       context
                           .read<CouponBloc>()
                           .add(SetSelectedCouponEvent(couponCode));
@@ -121,13 +122,12 @@ class CouponWidget extends StatelessWidget {
                       ),
                       child: BlocBuilder<CouponBloc, CouponBlocState>(
                         builder: (context, state) {
-                          final isApplied = state.selectedCoupon != null;
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                state.selectedCouponIndex == index && isApplied
-                                    ? 'Applied'
+                                state.selectedCoupon == couponData.code
+                                    ? 'APPLIED'
                                     : 'TAP TO APPLY',
                                 style: theme.typography.h500
                                     .copyWith(color: theme.colors.secondary),

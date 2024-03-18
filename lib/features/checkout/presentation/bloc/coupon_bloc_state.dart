@@ -9,6 +9,5 @@ class CouponBlocState with _$CouponBlocState {
     required List<CouponEntity>? coupons,
     required String? error,
     String? selectedCoupon,
-    int? selectedCouponIndex  ,
   }) = _CouponBlocState;
 }
