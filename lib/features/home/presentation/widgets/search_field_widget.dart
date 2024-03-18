@@ -11,11 +11,16 @@ class SearchFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<HomeConstants>();
     return TextField(
       controller: searchController,
+
+
+
+      
       onChanged: (keyword) {},
       cursorColor: theme.colors.text,
       decoration: InputDecoration(
