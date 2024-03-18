@@ -17,8 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CouponBlocState {
   List<CouponEntity>? get coupons => throw _privateConstructorUsedError;
-  String? get eroor => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
   String? get selectedCoupon => throw _privateConstructorUsedError;
+  int? get selectedCouponIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CouponBlocStateCopyWith<CouponBlocState> get copyWith =>
@@ -32,7 +33,10 @@ abstract class $CouponBlocStateCopyWith<$Res> {
       _$CouponBlocStateCopyWithImpl<$Res, CouponBlocState>;
   @useResult
   $Res call(
-      {List<CouponEntity>? coupons, String? eroor, String? selectedCoupon});
+      {List<CouponEntity>? coupons,
+      String? error,
+      String? selectedCoupon,
+      int? selectedCouponIndex});
 }
 
 /// @nodoc
@@ -49,22 +53,27 @@ class _$CouponBlocStateCopyWithImpl<$Res, $Val extends CouponBlocState>
   @override
   $Res call({
     Object? coupons = freezed,
-    Object? eroor = freezed,
+    Object? error = freezed,
     Object? selectedCoupon = freezed,
+    Object? selectedCouponIndex = freezed,
   }) {
     return _then(_value.copyWith(
       coupons: freezed == coupons
           ? _value.coupons
           : coupons // ignore: cast_nullable_to_non_nullable
               as List<CouponEntity>?,
-      eroor: freezed == eroor
-          ? _value.eroor
-          : eroor // ignore: cast_nullable_to_non_nullable
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
               as String?,
       selectedCoupon: freezed == selectedCoupon
           ? _value.selectedCoupon
           : selectedCoupon // ignore: cast_nullable_to_non_nullable
               as String?,
+      selectedCouponIndex: freezed == selectedCouponIndex
+          ? _value.selectedCouponIndex
+          : selectedCouponIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -78,7 +87,10 @@ abstract class _$$CouponBlocStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<CouponEntity>? coupons, String? eroor, String? selectedCoupon});
+      {List<CouponEntity>? coupons,
+      String? error,
+      String? selectedCoupon,
+      int? selectedCouponIndex});
 }
 
 /// @nodoc
@@ -93,22 +105,27 @@ class __$$CouponBlocStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? coupons = freezed,
-    Object? eroor = freezed,
+    Object? error = freezed,
     Object? selectedCoupon = freezed,
+    Object? selectedCouponIndex = freezed,
   }) {
     return _then(_$CouponBlocStateImpl(
       coupons: freezed == coupons
           ? _value._coupons
           : coupons // ignore: cast_nullable_to_non_nullable
               as List<CouponEntity>?,
-      eroor: freezed == eroor
-          ? _value.eroor
-          : eroor // ignore: cast_nullable_to_non_nullable
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
               as String?,
       selectedCoupon: freezed == selectedCoupon
           ? _value.selectedCoupon
           : selectedCoupon // ignore: cast_nullable_to_non_nullable
               as String?,
+      selectedCouponIndex: freezed == selectedCouponIndex
+          ? _value.selectedCouponIndex
+          : selectedCouponIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -118,8 +135,9 @@ class __$$CouponBlocStateImplCopyWithImpl<$Res>
 class _$CouponBlocStateImpl implements _CouponBlocState {
   _$CouponBlocStateImpl(
       {required final List<CouponEntity>? coupons,
-      required this.eroor,
-      this.selectedCoupon})
+      required this.error,
+      this.selectedCoupon,
+      this.selectedCouponIndex})
       : _coupons = coupons;
 
   final List<CouponEntity>? _coupons;
@@ -133,13 +151,15 @@ class _$CouponBlocStateImpl implements _CouponBlocState {
   }
 
   @override
-  final String? eroor;
+  final String? error;
   @override
   final String? selectedCoupon;
+  @override
+  final int? selectedCouponIndex;
 
   @override
   String toString() {
-    return 'CouponBlocState(coupons: $coupons, eroor: $eroor, selectedCoupon: $selectedCoupon)';
+    return 'CouponBlocState(coupons: $coupons, error: $error, selectedCoupon: $selectedCoupon, selectedCouponIndex: $selectedCouponIndex)';
   }
 
   @override
@@ -148,14 +168,20 @@ class _$CouponBlocStateImpl implements _CouponBlocState {
         (other.runtimeType == runtimeType &&
             other is _$CouponBlocStateImpl &&
             const DeepCollectionEquality().equals(other._coupons, _coupons) &&
-            (identical(other.eroor, eroor) || other.eroor == eroor) &&
+            (identical(other.error, error) || other.error == error) &&
             (identical(other.selectedCoupon, selectedCoupon) ||
-                other.selectedCoupon == selectedCoupon));
+                other.selectedCoupon == selectedCoupon) &&
+            (identical(other.selectedCouponIndex, selectedCouponIndex) ||
+                other.selectedCouponIndex == selectedCouponIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_coupons), eroor, selectedCoupon);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_coupons),
+      error,
+      selectedCoupon,
+      selectedCouponIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -168,15 +194,18 @@ class _$CouponBlocStateImpl implements _CouponBlocState {
 abstract class _CouponBlocState implements CouponBlocState {
   factory _CouponBlocState(
       {required final List<CouponEntity>? coupons,
-      required final String? eroor,
-      final String? selectedCoupon}) = _$CouponBlocStateImpl;
+      required final String? error,
+      final String? selectedCoupon,
+      final int? selectedCouponIndex}) = _$CouponBlocStateImpl;
 
   @override
   List<CouponEntity>? get coupons;
   @override
-  String? get eroor;
+  String? get error;
   @override
   String? get selectedCoupon;
+  @override
+  int? get selectedCouponIndex;
   @override
   @JsonKey(ignore: true)
   _$$CouponBlocStateImplCopyWith<_$CouponBlocStateImpl> get copyWith =>

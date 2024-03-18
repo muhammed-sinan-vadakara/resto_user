@@ -7,7 +7,8 @@ part 'coupon_bloc_state.freezed.dart';
 class CouponBlocState with _$CouponBlocState {
   factory CouponBlocState({
     required List<CouponEntity>? coupons,
-    required String? eroor,
+    required String? error,
     String? selectedCoupon,
+    int? selectedCouponIndex  ,
   }) = _CouponBlocState;
 }

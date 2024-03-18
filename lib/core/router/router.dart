@@ -29,15 +29,19 @@ final router = GoRouter(
     ),
     GoRoute(
       path: CouponsPage.routePath,
-      builder: (context, state) => BlocProvider(
-        create: (context) => CouponBloc(),
+      builder: (context, state) => BlocProvider.value(
+        value: GetIt.I.get<CouponBloc>(),
         child: const CouponsPage(),
       ),
     ),
     GoRoute(
       path: CheckOutPage.routePath,
-      builder: (context, state) => BlocProvider(
-        create: (context) => GetIt.I.get<CouponBloc>(),
+      builder: (context, state) => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => GetIt.I.get<CouponBloc>(),
+          ),
+        ],
         child: const CheckOutPage(),
       ),
     ),

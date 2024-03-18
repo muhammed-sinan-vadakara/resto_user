@@ -6,13 +6,15 @@ class BoxWidget extends StatelessWidget {
   final String leadingIcon;
   final String content;
   final IconData? trailingIcon;
+  final TextStyle? style;
   final void Function()? onPressed;
   const BoxWidget(
       {super.key,
       required this.leadingIcon,
       required this.content,
       this.trailingIcon,
-      this.onPressed});
+      this.onPressed,
+      this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class BoxWidget extends StatelessWidget {
             ),
             Text(
               content,
-              style: theme.typography.h400,
+              style: style,
             ),
             const Expanded(
               child: SizedBox(),
