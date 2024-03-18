@@ -19,6 +19,7 @@ import 'package:resto_user/features/home/presentation/widgets/product_griddview_
 import 'package:resto_user/features/home/presentation/widgets/product_loading_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/search_field_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/title_widget.dart';
+import 'package:resto_user/features/profile/presentation/provider/theme/theme_bloc.dart';
 
 class HomePage extends HookWidget {
   static const routePath = '/home';
@@ -32,6 +33,7 @@ class HomePage extends HookWidget {
 
     useEffect(() {
       Future.delayed(Duration.zero, () {
+        context.read<ThemeBloc>().add(InitialThemeEvent());
         context.read<CategoryBloc>().add(GetCategoriesEvent());
         context.read<OfferBloc>().add(GetOfferesEvent());
         context.read<ProductBloc>().add(
@@ -40,7 +42,6 @@ class HomePage extends HookWidget {
               ),
             );
       });
-
       return null;
     }, []);
 

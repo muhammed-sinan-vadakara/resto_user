@@ -37,5 +37,6 @@ class CarouselSliderWidget extends StatelessWidget {
         viewportFraction: 1,
       ),
     );
+    
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
+import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 
 class HomeAppBarWidget extends StatelessWidget {
   const HomeAppBarWidget({super.key});
@@ -22,8 +24,11 @@ class HomeAppBarWidget extends StatelessWidget {
           children: [
             InkWell(
                 onTap: () {},
-                child: const CircleAvatar(
-                  radius: 25,
+                child: InkWell(
+                  onTap: () => context.push(ProfilePage.routePath),
+                  child: const CircleAvatar(
+                    radius: 25,
+                  ),
                 )),
             SizedBox(
               width: theme.spaces.space_100 * 2,
