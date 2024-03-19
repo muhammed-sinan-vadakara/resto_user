@@ -232,10 +232,10 @@ class _CheckOutPageState extends State<CheckOutPage> {
           return ElevatedButtonWidget(
             text: constants.txtConfirmOrder,
             onPressed: () {
-              if (state == false) {
-                doPayment();
-              } else {
+              if (state) {
                 context.push(CouponsPage.routePath);
+              } else {
+                doPayment();
               }
             },
           );
