@@ -19,6 +19,7 @@ import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 
 final router = GoRouter(
   initialLocation: HomePage.routePath,
+
   routes: [
     GoRoute(
       path: CartPage.routPath,
