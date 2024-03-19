@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/category_entity/category_entity.dart';
+import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc.dart';
 
-class CategoryListViewWidget extends StatelessWidget {
+class CategoryListViewWidget extends HookWidget {
   final List<CategoryEntity> entity;
   const CategoryListViewWidget({
     super.key,
@@ -23,7 +26,11 @@ class CategoryListViewWidget extends StatelessWidget {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.read<CategoryBloc>().add(
+                            SelectCategoryEvent(entity[index].id),
+                          );
+                    },
                     child: CircleAvatar(
                       radius: theme.spaces.space_250,
                       backgroundImage: NetworkImage(entity[index].imagePath),

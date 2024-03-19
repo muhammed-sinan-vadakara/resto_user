@@ -67,7 +67,7 @@ class AppBarWidget extends StatelessWidget {
                       horizontal: appTheme.spaces.space_100),
                   child: Center(
                     child: Text(
-                      actionButtonName ?? '', 
+                      actionButtonName ?? '',
                       style: appTheme.typography.h600.copyWith(
                         color: appTheme.colors.primary,
                       ),
