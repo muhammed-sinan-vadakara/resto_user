@@ -21,7 +21,7 @@ class ChatWidget extends StatelessWidget {
           );
         } else {
           return ListView.builder(
-            reverse: true,
+            // reverse: true,
             itemCount: state.messages!.length,
             itemBuilder: (context, index) {
               final message = state.messages![index];

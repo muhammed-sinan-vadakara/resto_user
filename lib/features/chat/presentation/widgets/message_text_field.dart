@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
@@ -7,7 +6,6 @@ import 'package:resto_user/features/chat/presentation/bloc/chat_event.dart';
 
 class MessageTextField extends StatelessWidget {
   final TextEditingController controller;
-  // final Function(String) onSend;
 
   const MessageTextField({
     Key? key,
@@ -35,9 +33,9 @@ class MessageTextField extends StatelessWidget {
             icon: const Icon(Icons.send),
             onPressed: () {
               if (controller.text.isNotEmpty) {
-                const String senderId = 'user2';
+                const String senderId = 'user1';
 
-                const String receiverId = 'user1';
+                const String receiverId = 'user2';
 
                 BlocProvider.of<ChatBloc>(context).add(
                   SendMessageEvent(MessageEntity(
