@@ -26,7 +26,8 @@ class MessageDataSourceImpl implements MessageDataSource {
         .snapshots();
 
     await for (var snapshot in messages) {
-      yield snapshot.docs.map((doc) => doc.data()).toList();
+      yield snapshot.docs.map((doc) => doc.data()).toList()
+        ..sort((a, b) => a.timestamp.compareTo(b.timestamp));
     }
   }
 }
