@@ -86,7 +86,7 @@ void setupDependencies() {
   getIt.registerSingleton<CouponRepository>(
       CouponRepositoryImpl(datasource: GetIt.I.get()));
 
-  getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
+  
 
   /// Set all the Bloc dependencies using this function
   setupBlocDependencies();

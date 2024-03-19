@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/features/authentication/presentation/page/login_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
+import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
@@ -17,16 +18,14 @@ import 'package:resto_user/features/home/presentation/bloc/category_bloc/categor
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 
 final router = GoRouter(
-<<<<<<< HEAD
-  initialLocation: Map.routePath,
-=======
-  initialLocation: CartPage.routPath,
+  initialLocation: HomePage.routePath,
 
->>>>>>> main
   routes: [
     GoRoute(
       path: CartPage.routPath,
-      builder: (context, state) => const CartPage(),
+      builder: (context, state) => BlocProvider<CartBloc>(
+          create: (context) => GetIt.I.get<CartBloc>(),
+          child: const CartPage()),
     ),
     GoRoute(
       path: Map.routePath,
@@ -56,8 +55,8 @@ final router = GoRouter(
     ),
     GoRoute(
       path: CouponsPage.routePath,
-      builder: (context, state) => BlocProvider(
-        create: (context) => CouponBloc(),
+      builder: (context, state) => BlocProvider.value(
+        value: GetIt.I.get<CouponBloc>(),
         child: const CouponsPage(),
       ),
     ),
