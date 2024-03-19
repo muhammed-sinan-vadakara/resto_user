@@ -1,6 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, duplicate_ignore
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cart_model.dart';
@@ -20,6 +20,7 @@ CartModel _$CartModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartModel {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'product_id')
   String get productId => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
@@ -134,6 +135,7 @@ class _$CartModelImpl extends _CartModel {
   factory _$CartModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartModelImplFromJson(json);
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'product_id')
   final String productId;
@@ -187,7 +189,7 @@ abstract class _CartModel extends CartModel {
   factory _CartModel.fromJson(Map<String, dynamic> json) =
       _$CartModelImpl.fromJson;
 
-  @override 
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'product_id')
   String get productId;
   @override

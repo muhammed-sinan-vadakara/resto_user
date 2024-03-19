@@ -5,13 +5,18 @@ import 'package:resto_user/core/themes/app_theme.dart';
 class BoxWidget extends StatelessWidget {
   final String leadingIcon;
   final String content;
+  final Widget? trailing;
+  final TextStyle? style;
+  final void Function()? onPressed;
 
-  final Widget? widget;
-  const BoxWidget(
-      {super.key,
-      required this.leadingIcon,
-      required this.content,
-      this.widget});
+  const BoxWidget({
+    super.key,
+    required this.leadingIcon,
+    required this.content,
+    this.trailing,
+    this.onPressed,
+    this.style,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +49,12 @@ class BoxWidget extends StatelessWidget {
             ),
             Text(
               content,
-              style: theme.typography.h400,
+              style: style,
             ),
             const Expanded(
               child: SizedBox(),
             ),
-            widget ?? const SizedBox(),
+            trailing ?? const SizedBox(),
           ],
         ),
       ),

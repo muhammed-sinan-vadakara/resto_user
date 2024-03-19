@@ -14,6 +14,8 @@ import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/core/widgets/elevated_button_widget.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc_state.dart';
 import 'package:resto_user/features/checkout/presentation/pages/coupons_page.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/address_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/bill_details_widget.dart';
@@ -136,6 +138,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
     final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<CheckoutPageConstants>();
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(theme.spaces.space_700),
@@ -154,7 +157,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 leadingIcon: assets.icTimer,
                 content:
                     '${constants.txtDelivery} 15-20 ${constants.txtMinutes}',
-                widget: null,
+                style: theme.typography.h400,
               ),
               SizedBox(
                 height: theme.spaces.space_300,
@@ -162,12 +165,14 @@ class _CheckOutPageState extends State<CheckOutPage> {
               BoxWidget(
                 leadingIcon: assets.icInstruction,
                 content: constants.txtInstructions,
-                widget: InkWell(
+                trailing: InkWell(
                     onTap: () {},
                     child: const Icon(
                       Icons.arrow_forward_ios_outlined,
                       size: 20,
                     )),
+                style: theme.typography.h400,
+                onPressed: () {},
               ),
               SizedBox(
                 height: theme.spaces.space_300,
@@ -176,18 +181,33 @@ class _CheckOutPageState extends State<CheckOutPage> {
               SizedBox(
                 height: theme.spaces.space_300,
               ),
-              BoxWidget(
-                leadingIcon: assets.icCoupon,
-                content: constants.txtCoupons,
-                widget: InkWell(
-                  onTap: () {
-                    context.push(CouponsPage.routePath);
-                  },
-                  child: const Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    size: 20,
-                  ),
-                ),
+              BlocBuilder<CouponBloc, CouponBlocState>(
+                builder: (context, state) {
+                  final isCouponApplied = state.selectedCoupon != null;
+                  return BoxWidget(
+                    leadingIcon: assets.icCoupon,
+                    content: isCouponApplied
+                        ? "Coupon ${state.selectedCoupon} Applied"
+                        : 'Coupons',
+                    style: TextStyle(
+                        color: isCouponApplied
+                            ? theme.colors.primary
+                            : theme.colors.text,
+                        fontWeight: theme.typography.h400.fontWeight),
+                    onPressed: () {
+                      context.push(CouponsPage.routePath);
+                    },
+                    trailing: InkWell(
+                      onTap: () {
+                        context.push(CouponsPage.routePath);
+                      },
+                      child: const Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20,
+                      ),
+                    ),
+                  );
+                },
               ),
               SizedBox(
                 height: theme.spaces.space_300,
@@ -195,7 +215,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
               BoxWidget(
                 leadingIcon: assets.icDelivery,
                 content: constants.txtPaymentMethod,
-                widget: const SwitchWidget(),
+                trailing: const SwitchWidget(),
+                style: theme.typography.h400,
+                onPressed: () {},
               ),
               SizedBox(
                 height: theme.spaces.space_300,
