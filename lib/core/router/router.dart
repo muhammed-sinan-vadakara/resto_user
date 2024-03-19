@@ -3,21 +3,28 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/features/authentication/presentation/page/login_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
+import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
+import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
+import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
+import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
+import 'package:resto_user/features/profile/presentation/provider/toggle_theme/toggle_theme_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/pages/checkout_page.dart';
 import 'package:resto_user/features/checkout/presentation/pages/coupons_page.dart';
 import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc.dart';
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 
 final router = GoRouter(
-  initialLocation: CheckOutPage.routePath,
+  initialLocation: HomePage.routePath,
   routes: [
     GoRoute(
       path: CartPage.routPath,
-      builder: (context, state) => const CartPage(),
+      builder: (context, state) => BlocProvider<CartBloc>(
+          create: (context) => GetIt.I.get<CartBloc>(),
+          child: const CartPage()),
     ),
     GoRoute(
       path: Map.routePath,
@@ -25,7 +32,25 @@ final router = GoRouter(
     ),
     GoRoute(
       path: ProfilePage.routePath,
-      builder: (context, state) => const ProfilePage(),
+      builder: (context, state) => BlocProvider<ToggleThemeBloc>(
+          create: (context) => ToggleThemeBloc(), child: const ProfilePage()),
+    ),
+    GoRoute(
+      path: SupportPage.routePath,
+      builder: (context, state) => const SupportPage(),
+    ),
+    GoRoute(
+      path: HomePage.routePath,
+      builder: (context, state) => MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => CategoryBloc()),
+          BlocProvider(create: (context) => OfferBloc()),
+          BlocProvider(
+            create: (context) => GetIt.I.get<ProductBloc>(),
+          ),
+        ],
+        child: const HomePage(),
+      ),
     ),
     GoRoute(
       path: CouponsPage.routePath,
@@ -36,19 +61,10 @@ final router = GoRouter(
     ),
     GoRoute(
       path: CheckOutPage.routePath,
-      builder: (context, state) => MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => GetIt.I.get<CouponBloc>(),
-          ),
-        ],
+      builder: (context, state) => BlocProvider(
+        create: (context) => GetIt.I.get<CouponBloc>(),
         child: const CheckOutPage(),
       ),
-    ),
-    GoRoute(
-      path: HomePage.routPath,
-      builder: (context, state) => BlocProvider<CategoryBloc>(
-          create: (context) => CategoryBloc(), child: const HomePage()),
     ),
     GoRoute(
       path: LoginPage.routePath,

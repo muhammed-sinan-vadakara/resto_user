@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CategoryBlocState {
   List<CategoryEntity>? get categories => throw _privateConstructorUsedError;
+  String get selectedCategory => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,10 @@ abstract class $CategoryBlocStateCopyWith<$Res> {
           CategoryBlocState value, $Res Function(CategoryBlocState) then) =
       _$CategoryBlocStateCopyWithImpl<$Res, CategoryBlocState>;
   @useResult
-  $Res call({List<CategoryEntity>? categories, String? error});
+  $Res call(
+      {List<CategoryEntity>? categories,
+      String selectedCategory,
+      String? error});
 }
 
 /// @nodoc
@@ -47,6 +51,7 @@ class _$CategoryBlocStateCopyWithImpl<$Res, $Val extends CategoryBlocState>
   @override
   $Res call({
     Object? categories = freezed,
+    Object? selectedCategory = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -54,6 +59,10 @@ class _$CategoryBlocStateCopyWithImpl<$Res, $Val extends CategoryBlocState>
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<CategoryEntity>?,
+      selectedCategory: null == selectedCategory
+          ? _value.selectedCategory
+          : selectedCategory // ignore: cast_nullable_to_non_nullable
+              as String,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -70,7 +79,10 @@ abstract class _$$CategoryBlocStateImplCopyWith<$Res>
       __$$CategoryBlocStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CategoryEntity>? categories, String? error});
+  $Res call(
+      {List<CategoryEntity>? categories,
+      String selectedCategory,
+      String? error});
 }
 
 /// @nodoc
@@ -85,6 +97,7 @@ class __$$CategoryBlocStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? categories = freezed,
+    Object? selectedCategory = null,
     Object? error = freezed,
   }) {
     return _then(_$CategoryBlocStateImpl(
@@ -92,6 +105,10 @@ class __$$CategoryBlocStateImplCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<CategoryEntity>?,
+      selectedCategory: null == selectedCategory
+          ? _value.selectedCategory
+          : selectedCategory // ignore: cast_nullable_to_non_nullable
+              as String,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -104,7 +121,9 @@ class __$$CategoryBlocStateImplCopyWithImpl<$Res>
 
 class _$CategoryBlocStateImpl implements _CategoryBlocState {
   _$CategoryBlocStateImpl(
-      {required final List<CategoryEntity>? categories, required this.error})
+      {required final List<CategoryEntity>? categories,
+      required this.selectedCategory,
+      required this.error})
       : _categories = categories;
 
   final List<CategoryEntity>? _categories;
@@ -118,11 +137,13 @@ class _$CategoryBlocStateImpl implements _CategoryBlocState {
   }
 
   @override
+  final String selectedCategory;
+  @override
   final String? error;
 
   @override
   String toString() {
-    return 'CategoryBlocState(categories: $categories, error: $error)';
+    return 'CategoryBlocState(categories: $categories, selectedCategory: $selectedCategory, error: $error)';
   }
 
   @override
@@ -132,12 +153,17 @@ class _$CategoryBlocStateImpl implements _CategoryBlocState {
             other is _$CategoryBlocStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
+            (identical(other.selectedCategory, selectedCategory) ||
+                other.selectedCategory == selectedCategory) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_categories), error);
+      runtimeType,
+      const DeepCollectionEquality().hash(_categories),
+      selectedCategory,
+      error);
 
   @JsonKey(ignore: true)
   @override
@@ -150,10 +176,13 @@ class _$CategoryBlocStateImpl implements _CategoryBlocState {
 abstract class _CategoryBlocState implements CategoryBlocState {
   factory _CategoryBlocState(
       {required final List<CategoryEntity>? categories,
+      required final String selectedCategory,
       required final String? error}) = _$CategoryBlocStateImpl;
 
   @override
   List<CategoryEntity>? get categories;
+  @override
+  String get selectedCategory;
   @override
   String? get error;
   @override

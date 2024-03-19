@@ -61,7 +61,6 @@ class CheckOutPage extends StatelessWidget {
               BlocBuilder<CouponBloc, CouponBlocState>(
                 builder: (context, state) {
                   final isCouponApplied = state.selectedCoupon != null;
-
                   return BoxWidget(
                     leadingIcon: assets.icCoupon,
                     content: isCouponApplied
