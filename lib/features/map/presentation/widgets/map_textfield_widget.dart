@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
-import 'package:resto_user/features/map/data/datasource/map_search_datasource_impl.dart';
 
 class MapTextFieldWidget extends StatelessWidget {
   final TextEditingController searchcontroller;

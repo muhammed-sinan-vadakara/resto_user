@@ -15,8 +15,8 @@ import 'package:resto_user/features/home/data/repository/category_repository_imp
 import 'package:resto_user/features/home/data/repository/product_repository_impl.dart';
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
-import 'package:resto_user/features/map/data/datasource/map_search_datasource.dart';
-import 'package:resto_user/features/map/data/datasource/map_search_datasource_impl.dart';
+import 'package:resto_user/features/map/data/repository/map_repository_impl.dart';
+import 'package:resto_user/features/map/domain/repository/map_repository.dart';
 
 final getIt = GetIt.instance;
 
@@ -37,5 +37,5 @@ void setupDependencies() {
   getIt.registerSingleton<ProductRepo>(
       ProductRepoImpl(dataSource: GetIt.I.get()));
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
-  getIt.registerSingleton<SearchMapDatasource>(SearchMapDataSourceImpl());
+  getIt.registerSingleton<MapAPIRepository>(MapAPIRepositoryIMPL());
 }

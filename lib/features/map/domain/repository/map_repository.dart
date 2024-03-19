@@ -1,3 +1,5 @@
-abstract class SearchMapRepository {
-  Future<Map<String, dynamic>> getPlace(String place);
+abstract interface class MapAPIRepository {
+  Future<List<({String address, String title})>> getAddress(
+      String searchKeyword);
+  Future<List<({double lat, double long})>> getLatLong(String address);
 }
