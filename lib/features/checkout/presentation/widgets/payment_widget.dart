@@ -68,16 +68,16 @@ class _PaymentWidgetState extends State<PaymentWidget> {
         },
       );
     } else {
-      print("The payment was unauthentic!");
+    
     }
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
-    print(response.message);
+
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
-    print(response.walletName);
+
   }
 
   /// Create order id
@@ -107,7 +107,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
 
   Future<void> doPayment() async {
     final orderData = await createOrder();
-    print(orderData);
+  
     var options = {
       'key': apiKey,
       'amount': 100, //in the smallest currency sub-unit.

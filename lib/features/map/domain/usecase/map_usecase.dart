@@ -8,5 +8,6 @@ final class MapAPIUsecase {
     try {} catch (e) {
       throw Exception("Error");
     }
+    throw ('');
   }
 }
