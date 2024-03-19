@@ -78,6 +78,6 @@ final router = GoRouter(
     GoRoute(
       path: OtpVerificationPage.routePath,
       builder: (context, state) => const OtpVerificationPage(),
-    )
+    ),
   ],
 );

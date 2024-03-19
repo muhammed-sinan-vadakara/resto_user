@@ -5,7 +5,7 @@ import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/tog
 import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_event.dart';
 
 class SwitchWidget extends StatelessWidget {
-  const SwitchWidget({Key? key}) : super(key: key);
+  const SwitchWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +16,14 @@ class SwitchWidget extends StatelessWidget {
         child: Switch(
           thumbIcon: MaterialStateProperty.all(Icon(
             Icons.circle,
-            color: appTheme.colors.primary,
+            color: appTheme.colors.secondary,
           )),
-          trackOutlineColor: MaterialStateProperty.all(appTheme.colors.text),
+          trackOutlineColor:
+              MaterialStatePropertyAll(appTheme.colors.textDisabled),
           activeColor: appTheme.colors.primary,
-          thumbColor: MaterialStateProperty.all(appTheme.colors.primary),
+          thumbColor: MaterialStateProperty.all(appTheme.colors.secondary),
           activeTrackColor: appTheme.colors.text,
-          inactiveTrackColor: appTheme.colors.secondary,
+          inactiveTrackColor: appTheme.colors.textDisabled,
           value: state,
           onChanged: (value) {
             context.read<ToggleSwitchBloc>().add(ClickToggleSwitchEvent());
