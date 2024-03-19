@@ -11,8 +11,8 @@ class MessageDataSourceImpl implements MessageDataSource {
 
   @override
   Future<void> sendMessage(MessageModel message) async {
-    final docId = collection.doc(message.receiverId);
-    await docId.set(message);
+    final docId = collection.add(message);
+    await docId;
   }
 
   @override

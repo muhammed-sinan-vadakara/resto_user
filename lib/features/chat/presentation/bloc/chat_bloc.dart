@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:resto_user/features/chat/domain/entites/message_entity.dart';
 import 'package:resto_user/features/chat/domain/usecases/get_message_usecase.dart';
 import 'package:resto_user/features/chat/domain/usecases/send_message_usecase.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_event.dart';
@@ -13,6 +12,7 @@ class ChatBloc extends Bloc<ChatEvent, MessageBlocState> {
 
   ChatBloc() : super(MessageBlocState(error: null, messages: null)) {
     on<GetChatMessagesEvent>(fetchChatData);
+    on<SendMessageEvent>(sendChatData);
   }
 
   Future<void> fetchChatData(
@@ -34,7 +34,7 @@ class ChatBloc extends Bloc<ChatEvent, MessageBlocState> {
   }
 
   Future<void> sendChatData(
-      Emitter<MessageBlocState> emit, MessageEntity entity) async {
-    await SendMessageUseCase(GetIt.I.get())(entity);
+      SendMessageEvent event, Emitter<MessageBlocState> emit) async {
+    await SendMessageUseCase(GetIt.I.get())(event.message);
   }
 }

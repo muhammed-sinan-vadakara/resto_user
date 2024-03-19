@@ -35,7 +35,7 @@ class MessageTextField extends StatelessWidget {
             icon: const Icon(Icons.send),
             onPressed: () {
               if (controller.text.isNotEmpty) {
-                final String senderId = FirebaseAuth.instance.currentUser!.uid;
+                const String senderId = 'user2';
 
                 const String receiverId = 'user1';
 

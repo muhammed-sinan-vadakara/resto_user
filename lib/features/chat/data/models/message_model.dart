@@ -6,6 +6,8 @@ part 'message_model.freezed.dart';
 
 @freezed
 class MessageModel with _$MessageModel {
+  const MessageModel._();
+
   const factory MessageModel({
     required String message,
     required String senderId,
