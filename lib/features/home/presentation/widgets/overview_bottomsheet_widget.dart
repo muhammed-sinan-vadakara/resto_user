@@ -8,6 +8,7 @@ class OverviewBottomSheetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
+
     return SizedBox(
       width: MediaQuery.sizeOf(context).width,
       child: Column(
