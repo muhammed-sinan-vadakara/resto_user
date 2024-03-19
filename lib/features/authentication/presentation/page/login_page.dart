@@ -3,59 +3,63 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
+import 'package:resto_user/core/constants/authentication/authentication_constant.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
+import 'package:resto_user/features/authentication/presentation/widgets/auth_text_feild_widget.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/elavated_button_widget.dart';
-import 'package:resto_user/features/authentication/presentation/widgets/text_feild_widget.dart';
 
-class LoginPage extends StatefulHookWidget {
+class LoginPage extends HookWidget {
   static const routePath = "/loginPage";
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  @override
   Widget build(BuildContext context) {
-    final constants = GetIt.I.get<AppAssetConstants>();
+    final images = GetIt.I.get<AppAssetConstants>();
+    final constants = GetIt.I.get<AuthenticationConstant>();
     final theme = AppTheme.of(context);
     final phoneNumberController = useTextEditingController();
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 24,
-                    bottom: 104,
-                  ),
-                  child: SizedBox(
-                    // height: MediaQuery.sizeOf(context).height,
-                    width: MediaQuery.sizeOf(context).width,
-                    child: SvgPicture.asset(
-                      constants.image,
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 24,
+                      bottom: 64,
+                    ),
+                    child: SizedBox(
+                      // height: MediaQuery.sizeOf(context).height,
+                      width: MediaQuery.sizeOf(context).width,
+                      child: SvgPicture.asset(
+                        images.image,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    right: 190,
-                  ),
-                  child: Text(
-                    "Enter Mobile Number",
+                  Text(
+                    constants.txtMobileNumber,
                     style: theme.typography.uiSemibold
                         .copyWith(color: theme.colors.text),
                   ),
-                ),
-                TextFeildWidget(textController: phoneNumberController)
-              ],
+                  AuthTextFieldWidget(
+                    Controller: phoneNumberController,
+                    hintText:
+                        constants.txtEnterYour + constants.txtMobileNumber,
+                    keyboardType: TextInputType.number,
+                    cursor: true,
+                    onChanged: (p0) {},
+                    style: TextStyle(),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -66,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
           ElevatedButtonWidget(
             colours: theme.colors.primary,
             text: Text(
-              "Send OTP",
+              constants.txtSendOtp,
               style: theme.typography.uiSemibold.copyWith(
                 color: theme.colors.secondary,
               ),
@@ -81,11 +85,11 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.only(right: 16),
                   child: SvgPicture.asset(
-                    constants.icGoogle,
+                    images.icGoogle,
                   ),
                 ),
                 Text(
-                  "Sign up with Google",
+                  constants.txtSignupGoogle,
                   style: theme.typography.uiSemibold.copyWith(
                     color: theme.colors.text,
                   ),
@@ -93,6 +97,9 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             onPressed: () {},
+          ),
+          SizedBox(
+            height: AppTheme.of(context).spaces.space_200,
           )
         ],
       ),

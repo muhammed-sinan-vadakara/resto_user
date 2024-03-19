@@ -17,7 +17,7 @@ class ElevatedButtonWidget extends StatelessWidget {
     final appTheme = AppTheme.of(context);
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: appTheme.spaces.space_300,
+        vertical: appTheme.spaces.space_100,
         horizontal: appTheme.spaces.space_300,
       ),
       child: SizedBox(
