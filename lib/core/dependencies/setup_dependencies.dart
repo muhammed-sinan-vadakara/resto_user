@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:resto_user/core/constants/checkout_page/checkout_page_constants.dart';
 import 'package:resto_user/core/constants/home_page/home_constants.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
@@ -78,8 +79,7 @@ void setupDependencies() {
       CouponFireStoreDatasourceImpl());
   getIt.registerSingleton<CouponRepository>(
       CouponRepositoryImpl(datasource: GetIt.I.get()));
-
-  
+  getIt.registerSingleton<CheckoutPageConstants>(CheckoutPageConstants());
 
   /// Set all the Bloc dependencies using this function
   setupBlocDependencies();

@@ -6,7 +6,8 @@ import 'package:resto_user/features/authentication/presentation/page/otp_verify_
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
-import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch_bloc/toggle_switch_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
@@ -69,6 +70,9 @@ final router = GoRouter(
           ),
           BlocProvider(
             create: (context) => GetIt.I.get<ToggleSwitchBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => GetIt.I.get<PaymentBloc>(),
           ),
         ],
         child: const CheckOutPage(),

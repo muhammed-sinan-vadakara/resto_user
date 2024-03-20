@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
-import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_bloc.dart';
-import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_event.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch_bloc/toggle_switch_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch_bloc/toggle_switch_event.dart';
 
 class SwitchWidget extends StatelessWidget {
-  const SwitchWidget({super.key});
+  final void Function(bool)? onChanged;
+
+  const SwitchWidget({super.key, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +27,11 @@ class SwitchWidget extends StatelessWidget {
           activeTrackColor: appTheme.colors.text,
           inactiveTrackColor: appTheme.colors.textDisabled,
           value: state,
-          onChanged: (value) {
-            context.read<ToggleSwitchBloc>().add(ClickToggleSwitchEvent());
-          },
+          onChanged: onChanged,
         ),
       ),
     );
   }
 }
+
+ 
