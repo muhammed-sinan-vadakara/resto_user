@@ -1,5 +1,6 @@
 class AppAssetConstants {
   static const _iconsPath = 'assets/icons/ic_';
+  static const _imagePath = "assets/images/img_";
 
   final icAdd = '${_iconsPath}add_icon.svg';
   final icAddImage = '${_iconsPath}add_image_icon.svg';
@@ -9,10 +10,22 @@ class AppAssetConstants {
   final icGoogle = '${_iconsPath}google_icon.svg';
   final icHome = '${_iconsPath}home_icon.svg';
   final icLocation = '${_iconsPath}location_icon.svg';
-  final icNotification = '${_iconsPath}notification_icon.svg';
+  final icNotification = '${_iconsPath}notifications_icon.svg';
   final icPencil = '${_iconsPath}pencil_icon.svg';
   final icOffers = '${_iconsPath}offers_icon.svg';
   final icRemove = '${_iconsPath}remove_icon.svg';
   final icSearch = '${_iconsPath}search_icon.svg';
   final icUser = '${_iconsPath}user_icon.svg';
+
+  ///image
+  final image = "${_imagePath}login_background.svg";
+  final icTimer = '${_iconsPath}timer_icon.svg';
+  final icInstruction = '${_iconsPath}instruction_icon.svg';
+  final icGst = '${_iconsPath}gst_icon.svg';
+  final icDelivery = '${_iconsPath}delivery_icon.svg';
+  final icArrowRight = '${_iconsPath}arrow_right_icon.svg';
+  final icCoupon = '${_iconsPath}coupon_icon.svg';
+  final icBuilding = '${_iconsPath}building_icon.svg';
+  final icCash = '${_iconsPath}cash_icon.svg';
+  final icLocationAddress = '${_iconsPath}location_address_icon.svg';
 }

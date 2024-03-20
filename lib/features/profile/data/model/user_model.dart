@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,8 +11,9 @@ class UserModel with _$UserModel {
   const UserModel._();
   factory UserModel({
     required String imgPath,
-   // ignore: invalid_annotation_target
    @JsonKey(name: 'user_name') required String userName,
+   @JsonKey(name: 'mobile_number') required String mobileNumber,
+   required String email
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
