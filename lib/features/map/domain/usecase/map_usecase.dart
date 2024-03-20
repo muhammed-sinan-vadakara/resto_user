@@ -6,15 +6,15 @@ class GetLocationUseCase {
 
   GetLocationUseCase({required this.repository});
 
-  Future<List<MapEntity>> call(String searchText) async {
+  Future<List<LocationEntity>> call(String searchText) async {
     try {
-      final locationData = <MapEntity>[];
+      final locationData = <LocationEntity>[];
       final addressList = await repository.getAddress(searchText);
 
       for (final addressData in addressList) {
         final latLongData = await repository.getLatLong(addressData.address);
         locationData.add(
-          MapEntity(
+          LocationEntity(
             title: addressData.title,
             address: addressData.address,
             lat: latLongData.lat,
