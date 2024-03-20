@@ -16,9 +16,7 @@ class MapTextFieldWidget extends StatelessWidget {
       child: TextField(
         controller: searchcontroller,
         textCapitalization: TextCapitalization.words,
-        onChanged: (value) {
-          print(value);
-        },
+        onChanged: (value) {},
         decoration: InputDecoration(
           suffixIcon: Padding(
             padding: const EdgeInsets.all(10),

@@ -5,8 +5,7 @@ final class MapAPIUsecase {
 
   MapAPIUsecase({required this.repository});
   Future<Map<String, dynamic>> call(String place) async {
-    try {} catch (e) {
-      throw Exception("Error");
-    }
+    try {} catch (e) {}
+    throw Exception("Error");
   }
 }

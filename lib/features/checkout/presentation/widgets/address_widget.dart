@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
+import 'package:resto_user/core/constants/checkout_page/checkout_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
 class AddressWidget extends StatelessWidget {
@@ -9,6 +10,7 @@ class AddressWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final constants = GetIt.I.get<CheckoutPageConstants>();
     final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     return Container(
@@ -26,7 +28,7 @@ class AddressWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Address',
+                  constants.txtAddress,
                   style: theme.typography.h600,
                 ),
                 const Expanded(child: SizedBox()),
@@ -35,9 +37,9 @@ class AddressWidget extends StatelessWidget {
                       borderRadius:
                           BorderRadius.circular(theme.spaces.space_100),
                       onTap: () {},
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_forward_ios_outlined,
-                        size: 20,
+                        size: theme.spaces.space_250,
                       )),
                 ),
               ],
