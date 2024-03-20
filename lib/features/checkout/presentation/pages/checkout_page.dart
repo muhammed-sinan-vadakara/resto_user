@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
@@ -8,17 +9,16 @@ import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/core/widgets/elevated_button_widget.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
-import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch_bloc/toggle_switch_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc_state.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc_state.dart';
-import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch_bloc/toggle_switch_event.dart';
 import 'package:resto_user/features/checkout/presentation/pages/coupons_page.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/address_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/bill_details_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/box_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/switch_button_widget.dart';
 
-class CheckOutPage extends StatelessWidget {
+class CheckOutPage extends HookWidget {
   static const routePath = '/checkout';
   const CheckOutPage({super.key});
 
@@ -27,6 +27,7 @@ class CheckOutPage extends StatelessWidget {
     final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<CheckoutPageConstants>();
+    var onChanged = useState<bool>(false);
 
     return Scaffold(
       appBar: PreferredSize(
@@ -105,10 +106,9 @@ class CheckOutPage extends StatelessWidget {
                 leadingIcon: assets.icDelivery,
                 content: constants.txtPaymentMethod,
                 trailing: SwitchWidget(
-                  onChanged: (p0) {
-                    context
-                        .read<ToggleSwitchBloc>()
-                        .add(ClickToggleSwitchEvent());
+                  value: onChanged.value,
+                  onChanged: (newValue) {
+                    onChanged.value = newValue;
                   },
                 ),
                 style: theme.typography.h400,
@@ -121,16 +121,14 @@ class CheckOutPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BlocBuilder<ToggleSwitchBloc, bool>(
+      bottomNavigationBar: BlocBuilder<PaymentBloc, PaymentBlocState>(
         builder: (context, state) {
           return ElevatedButtonWidget(
             text: constants.txtConfirmOrder,
             onPressed: () {
-              if (state) {
-                context.push(CouponsPage.routePath);
-              } else {
-                context.read<PaymentBloc>().add(PaymentMakeEvent());
-              }
+              onChanged.value
+                  ? context.push(CouponsPage.routePath)
+                  : context.read<PaymentBloc>().add(PaymentMakeEvent());
             },
           );
         },
