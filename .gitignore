@@ -1,6 +1,9 @@
 pubspec.lock
+
 **/*.g.dart
 **/*.freezed.dart
+**/*.swift
+
 # Miscellaneous
 *.class
 *.log
