@@ -10,6 +10,9 @@ import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/core/widgets/elevated_button_widget.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc_state.dart';
+import 'package:resto_user/features/checkout/domain/entity/instruction_entity.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc_event.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc_state.dart';
 import 'package:resto_user/features/checkout/presentation/pages/coupons_page.dart';
@@ -17,6 +20,7 @@ import 'package:resto_user/features/checkout/presentation/pages/order_placed_pag
 import 'package:resto_user/features/checkout/presentation/widgets/address_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/bill_details_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/box_widget.dart';
+import 'package:resto_user/features/checkout/presentation/widgets/instruction_bottom_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/switch_button_widget.dart';
 
 class CheckOutPage extends HookWidget {
@@ -29,6 +33,7 @@ class CheckOutPage extends HookWidget {
     final assets = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<CheckoutPageConstants>();
     var onChanged = useState<bool>(false);
+    final TextEditingController instructionController = TextEditingController();
 
     return Scaffold(
       appBar: PreferredSize(
@@ -53,17 +58,21 @@ class CheckOutPage extends HookWidget {
               SizedBox(
                 height: theme.spaces.space_300,
               ),
-              BoxWidget(
+              InstructionBottomWidget(
                 leadingIcon: assets.icInstruction,
                 content: constants.txtInstructions,
-                trailing: InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 20,
-                    )),
                 style: theme.typography.h400,
-                onPressed: () {},
+                onPressed: () {
+                  if (instructionController.text.isNotEmpty) {
+                    BlocProvider.of<InstructionBloc>(context).add(
+                      SendInstructionEvent(
+                        InstructionEntity(message: instructionController.text),
+                      ),
+                    );
+                    instructionController.clear();
+                  }
+                },
+                controller: instructionController,
               ),
               SizedBox(
                 height: theme.spaces.space_300,

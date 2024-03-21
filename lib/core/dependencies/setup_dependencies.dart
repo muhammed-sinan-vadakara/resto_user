@@ -12,8 +12,12 @@ import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
 import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource.dart';
 import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource_impl.dart';
+import 'package:resto_user/features/checkout/data/data_source/instruction_firestore_database.dart';
+import 'package:resto_user/features/checkout/data/data_source/instruction_firestore_datasource_impl.dart';
 import 'package:resto_user/features/checkout/data/repository/coupon_repository_impl.dart';
+import 'package:resto_user/features/checkout/data/repository/instruction_repository_impl.dart';
 import 'package:resto_user/features/checkout/domain/repository/coupon_repository.dart';
+import 'package:resto_user/features/checkout/domain/repository/instruction_repository.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource_impl.dart';
 import 'package:resto_user/features/home/data/data_source/offer_firestore_datasource.dart';
@@ -42,6 +46,7 @@ void setupDependencies() {
   getIt.registerSingleton<GoRouter>(router);
   getIt.registerSingleton<ThemeData>(lightTheme);
   getIt.registerSingleton<ChatPageConstants>(ChatPageConstants());
+  // getIt.registerSingleton<ThemeData>(lightTheme);
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
   getIt.registerSingleton<ThemeData>(lightTheme, instanceName: 'light');
   getIt.registerSingleton<ThemeData>(darkTheme, instanceName: 'dark');
@@ -88,11 +93,16 @@ void setupDependencies() {
       CouponRepositoryImpl(datasource: GetIt.I.get()));
   getIt.registerSingleton<CheckoutPageConstants>(CheckoutPageConstants());
 
-  /// Set all the Bloc dependencies using this function
-  setupBlocDependencies();
+  /// Chat
   getIt.registerSingleton<MessageDataSource>(MessageDataSourceImpl());
   getIt.registerSingleton<MessageRepository>(
       MessageRepositoryImpl(GetIt.I.get<MessageDataSource>()));
+
+  //Instructions
+  getIt.registerSingleton<InstructionFirestoreDatabase>(
+      InstructionFirestoreDatabaseImpl());
+  getIt.registerSingleton<InstructionRepository>(
+      InstructionRepositoryImpl(GetIt.I.get<InstructionFirestoreDatabase>()));
 
   setupBlocDependencies();
 }

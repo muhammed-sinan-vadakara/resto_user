@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ElevatedButtonWidget(
+          AuthElevatedButtonWidget(
             colours: theme.colors.primary,
             text: Text(
               "Send OTP",
@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             onPressed: () {},
           ),
-          ElevatedButtonWidget(
+          AuthElevatedButtonWidget(
             colours: theme.colors.textDisabled,
             text: Row(
               mainAxisAlignment: MainAxisAlignment.center,

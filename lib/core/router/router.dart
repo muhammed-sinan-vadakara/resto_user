@@ -8,6 +8,7 @@ import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/pages/order_placed_page.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
@@ -20,7 +21,7 @@ import 'package:resto_user/features/home/presentation/bloc/category_bloc/categor
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 
 final router = GoRouter(
-  initialLocation: CheckOutPage.routePath,
+  initialLocation: HomePage.routePath,
   routes: [
     GoRoute(
       path: CartPage.routPath,
@@ -71,6 +72,7 @@ final router = GoRouter(
           BlocProvider(
             create: (context) => GetIt.I.get<PaymentBloc>(),
           ),
+          BlocProvider(create: (context) => GetIt.I.get<InstructionBloc>())
         ],
         child: const CheckOutPage(),
       ),
