@@ -35,6 +35,7 @@ dependencies:
   crypto: ^3.0.3
   uuid: ^4.2.2
   google_sign_in: ^6.2.1
+  dio: ^5.4.1
 
 
 dev_dependencies:
