@@ -98,6 +98,7 @@ void setupDependencies() {
   getIt.registerSingleton<MessageRepository>(
       MessageRepositoryImpl(GetIt.I.get<MessageDataSource>()));
 
+  //Instructions
   getIt.registerSingleton<InstructionFirestoreDatabase>(
       InstructionFirestoreDatabaseImpl());
   getIt.registerSingleton<InstructionRepository>(

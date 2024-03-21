@@ -9,18 +9,78 @@ class InstructionBottomWidget extends StatelessWidget {
   final String leadingIcon;
   final String content;
   final TextStyle? style;
+  final void Function() onPressed;
+  final TextEditingController? controller;
 
   const InstructionBottomWidget({
     super.key,
     required this.leadingIcon,
     required this.content,
     this.style,
+    required this.onPressed,
+    this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<CheckoutPageConstants>();
     final theme = AppTheme.of(context);
+    // final TextEditingController instructionController = TextEditingController();
+
+    void showBottomSheet() {
+      showModalBottomSheet(
+        context: context,
+        builder: (context) => Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: theme.spaces.space_300),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+              child: Text(
+                constants.txtSpecialInstruction,
+                style: theme.typography.h400.copyWith(
+                  fontSize: theme.spaces.space_200,
+                ),
+              ),
+            ),
+            SizedBox(height: theme.spaces.space_100),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+              child: const Divider(),
+            ),
+            SizedBox(height: theme.spaces.space_200),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+              child: TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                  hintText: constants.txtEnterSplInstruction,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(theme.spaces.space_100),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            ElevatedButtonWidget(text: constants.txtAdd, onPressed: onPressed
+
+                // if (instructionController.text.isNotEmpty) {
+                //   BlocProvider.of<InstructionBloc>(context).add(
+                //     SendInstructionEvent(
+                //       InstructionEntity(message: instructionController.text),
+                //     ),
+                //   );
+                //   instructionController.clear();
+                // }
+
+                ),
+          ],
+        ),
+      );
+    }
+
     return Container(
       height: theme.spaces.space_700,
       decoration: BoxDecoration(
@@ -54,53 +114,11 @@ class InstructionBottomWidget extends StatelessWidget {
             const Expanded(
               child: SizedBox(),
             ),
-            GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) => Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: theme.spaces.space_300),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: theme.spaces.space_300),
-                        child: Text(
-                          constants.txtSpecialInstruction,
-                          style: theme.typography.h400
-                              .copyWith(fontSize: theme.spaces.space_200),
-                        ),
-                      ),
-                      SizedBox(height: theme.spaces.space_100),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: theme.spaces.space_300),
-                        child: const Divider(),
-                      ),
-                      SizedBox(height: theme.spaces.space_200),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: theme.spaces.space_300),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              hintText: constants.txtEnterSplInstruction,
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          theme.spaces.space_100)))),
-                        ),
-                      ),
-                      ElevatedButtonWidget(
-                          text: constants.txtAdd, onPressed: () {})
-                    ],
-                  ),
-                );
+            IconButton(
+              icon: const Icon(Icons.arrow_forward_ios_outlined, size: 20),
+              onPressed: () {
+                showBottomSheet();
               },
-              child: const Icon(
-                Icons.arrow_forward_ios_outlined,
-                size: 20,
-              ),
             )
           ],
         ),

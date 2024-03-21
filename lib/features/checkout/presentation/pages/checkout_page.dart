@@ -13,6 +13,9 @@ import 'package:resto_user/core/constants/checkout_page/checkout_page_constants.
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/core/widgets/app_bar_widget.dart';
 import 'package:resto_user/core/widgets/elevated_button_widget.dart';
+import 'package:resto_user/features/checkout/domain/entity/instruction_entity.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc_event.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc_state.dart';
@@ -139,6 +142,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
     final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<CheckoutPageConstants>();
+    final TextEditingController instructionController = TextEditingController();
 
     return Scaffold(
       appBar: PreferredSize(
@@ -167,6 +171,17 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 leadingIcon: assets.icInstruction,
                 content: constants.txtInstructions,
                 style: theme.typography.h400,
+                onPressed: () {
+                  if (instructionController.text.isNotEmpty) {
+                    BlocProvider.of<InstructionBloc>(context).add(
+                      SendInstructionEvent(
+                        InstructionEntity(message: instructionController.text),
+                      ),
+                    );
+                    instructionController.clear();
+                  }
+                },
+                controller: instructionController,
               ),
               SizedBox(
                 height: theme.spaces.space_300,
