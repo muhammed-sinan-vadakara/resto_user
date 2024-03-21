@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
+import 'package:resto_user/core/utils/image_picker_utils.dart';
 
 class ProfileImageWidget extends StatelessWidget {
   const ProfileImageWidget({super.key});
@@ -26,7 +27,7 @@ class ProfileImageWidget extends StatelessWidget {
               Center(
                 child: SvgPicture.asset(
                   assets.icUser,
-                  height: 40,
+                  height: appTheme.spaces.space_500,
                 ),
               ),
               Align(
@@ -35,7 +36,8 @@ class ProfileImageWidget extends StatelessWidget {
                       style: ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(
                               appTheme.colors.primary)),
-                      onPressed: null,
+                      onPressed: () =>
+                          ImagePickerUtils.showDialogueForImagePicker(context),
                       icon: SvgPicture.asset(assets.icPencil)))
             ],
           )),
