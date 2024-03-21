@@ -92,12 +92,12 @@ class InstructionBottomWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: 20,
-              width: 25,
+              height: theme.spaces.space_250,
+              width: theme.spaces.space_300,
               child: SvgPicture.asset(
                 leadingIcon,
                 colorFilter:
-                    const ColorFilter.mode(Colors.black, BlendMode.srcATop),
+                    ColorFilter.mode(theme.colors.text, BlendMode.srcATop),
               ),
             ),
             SizedBox(
@@ -111,7 +111,8 @@ class InstructionBottomWidget extends StatelessWidget {
               child: SizedBox(),
             ),
             IconButton(
-              icon: const Icon(Icons.arrow_forward_ios_outlined, size: 20),
+              icon: Icon(Icons.arrow_forward_ios_outlined,
+                  size: theme.spaces.space_250),
               onPressed: () {
                 showBottomSheet();
               },
