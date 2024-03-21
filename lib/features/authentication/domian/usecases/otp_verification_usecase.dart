@@ -4,15 +4,25 @@ import 'package:resto_user/features/authentication/domian/repositories/auth_repo
 
 final class VerifyOtpUsecase {
   final AuthRepository repository;
-  VerifyOtpUsecase({required this.repository});
-  Future<void> call(String verificationId, String otp) async {
+  VerifyOtpUsecase({
+    required this.repository,
+  });
+  Future<void> call(
+    String verificationId,
+    String otp,
+  ) async {
     if (otp.trim().isEmpty) {
       throw InvalidCredentialsException();
     }
     try {
-      await repository.verifyPhoneOtp(verificationId, otp);
+      await repository.verifyPhoneOtp(
+        verificationId,
+        otp,
+      );
     } on Exception {
-      throw BaseException('Enter your otp correctly,try again');
+      throw BaseException(
+        'Enter your otp correctly,try again',
+      );
     }
   }
 }

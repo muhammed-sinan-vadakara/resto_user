@@ -23,28 +23,51 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<(String, int?)> phoneNumberVerificationbyOtp(
-      String phoneNumber) async {
-    return await datasource.phoneNumberVerificationbyOtp(phoneNumber);
+  Future<
+      (
+        String,
+        int?,
+      )> phoneNumberVerificationbyOtp(
+    String phoneNumber,
+  ) async {
+    return await datasource.phoneNumberVerificationbyOtp(
+      phoneNumber,
+    );
   }
 
   @override
-  Future<void> verifyPhoneOtp(String verificationId, String otp) async {
-    await datasource.verifyOtp(verificationId, otp);
+  Future<void> verifyPhoneOtp(
+    String verificationId,
+    String otp,
+  ) async {
+    await datasource.verifyOtp(
+      verificationId,
+      otp,
+    );
   }
 
   @override
-  Future<void> addDetails(DetailsAddEntity entity) async {
+  Future<void> addDetails(
+    DetailsAddEntity entity,
+  ) async {
     final detailsadd = DetailsAddModel(
       id: '',
       imagePath: entity.imagePath,
       name: entity.name,
     );
-    await detailsAddDataSource.add(detailsadd);
+    await detailsAddDataSource.add(
+      detailsadd,
+    );
   }
 
   @override
-  Future<String> upload(File fileToUpload, String filePath) {
-    return detailsAddStoragedataSource.add(fileToUpload, filePath);
+  Future<String> upload(
+    File fileToUpload,
+    String filePath,
+  ) {
+    return detailsAddStoragedataSource.add(
+      fileToUpload,
+      filePath,
+    );
   }
 }

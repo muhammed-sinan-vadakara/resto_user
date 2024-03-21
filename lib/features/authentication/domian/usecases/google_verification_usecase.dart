@@ -3,13 +3,17 @@ import 'package:resto_user/features/authentication/domian/repositories/auth_repo
 
 final class GoogleVerificationUsecase {
   final AuthRepository repository;
-  GoogleVerificationUsecase({required this.repository});
+  GoogleVerificationUsecase({
+    required this.repository,
+  });
 
   Future<void> call() async {
     try {
       await repository.googleverifications();
     } on Exception {
-      throw BaseException('cannot login with google');
+      throw BaseException(
+        'cannot login with google',
+      );
     }
   }
 }

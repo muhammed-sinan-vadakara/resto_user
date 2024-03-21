@@ -6,18 +6,30 @@ import 'package:resto_user/features/authentication/domian/repositories/auth_repo
 
 final class AddDetailsUseCase {
   final AuthRepository repository;
-  AddDetailsUseCase({required this.repository});
+  AddDetailsUseCase({
+    required this.repository,
+  });
   Future<void> call({
     required String imagePath,
     required String id,
     required String name,
   }) async {
     try {
-      final uploadPath = await repository.upload(File(imagePath), name);
+      final uploadPath = await repository.upload(
+        File(imagePath),
+        name,
+      );
       return await repository.addDetails(
-          DetailsAddEntity(imagePath: uploadPath, name: name, id: id));
+        DetailsAddEntity(
+          imagePath: uploadPath,
+          name: name,
+          id: id,
+        ),
+      );
     } catch (e) {
-      throw BaseException(e.toString());
+      throw BaseException(
+        e.toString(),
+      );
     }
   }
 }

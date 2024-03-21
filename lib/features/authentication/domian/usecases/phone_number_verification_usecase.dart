@@ -4,17 +4,24 @@ import 'package:resto_user/features/authentication/domian/repositories/auth_repo
 
 final class PhoneNumberVerificationUsecase {
   final AuthRepository repository;
-  PhoneNumberVerificationUsecase({required this.repository});
+  PhoneNumberVerificationUsecase({
+    required this.repository,
+  });
 
-  Future<(String, int?)> call(String phoneNumber) async {
+  Future<(String, int?)> call(
+    String phoneNumber,
+  ) async {
     if (phoneNumber.trim().isEmpty) {
       throw InvalidCredentialsException();
     }
     try {
-      return await repository.phoneNumberVerificationbyOtp(phoneNumber);
+      return await repository.phoneNumberVerificationbyOtp(
+        phoneNumber,
+      );
     } on Exception {
       throw AuthenticationFailException(
-          'Cannot send the otp to your phone number \n please put your correct phone number');
+        'Cannot send the otp to your phone number \n please put your correct phone number',
+      );
     }
   }
 }
