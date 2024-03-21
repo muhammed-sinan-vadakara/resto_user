@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/constants/authentication/authentication_constant.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
+import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/auth_text_feild_widget.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/elavated_button_widget.dart';
 
 class LoginPage extends HookWidget {
   static const routePath = "/loginPage";
-  const LoginPage({super.key});
+
+  const LoginPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +58,7 @@ class LoginPage extends HookWidget {
                     Controller: phoneNumberController,
                     hintText:
                         constants.txtEnterYour + constants.txtMobileNumber,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.phone,
                     cursor: true,
                     onChanged: (p0) {},
                     style: TextStyle(),
@@ -67,17 +72,20 @@ class LoginPage extends HookWidget {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ElevatedButtonWidget(
-            colours: theme.colors.primary,
-            text: Text(
-              constants.txtSendOtp,
-              style: theme.typography.uiSemibold.copyWith(
-                color: theme.colors.secondary,
+          AuthElevatedButtonWidget(
+              colours: theme.colors.primary,
+              text: Text(
+                constants.txtSendOtp,
+                style: theme.typography.uiSemibold.copyWith(
+                  color: theme.colors.secondary,
+                ),
               ),
-            ),
-            onPressed: () {},
-          ),
-          ElevatedButtonWidget(
+              onPressed: () {
+                context.read<AuthenticationBloc>().add(
+                    LoginWithPhoneNumberEvent(
+                        phoneNumber: phoneNumberController.text));
+              }),
+          AuthElevatedButtonWidget(
             colours: theme.colors.textDisabled,
             text: Row(
               mainAxisAlignment: MainAxisAlignment.center,

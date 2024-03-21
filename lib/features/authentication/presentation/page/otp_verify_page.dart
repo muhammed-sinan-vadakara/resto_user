@@ -163,7 +163,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
           ),
         ),
       ),
-      bottomNavigationBar: ElevatedButtonWidget(
+      bottomNavigationBar: AuthElevatedButtonWidget(
         colours: theme.colors.primary,
         text: Text(
           constants.txtVerifyOtp,

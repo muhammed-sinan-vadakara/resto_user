@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resto_user/core/themes/app_theme.dart';
 
 class OtpTextFeildWidget extends StatelessWidget {
   final TextEditingController textController;

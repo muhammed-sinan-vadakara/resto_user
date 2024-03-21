@@ -15,6 +15,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+  static final navigatorKey = GlobalKey<NavigatorState>();
   const MyApp({super.key});
 
   @override

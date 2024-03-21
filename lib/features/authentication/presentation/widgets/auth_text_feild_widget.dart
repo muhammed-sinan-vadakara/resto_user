@@ -25,6 +25,7 @@ class AuthTextFieldWidget extends StatelessWidget {
       controller: Controller,
       showCursor: cursor,
       onChanged: onChanged,
+      keyboardType: keyboardType,
       enabled: enabled,
       style: style,
       decoration: InputDecoration(

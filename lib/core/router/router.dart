@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:resto_user/features/authentication/presentation/page/details_adding_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/login_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
@@ -10,9 +11,11 @@ import 'package:resto_user/features/checkout/presentation/pages/checkout_page.da
 import 'package:resto_user/features/checkout/presentation/pages/coupons_page.dart';
 import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc.dart';
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
+import 'package:resto_user/main.dart';
 
 final router = GoRouter(
-  // initialLocation: CheckOutPage.routePath,
+  initialLocation: CheckOutPage.routePath,
+  navigatorKey: MyApp.navigatorKey,
   routes: [
     GoRoute(
       path: CartPage.routPath,
@@ -36,7 +39,10 @@ final router = GoRouter(
     ),
     GoRoute(
       path: LoginPage.routePath,
-      builder: (context, state) => const LoginPage(),
+      builder: (context, state) => BlocProvider<AuthenticationBloc>(
+        create: (context) => AuthenticationBloc(),
+        child: const LoginPage(),
+      ),
     ),
     GoRoute(
       path: OtpVerificationPage.routePath,

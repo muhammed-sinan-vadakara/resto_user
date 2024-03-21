@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +9,14 @@ import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
 import 'package:resto_user/core/router/router.dart';
 import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
+import 'package:resto_user/features/authentication/data/datasource/authentication_datasource.dart';
+import 'package:resto_user/features/authentication/data/datasource/authentication_datasource_impl.dart';
+import 'package:resto_user/features/authentication/data/datasource/details_add_firestore_datasource.dart';
+import 'package:resto_user/features/authentication/data/datasource/details_add_firestore_datasource_impl.dart';
+import 'package:resto_user/features/authentication/data/datasource/details_add_storage_datasorce_impl.dart';
+import 'package:resto_user/features/authentication/data/datasource/details_add_storage_datasource.dart';
+import 'package:resto_user/features/authentication/data/repositoies/auth_repositoies_impl.dart';
+import 'package:resto_user/features/authentication/domian/repositories/auth_repository.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource_impl.dart';
 import 'package:resto_user/features/home/data/data_source/product_firestore_datasource.dart';
@@ -37,4 +46,14 @@ void setupDependencies() {
       ProductRepoImpl(dataSource: GetIt.I.get()));
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
   getIt.registerSingleton<AuthenticationConstant>(AuthenticationConstant());
+  getIt.registerSingleton<FirebaseAuthDataSource>(
+      FirebaseAuthDataSourceImpl(FirebaseAuth.instance));
+  getIt.registerSingleton<DetailsAddStorageDataSource>(
+      DetailsAddStorageDataSourceImpl());
+  getIt.registerSingleton<DetailsAddFirestoreDatasource>(
+      DetailsAddFirestoreDatasourceImpl());
+  getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl(
+      datasource: GetIt.I.get(),
+      detailsAddDataSource: GetIt.I.get(),
+      detailsAddStoragedataSource: GetIt.I.get()));
 }
