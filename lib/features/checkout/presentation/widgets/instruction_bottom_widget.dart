@@ -25,47 +25,54 @@ class InstructionBottomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<CheckoutPageConstants>();
     final theme = AppTheme.of(context);
-    // final TextEditingController instructionController = TextEditingController();
 
     void showBottomSheet() {
       showModalBottomSheet(
         context: context,
-        builder: (context) => Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: theme.spaces.space_300),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
-              child: Text(
-                constants.txtSpecialInstruction,
-                style: theme.typography.h400.copyWith(
-                  fontSize: theme.spaces.space_200,
+        isScrollControlled: true,
+        builder: (context) => Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: theme.spaces.space_300),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+                child: Text(
+                  constants.txtSpecialInstruction,
+                  style: theme.typography.h400.copyWith(
+                    fontSize: theme.spaces.space_200,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: theme.spaces.space_100),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
-              child: const Divider(),
-            ),
-            SizedBox(height: theme.spaces.space_200),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
-              child: TextField(
-                controller: controller,
-                decoration: InputDecoration(
-                  hintText: constants.txtEnterSplInstruction,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(theme.spaces.space_100),
+              SizedBox(height: theme.spaces.space_100),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+                child: const Divider(),
+              ),
+              SizedBox(height: theme.spaces.space_200),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+                child: TextField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                    hintText: constants.txtEnterSplInstruction,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(theme.spaces.space_100),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            ElevatedButtonWidget(text: constants.txtAdd, onPressed: onPressed),
-          ],
+              ElevatedButtonWidget(
+                  text: constants.txtAdd, onPressed: onPressed),
+            ],
+          ),
         ),
       );
     }
