@@ -64,18 +64,7 @@ class InstructionBottomWidget extends StatelessWidget {
                 ),
               ),
             ),
-            ElevatedButtonWidget(text: constants.txtAdd, onPressed: onPressed
-
-                // if (instructionController.text.isNotEmpty) {
-                //   BlocProvider.of<InstructionBloc>(context).add(
-                //     SendInstructionEvent(
-                //       InstructionEntity(message: instructionController.text),
-                //     ),
-                //   );
-                //   instructionController.clear();
-                // }
-
-                ),
+            ElevatedButtonWidget(text: constants.txtAdd, onPressed: onPressed),
           ],
         ),
       );

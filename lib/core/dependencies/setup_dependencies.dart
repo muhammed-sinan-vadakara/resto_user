@@ -18,7 +18,6 @@ import 'package:resto_user/features/checkout/data/repository/coupon_repository_i
 import 'package:resto_user/features/checkout/data/repository/instruction_repository_impl.dart';
 import 'package:resto_user/features/checkout/domain/repository/coupon_repository.dart';
 import 'package:resto_user/features/checkout/domain/repository/instruction_repository.dart';
-import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_bloc.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource_impl.dart';
 import 'package:resto_user/features/home/data/data_source/offer_firestore_datasource.dart';
@@ -47,6 +46,7 @@ void setupDependencies() {
   getIt.registerSingleton<GoRouter>(router);
   getIt.registerSingleton<ThemeData>(lightTheme);
   getIt.registerSingleton<ChatPageConstants>(ChatPageConstants());
+  // getIt.registerSingleton<ThemeData>(lightTheme);
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
   getIt.registerSingleton<ThemeData>(lightTheme, instanceName: 'light');
   getIt.registerSingleton<ThemeData>(darkTheme, instanceName: 'dark');
@@ -82,6 +82,7 @@ void setupDependencies() {
 
   ///Profile
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
+  // getIt.registerSingleton<MapAPIRepository>(MapAPIRepositoryIMPL());
   getIt.registerSingleton<UserFirestoreDataSource>(
       UserFirestoreDataSourceImpl());
 
@@ -91,7 +92,6 @@ void setupDependencies() {
   getIt.registerSingleton<CouponRepository>(
       CouponRepositoryImpl(datasource: GetIt.I.get()));
   getIt.registerSingleton<CheckoutPageConstants>(CheckoutPageConstants());
-  getIt.registerSingleton<ToggleSwitchBloc>(ToggleSwitchBloc());
 
   /// Chat
   getIt.registerSingleton<MessageDataSource>(MessageDataSourceImpl());
