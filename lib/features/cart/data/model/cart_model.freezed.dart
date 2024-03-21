@@ -20,7 +20,6 @@ CartModel _$CartModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartModel {
-// ignore: duplicate_ignore
 // ignore: invalid_annotation_target
   @JsonKey(name: 'product_id')
   String get productId => throw _privateConstructorUsedError;
@@ -136,7 +135,6 @@ class _$CartModelImpl extends _CartModel {
   factory _$CartModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartModelImplFromJson(json);
 
-// ignore: duplicate_ignore
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'product_id')
@@ -191,7 +189,6 @@ abstract class _CartModel extends CartModel {
   factory _CartModel.fromJson(Map<String, dynamic> json) =
       _$CartModelImpl.fromJson;
 
-  // ignore: duplicate_ignore
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'product_id')
   String get productId;

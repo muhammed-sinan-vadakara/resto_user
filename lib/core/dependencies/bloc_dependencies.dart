@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
+import 'package:resto_user/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:resto_user/features/home/data/repository/product_repository_impl.dart';
 import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
@@ -28,4 +29,6 @@ void setupBlocDependencies() {
 
   ///Cart feature blocs
   getIt.registerSingleton<CartBloc>(CartBloc());
+
+  getIt.registerSingleton<ChatBloc>(ChatBloc());
 }
