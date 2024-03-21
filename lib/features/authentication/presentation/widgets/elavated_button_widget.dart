@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
-class ElevatedButtonWidget extends StatelessWidget {
+class AuthElevatedButtonWidget extends StatelessWidget {
   final Widget text;
   final Color colours;
 
   final void Function() onPressed;
-  const ElevatedButtonWidget({
+  const AuthElevatedButtonWidget({
     super.key,
     required this.text,
     required this.onPressed,

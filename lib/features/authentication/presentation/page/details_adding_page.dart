@@ -51,7 +51,7 @@ class DetailsAddingPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: ElevatedButtonWidget(
+      bottomNavigationBar: AuthElevatedButtonWidget(
         colours: theme.colors.primary,
         text: Text(
           "Save",

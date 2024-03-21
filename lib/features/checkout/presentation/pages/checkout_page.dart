@@ -20,6 +20,7 @@ import 'package:resto_user/features/checkout/presentation/pages/coupons_page.dar
 import 'package:resto_user/features/checkout/presentation/widgets/address_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/bill_details_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/box_widget.dart';
+import 'package:resto_user/features/checkout/presentation/widgets/instruction_bottom_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/switch_button_widget.dart';
 import 'package:uuid/uuid.dart';
 
@@ -162,17 +163,10 @@ class _CheckOutPageState extends State<CheckOutPage> {
               SizedBox(
                 height: theme.spaces.space_300,
               ),
-              BoxWidget(
+              InstructionBottomWidget(
                 leadingIcon: assets.icInstruction,
                 content: constants.txtInstructions,
-                trailing: InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 20,
-                    )),
                 style: theme.typography.h400,
-                onPressed: () {},
               ),
               SizedBox(
                 height: theme.spaces.space_300,

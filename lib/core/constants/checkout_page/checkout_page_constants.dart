@@ -11,4 +11,7 @@ class CheckoutPageConstants {
   final String txtPaymentMethod = 'Pay using COD';
   final String txtAddress = 'Address';
   final String txtConfirmOrder = 'Confirm order';
+  final String txtSpecialInstruction = 'Special Instruction';
+  final String txtEnterSplInstruction = 'Enter your special instructions...';
+  final String txtAdd = 'Add';
 }

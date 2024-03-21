@@ -27,8 +27,6 @@ import 'package:resto_user/features/home/data/repository/product_repository_impl
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 import 'package:resto_user/features/home/domain/repository/offer_repository.dart';
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
-import 'package:resto_user/features/map/data/repository/map_repository_impl.dart';
-import 'package:resto_user/features/map/domain/repository/map_repository.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source_impl.dart';
 import 'package:resto_user/features/chat/data/data%20source/message_data_source.dart';
@@ -80,7 +78,6 @@ void setupDependencies() {
 
   ///Profile
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
-  getIt.registerSingleton<MapAPIRepository>(MapAPIRepositoryIMPL());
   getIt.registerSingleton<UserFirestoreDataSource>(
       UserFirestoreDataSourceImpl());
 
@@ -93,7 +90,6 @@ void setupDependencies() {
   getIt.registerSingleton<ToggleSwitchBloc>(ToggleSwitchBloc());
 
   /// Set all the Bloc dependencies using this function
-  setupBlocDependencies();
   getIt.registerSingleton<MessageDataSource>(MessageDataSourceImpl());
   getIt.registerSingleton<MessageRepository>(
       MessageRepositoryImpl(GetIt.I.get<MessageDataSource>()));
