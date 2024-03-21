@@ -6,7 +6,8 @@ import 'package:resto_user/features/authentication/presentation/page/otp_verify_
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
-import 'package:resto_user/features/checkout/presentation/bloc/toggle_switch/toggle_switch_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/pages/order_placed_page.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
@@ -19,7 +20,7 @@ import 'package:resto_user/features/home/presentation/bloc/category_bloc/categor
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 
 final router = GoRouter(
-  initialLocation: HomePage.routePath,
+  initialLocation: CheckOutPage.routePath,
   routes: [
     GoRoute(
       path: CartPage.routPath,
@@ -68,7 +69,7 @@ final router = GoRouter(
             create: (context) => GetIt.I.get<CouponBloc>(),
           ),
           BlocProvider(
-            create: (context) => GetIt.I.get<ToggleSwitchBloc>(),
+            create: (context) => GetIt.I.get<PaymentBloc>(),
           ),
         ],
         child: const CheckOutPage(),
@@ -81,6 +82,10 @@ final router = GoRouter(
     GoRoute(
       path: OtpVerificationPage.routePath,
       builder: (context, state) => const OtpVerificationPage(),
+    ),
+    GoRoute(
+      path: OrderPlacedPage.routePath,
+      builder: (context, state) => const OrderPlacedPage(),
     ),
   ],
 );
