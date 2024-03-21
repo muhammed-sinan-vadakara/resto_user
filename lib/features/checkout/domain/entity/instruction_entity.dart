@@ -7,9 +7,6 @@ part 'instruction_entity.freezed.dart';
 class InstructionEntity with _$InstructionEntity {
   const factory InstructionEntity({
     required String message,
-    required String senderId,
-    required String receiverId,
-    required DateTime timestamp,
   }) = _InstructionEntity;
 
   factory InstructionEntity.fromJson(Map<String, dynamic> json) =>
