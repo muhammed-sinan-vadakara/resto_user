@@ -7,6 +7,7 @@ import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/pages/order_placed_page.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
@@ -81,6 +82,10 @@ final router = GoRouter(
     GoRoute(
       path: OtpVerificationPage.routePath,
       builder: (context, state) => const OtpVerificationPage(),
+    ),
+    GoRoute(
+      path: OrderPlacedPage.routePath,
+      builder: (context, state) => const OrderPlacedPage(),
     ),
   ],
 );

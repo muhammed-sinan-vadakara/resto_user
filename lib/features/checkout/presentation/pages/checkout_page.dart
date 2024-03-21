@@ -13,6 +13,7 @@ import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/paym
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc_state.dart';
 import 'package:resto_user/features/checkout/presentation/pages/coupons_page.dart';
+import 'package:resto_user/features/checkout/presentation/pages/order_placed_page.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/address_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/bill_details_widget.dart';
 import 'package:resto_user/features/checkout/presentation/widgets/box_widget.dart';
@@ -127,7 +128,7 @@ class CheckOutPage extends HookWidget {
             text: constants.txtConfirmOrder,
             onPressed: () {
               onChanged.value
-                  ? context.push(CouponsPage.routePath)
+                  ? context.push(OrderPlacedPage.routePath)
                   : context.read<PaymentBloc>().add(PaymentMakeEvent());
             },
           );
