@@ -13,8 +13,8 @@ class LoginWithPhoneNumberEvent extends AuthenticationEvent {
   final String phoneNumber;
 }
 
-class LoginWithOtpEvent extends AuthenticationEvent {
-  LoginWithOtpEvent({required this.otp});
+class OtpVerificationEvent extends AuthenticationEvent {
+  OtpVerificationEvent({required this.otp});
   final String otp;
 }
 
@@ -44,4 +44,6 @@ class AuthenticationBloc
     Future.sync(() =>
         MyApp.navigatorKey.currentContext?.go(OtpVerificationPage.routePath));
   }
+
+  // Future<void> OtpVerificationEvent()
 }
