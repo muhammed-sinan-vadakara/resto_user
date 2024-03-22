@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_bloc.dart';
@@ -34,4 +35,6 @@ void setupBlocDependencies() {
   getIt.registerSingleton<ChatBloc>(ChatBloc());
 
   getIt.registerSingleton<InstructionBloc>(InstructionBloc());
+
+  getIt.registerSingleton<AuthenticationBloc>(AuthenticationBloc());
 }

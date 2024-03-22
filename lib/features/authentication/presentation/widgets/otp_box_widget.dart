@@ -23,7 +23,12 @@ class OtpBoxWidget extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(4.0),
-        child: textFields,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
+          child: textFields,
+        ),
       ),
     );
   }

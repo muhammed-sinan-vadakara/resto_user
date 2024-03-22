@@ -104,7 +104,9 @@ class LoginPage extends HookWidget {
                 ),
               ],
             ),
-            onPressed: () {},
+            onPressed: () {
+              context.read<AuthenticationBloc>().add(LoginWithGoogleEvent());
+            },
           ),
           SizedBox(
             height: AppTheme.of(context).spaces.space_200,

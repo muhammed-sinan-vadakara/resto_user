@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:resto_user/features/authentication/presentation/page/details_adding_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/login_page.dart';
+import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
@@ -14,6 +15,7 @@ import 'package:resto_user/main.dart';
 
 final router = GoRouter(
   initialLocation: LoginPage.routePath,
+  // initialLocation: OtpVerificationPage.routePath,
   navigatorKey: MyApp.navigatorKey,
   routes: [
     GoRoute(
@@ -45,14 +47,17 @@ final router = GoRouter(
     ),
     GoRoute(
       path: OtpVerificationPage.routePath,
-      builder: (context, state) => const OtpVerificationPage(),
+      builder: (context, state) => BlocProvider<AuthenticationBloc>(
+        create: (context) => AuthenticationBloc(),
+        child: const OtpVerificationPage(),
+      ),
     ),
     GoRoute(
       path: DetailsAddingPage.routePath,
       builder: (context, state) => const DetailsAddingPage(),
     ),
     GoRoute(
-      path: HomePage.routPath,
+      path: HomePage.routePath,
       builder: (context, state) => BlocProvider<CategoryBloc>(
         create: (context) => CategoryBloc(),
         child: const HomePage(),

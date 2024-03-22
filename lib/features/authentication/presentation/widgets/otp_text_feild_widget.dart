@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class OtpTextFeildWidget extends StatelessWidget {
   final TextEditingController textController;
@@ -13,13 +14,19 @@ class OtpTextFeildWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      // onChanged: (value) {
-      // if (value.length > 0) {
-      // FocusScope.of(context).nextFocus();
-      // }
-      // },
-      // showCursor: true,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          FocusScope.of(context).nextFocus();
+        } else {
+          FocusScope.of(context).previousFocus();
+        }
+      },
+      showCursor: true,
       keyboardType: keyboardType,
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        LengthLimitingTextInputFormatter(1),
+      ],
       controller: textController,
       decoration: InputDecoration(
         border: InputBorder.none,

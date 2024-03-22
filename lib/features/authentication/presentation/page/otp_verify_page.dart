@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/constants/authentication/authentication_constant.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
+import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/elavated_button_widget.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/otp_box_widget.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/otp_text_feild_widget.dart';
@@ -171,7 +173,11 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
             color: theme.colors.secondary,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          context.read<AuthenticationBloc>().add(OtpVerificationEvent(
+                otp: otp,
+              ));
+        },
       ),
     );
   }

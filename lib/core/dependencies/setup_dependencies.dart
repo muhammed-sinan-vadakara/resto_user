@@ -31,12 +31,6 @@ import 'package:resto_user/features/home/data/repository/product_repository_impl
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 import 'package:resto_user/features/home/domain/repository/offer_repository.dart';
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
-import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
-import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source_impl.dart';
-import 'package:resto_user/features/chat/data/data%20source/message_data_source.dart';
-import 'package:resto_user/features/chat/data/data%20source/message_data_source_impl.dart';
-import 'package:resto_user/features/chat/data/repository/message_repository_impl.dart';
-import 'package:resto_user/features/chat/domain/repository/message_repository.dart';
 
 final getIt = GetIt.instance;
 
@@ -94,4 +88,6 @@ void setupDependencies() {
       datasource: GetIt.I.get(),
       detailsAddDataSource: GetIt.I.get(),
       detailsAddStoragedataSource: GetIt.I.get()));
+
+  setupBlocDependencies();
 }
