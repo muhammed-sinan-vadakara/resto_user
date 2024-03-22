@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:resto_user/features/history/data/model/order_item.dart';
+import 'package:resto_user/features/history/domain/entity/order_item_entity.dart';
 part 'my_order_entity.freezed.dart';
 
 @freezed
@@ -9,6 +9,6 @@ class MyOrderEntity with _$MyOrderEntity {
     required String uid,
     required String location,
     required String time,
-    required List<OrderItemModel> items,
+    required List<OrderItemEntity> items,
   }) = _MyOrderEntity;
 }
