@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:resto_user/core/constants/history/my_order_page_constants.dart';
+import 'package:resto_user/core/constants/my_order/my_order_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/history/presentation/widgets/product_details_widget.dart';
 

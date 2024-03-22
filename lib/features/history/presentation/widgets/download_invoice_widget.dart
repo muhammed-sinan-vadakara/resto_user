@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:resto_user/core/constants/history/order_summary_page.dart';
+import 'package:resto_user/core/constants/my_order/order_summary_page.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
 class DownloadInvoiceWidget extends StatelessWidget {

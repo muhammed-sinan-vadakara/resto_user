@@ -22,5 +22,6 @@ void setupBlocDependencies() {
   ///Product feature blocs
    getIt.registerSingleton<ProductBloc>(ProductBloc());
   ProductRepoImpl(dataSource: GetIt.I.get());
+  ///History feature blocs
   
 }
