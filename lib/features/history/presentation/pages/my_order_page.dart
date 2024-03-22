@@ -8,6 +8,7 @@ import 'package:resto_user/features/history/presentation/widgets/history_tapbar_
 import 'package:resto_user/features/history/presentation/widgets/order_tapbar_widget.dart';
 
 class MyOrderPage extends StatelessWidget {
+  static const routePath = "/myOrder";
   const MyOrderPage({super.key});
 
   @override
