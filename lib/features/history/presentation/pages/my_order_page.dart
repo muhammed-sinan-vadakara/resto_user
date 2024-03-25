@@ -50,7 +50,9 @@ class MyOrderPage extends StatelessWidget {
                 width: MediaQuery.sizeOf(context).width,
                 height: MediaQuery.sizeOf(context).height / 1.174,
                 child: TabBarView(
-                    children: [OrderTapbarWidget(), HistoryTapbarWidget()]),
+                    children: [
+                      OrderTapbarWidget(),
+                     HistoryTapbarWidget()]),
               )
             ],
           ),

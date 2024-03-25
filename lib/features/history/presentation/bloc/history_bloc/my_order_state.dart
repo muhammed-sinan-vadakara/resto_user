@@ -6,6 +6,6 @@ part 'my_order_state.freezed.dart';
 class MyOrderState with _$MyOrderState {
   factory MyOrderState({
     required List<MyOrderEntity>? orders,
-    required String error,
+    required String? error,
   }) = _MyOrderState;
 }

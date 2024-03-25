@@ -6,6 +6,7 @@ import 'package:resto_user/features/authentication/presentation/page/otp_verify_
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
+import 'package:resto_user/features/history/presentation/bloc/history_bloc/my_order_bloc.dart';
 import 'package:resto_user/features/history/presentation/pages/my_order_page.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
@@ -28,7 +29,9 @@ final router = GoRouter(
     ),
     GoRoute(
       path: MyOrderPage.routePath,
-      builder: (context, state) => const MyOrderPage(),
+      builder: (context, state) => BlocProvider<MyOrderBloc>(
+        create: (context) => MyOrderBloc(),child: const MyOrderPage(),),
+       
     ),
     GoRoute(
       path: Map.routePath,
