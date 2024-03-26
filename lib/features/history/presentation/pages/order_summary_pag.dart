@@ -20,21 +20,19 @@ class OrderSummaryPage extends StatelessWidget {
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: EdgeInsets.only(left: appTheme.spaces.space_300),
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  constants.txtResto,
-                  style: appTheme.typography.h700,
-                ),
-                Text(
-                  constants.txtAddress,
-                  style: appTheme.typography.h300,
-                ),
-                const DownloadInvoiceWidget(),
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                constants.txtResto,
+                style: appTheme.typography.h700,
+              ),
+              Text(
+                constants.txtAddress,
+                style: appTheme.typography.h300,
+              ),
+              const DownloadInvoiceWidget(),
+            ],
           ),
         )
       ]),

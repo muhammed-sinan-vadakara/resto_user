@@ -20,7 +20,6 @@ class OrderTapbarWidget extends HookWidget {
       return null;
     },[]);
     final appTheme = AppTheme.of(context);
-    // final constants = GetIt.I.get<MyOrderPageConstants>();
     return Scaffold(
       backgroundColor: appTheme.colors.secondary,
       body: SingleChildScrollView(
@@ -33,7 +32,7 @@ class OrderTapbarWidget extends HookWidget {
               child: BlocBuilder<MyOrderBloc, MyOrderState>(
                   builder: (context, state) {
                 if (state.orders == null) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {

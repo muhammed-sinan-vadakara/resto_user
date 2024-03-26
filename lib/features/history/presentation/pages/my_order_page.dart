@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/my_order/my_order_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
@@ -46,10 +45,10 @@ class MyOrderPage extends StatelessWidget {
                       )
                     ]),
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.sizeOf(context).width,
                 height: MediaQuery.sizeOf(context).height / 1.174,
-                child: TabBarView(
+                child: const TabBarView(
                     children: [
                       OrderTapbarWidget(),
                      HistoryTapbarWidget()]),
