@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:resto_user/features/history/presentation/bloc/history_bloc/my_order_bloc.dart';
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
 import 'package:resto_user/features/chat/presentation/bloc/chat_bloc.dart';
@@ -27,6 +28,9 @@ void setupBlocDependencies() {
   ///Product feature blocs
   getIt.registerSingleton<ProductBloc>(ProductBloc());
   ProductRepoImpl(dataSource: GetIt.I.get());
+  ///History feature blocs
+  getIt.registerSingleton<MyOrderBloc>(MyOrderBloc());
+  
 
   ///Cart feature blocs
   getIt.registerSingleton<CartBloc>(CartBloc());

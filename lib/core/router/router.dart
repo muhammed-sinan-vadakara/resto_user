@@ -9,6 +9,8 @@ import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart'
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/pages/order_placed_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc.dart';
+import 'package:resto_user/features/history/presentation/bloc/history_bloc/my_order_bloc.dart';
+import 'package:resto_user/features/history/presentation/pages/my_order_page.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
@@ -21,13 +23,18 @@ import 'package:resto_user/features/home/presentation/bloc/category_bloc/categor
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 
 final router = GoRouter(
-  initialLocation: HomePage.routePath,
+  initialLocation: MyOrderPage.routePath,
   routes: [
     GoRoute(
       path: CartPage.routPath,
       builder: (context, state) => BlocProvider<CartBloc>(
-          create: (context) => GetIt.I.get<CartBloc>(),
-          child: const CartPage()),
+          create: (context) => CartBloc(), child: const CartPage()),
+    ),
+    GoRoute(
+      path: MyOrderPage.routePath,
+      builder: (context, state) => BlocProvider<MyOrderBloc>(
+        create: (context) => MyOrderBloc(),child: const MyOrderPage(),),
+       
     ),
     GoRoute(
       path: Map.routePath,

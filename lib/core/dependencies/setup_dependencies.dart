@@ -5,6 +5,8 @@ import 'package:resto_user/core/constants/checkout_page/checkout_page_constants.
 import 'package:resto_user/core/constants/home_page/home_constants.dart';
 import 'package:resto_user/core/constants/chat_page_constants/chat_page_constants.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
+import 'package:resto_user/core/constants/my_order/my_order_page_constants.dart';
+import 'package:resto_user/core/constants/my_order/order_summary_page.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
 import 'package:resto_user/core/dependencies/bloc_dependencies.dart';
 import 'package:resto_user/core/router/router.dart';
@@ -17,6 +19,10 @@ import 'package:resto_user/features/checkout/data/data_source/instruction_firest
 import 'package:resto_user/features/checkout/data/repository/coupon_repository_impl.dart';
 import 'package:resto_user/features/checkout/data/repository/instruction_repository_impl.dart';
 import 'package:resto_user/features/checkout/domain/repository/coupon_repository.dart';
+import 'package:resto_user/features/history/data/datasource/my_order_datasource.dart';
+import 'package:resto_user/features/history/data/datasource/my_order_datasource_impl.dart';
+import 'package:resto_user/features/history/data/repository/my_order_repository_impl.dart';
+import 'package:resto_user/features/history/domain/repository/my_order_repository.dart';
 import 'package:resto_user/features/checkout/domain/repository/instruction_repository.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource_impl.dart';
@@ -93,6 +99,13 @@ void setupDependencies() {
       CouponRepositoryImpl(datasource: GetIt.I.get()));
   getIt.registerSingleton<CheckoutPageConstants>(CheckoutPageConstants());
 
+  ///My Order
+
+  getIt.registerSingleton<MyOrderPageConstants>(MyOrderPageConstants());
+  getIt.registerSingleton<OrderSummaryPageConstants>(
+      OrderSummaryPageConstants());
+  getIt.registerSingleton<MyOrderDataSource>(MyOrderDatasourceImpl());
+  getIt.registerSingleton<MyOrderRepository>(MyOrderRepositoryImpl(dataSource: GetIt.I.get()));
   /// Chat
   getIt.registerSingleton<MessageDataSource>(MessageDataSourceImpl());
   getIt.registerSingleton<MessageRepository>(
