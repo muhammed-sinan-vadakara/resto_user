@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:resto_user/core/constants/checkout_page/checkout_page_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
 class BillDetailsWidget extends StatelessWidget {
@@ -6,6 +8,7 @@ class BillDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final constants = GetIt.I.get<CheckoutPageConstants>();
     final theme = AppTheme.of(context);
     return Container(
       decoration: BoxDecoration(
@@ -22,7 +25,7 @@ class BillDetailsWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Subtotal',
+                  constants.txtSubTotal,
                   style: theme.typography.h600,
                 ),
                 const Expanded(child: SizedBox()),
@@ -38,7 +41,7 @@ class BillDetailsWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'GST',
+                  constants.txtGst,
                   style: theme.typography.h300,
                 ),
                 const Expanded(child: SizedBox()),
@@ -54,7 +57,7 @@ class BillDetailsWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Delivery fee',
+                  constants.txtDeliveryFee,
                   style: theme.typography.h300,
                 ),
                 const Expanded(child: SizedBox()),
@@ -76,7 +79,7 @@ class BillDetailsWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Grand Total',
+                  constants.txtGrandTotal,
                   style: theme.typography.h700,
                 ),
                 const Expanded(child: SizedBox()),

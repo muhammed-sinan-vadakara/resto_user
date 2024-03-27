@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
-import 'package:resto_user/features/home/presentation/widgets/add_cart_button_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/addons_view_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/types_view_widget.dart';
 import 'package:resto_user/features/profile/presentation/widgets/sized_box_16.dart';
@@ -16,7 +15,6 @@ class OverviewBottomSheetWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
 
-    final assets = GetIt.I.get<AppAssetConstants>();
     return SizedBox(
       width: MediaQuery.sizeOf(context).width,
       child: SingleChildScrollView(

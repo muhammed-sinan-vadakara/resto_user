@@ -1,10 +1,8 @@
-**/*.freezed.dart
-
 pubspec.lock
 
-#Generated code
 **/*.g.dart
 **/*.freezed.dart
+**/*.swift
 
 # Miscellaneous
 *.class

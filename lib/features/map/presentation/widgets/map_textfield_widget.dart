@@ -15,11 +15,15 @@ class MapTextFieldWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: TextField(
         controller: searchcontroller,
+        textCapitalization: TextCapitalization.words,
+        onChanged: (value) {},
         decoration: InputDecoration(
           suffixIcon: Padding(
             padding: const EdgeInsets.all(10),
-            child: SvgPicture.asset(
-              assets.icSearch,
+            child: InkWell(
+              child: SvgPicture.asset(
+                assets.icSearch,
+              ),
             ),
           ),
           filled: true,

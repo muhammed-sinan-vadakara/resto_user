@@ -6,9 +6,7 @@ import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/widgets/cart_app_bar_widget.dart';
 
-
 class CartPage extends HookWidget {
-
   static const routPath = '/cart';
   const CartPage({super.key});
 
@@ -35,7 +33,6 @@ class CartPage extends HookWidget {
             SizedBox(
               height: theme.spaces.space_400,
             ),
-           
             ListView.separated(
               separatorBuilder: (context, index) => SizedBox(
                 height: theme.spaces.space_200,
