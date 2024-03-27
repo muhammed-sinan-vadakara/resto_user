@@ -12,7 +12,6 @@ class DetailsAddingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<AppAssetConstants>();
-    final theme = AppTheme.of(context);
 
     return Scaffold(
       body: SafeArea(
@@ -42,8 +41,8 @@ class DetailsAddingPage extends StatelessWidget {
                   ),
                   child: Text(
                     "Enter Your Name",
-                    style: theme.typography.uiSemibold
-                        .copyWith(color: theme.colors.text),
+                    style: context.typography.uiSemibold
+                        .copyWith(color: context.colors.text),
                   ),
                 ),
               ],
@@ -52,11 +51,11 @@ class DetailsAddingPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: AuthElevatedButtonWidget(
-        colours: theme.colors.primary,
+        colours: context.colors.primary,
         text: Text(
           "Save",
-          style: theme.typography.uiSemibold.copyWith(
-            color: theme.colors.secondary,
+          style: context.typography.uiSemibold.copyWith(
+            color: context.colors.secondary,
           ),
         ),
         onPressed: () {},

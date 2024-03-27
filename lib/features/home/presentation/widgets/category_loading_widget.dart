@@ -7,41 +7,40 @@ class LoadingCategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_75),
+          padding: EdgeInsets.symmetric(horizontal: context.spaces.space_75),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: theme.spaces.space_500,
-                height: theme.spaces.space_600,
+                width: context.spaces.space_500,
+                height: context.spaces.space_600,
                 child: Shimmer.fromColors(
-                  baseColor: theme.colors.textInverse,
-                  highlightColor: theme.colors.textSubtle,
+                  baseColor: context.colors.textInverse,
+                  highlightColor: context.colors.textSubtle,
                   child: const CircleAvatar(),
                 ),
               ),
               SizedBox(
-                height: theme.spaces.space_75,
+                height: context.spaces.space_75,
               ),
               Container(
                 margin:
-                    EdgeInsets.symmetric(horizontal: theme.spaces.space_150),
-                width: theme.spaces.space_700,
-                height: theme.spaces.space_150,
+                    EdgeInsets.symmetric(horizontal: context.spaces.space_150),
+                width: context.spaces.space_700,
+                height: context.spaces.space_150,
                 child: Shimmer.fromColors(
-                  baseColor: theme.colors.textInverse,
-                  highlightColor: theme.colors.textSubtle,
+                  baseColor: context.colors.textInverse,
+                  highlightColor: context.colors.textSubtle,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: theme.colors.primary,
+                        color: context.colors.primary,
                         borderRadius:
-                            BorderRadius.circular(theme.spaces.space_50)),
+                            BorderRadius.circular(context.spaces.space_50)),
                   ),
                 ),
               ),

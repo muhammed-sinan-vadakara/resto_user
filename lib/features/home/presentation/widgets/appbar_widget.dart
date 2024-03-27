@@ -11,15 +11,14 @@ class HomeAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     return AppBar(
-      backgroundColor: theme.colors.secondary,
+      backgroundColor: context.colors.secondary,
       scrolledUnderElevation: 0,
       automaticallyImplyLeading: false,
       elevation: 0,
       title: Padding(
-        padding: EdgeInsets.only(left: theme.spaces.space_100),
+        padding: EdgeInsets.only(left: context.spaces.space_100),
         child: Row(
           children: [
             InkWell(
@@ -31,18 +30,18 @@ class HomeAppBarWidget extends StatelessWidget {
                   ),
                 )),
             SizedBox(
-              width: theme.spaces.space_100 * 2,
+              width: context.spaces.space_100 * 2,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Kozhikode',
-                  style: theme.typography.h800,
+                  style: context.typography.h800,
                 ),
                 Text(
                   "Palazhi",
-                  style: theme.typography.h100,
+                  style: context.typography.h100,
                 ),
               ],
             ),
@@ -52,15 +51,15 @@ class HomeAppBarWidget extends StatelessWidget {
       actions: [
         Ink(
           child: InkWell(
-            borderRadius: BorderRadius.circular(theme.spaces.space_100),
+            borderRadius: BorderRadius.circular(context.spaces.space_100),
             onTap: () {},
             child: Padding(
-              padding: EdgeInsets.all(theme.spaces.space_200),
+              padding: EdgeInsets.all(context.spaces.space_200),
               child: SvgPicture.asset(
                 assets.icNotification,
-                height: theme.spaces.space_200,
+                height: context.spaces.space_200,
                 colorFilter:
-                    ColorFilter.mode(theme.colors.text, BlendMode.srcATop),
+                    ColorFilter.mode(context.colors.text, BlendMode.srcATop),
               ),
             ),
           ),

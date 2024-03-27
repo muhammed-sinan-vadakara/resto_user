@@ -14,7 +14,7 @@ class OrderPlacedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<CheckoutPageConstants>();
-    final theme = AppTheme.of(context);
+
     return Scaffold(
         body: Center(
           child: Column(
@@ -29,15 +29,15 @@ class OrderPlacedPage extends StatelessWidget {
               ),
               Text(
                 constants.txtOrderPlaced,
-                style: theme.typography.h800,
+                style: context.typography.h800,
               ),
               SizedBox(
-                height: theme.spaces.space_100,
+                height: context.spaces.space_100,
               ),
               Text(
                 constants.txtOrderPlacedText,
-                style: theme.typography.h500
-                    .copyWith(color: theme.colors.textDisabled),
+                style: context.typography.h500
+                    .copyWith(color: context.colors.textDisabled),
               ),
             ],
           ),

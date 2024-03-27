@@ -10,26 +10,25 @@ class OrderSummaryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     final constants = GetIt.I.get<OrderSummaryPageConstants>();
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(appTheme.spaces.space_700),
+          preferredSize: Size.fromHeight(context.spaces.space_700),
           child: AppBarWidget(title: constants.txtOrderSummary)),
-      backgroundColor: appTheme.colors.secondary,
+      backgroundColor: context.colors.secondary,
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
-          padding: EdgeInsets.only(left: appTheme.spaces.space_300),
+          padding: EdgeInsets.only(left: context.spaces.space_300),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 constants.txtResto,
-                style: appTheme.typography.h700,
+                style: context.typography.h700,
               ),
               Text(
                 constants.txtAddress,
-                style: appTheme.typography.h300,
+                style: context.typography.h300,
               ),
               const DownloadInvoiceWidget(),
             ],

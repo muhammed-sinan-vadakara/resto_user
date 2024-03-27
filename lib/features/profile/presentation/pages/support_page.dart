@@ -12,12 +12,12 @@ class SupportPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     final constants = GetIt.I.get<ProfilePageConstants>();
+
     return Scaffold(
-      backgroundColor: appTheme.colors.secondary,
+      backgroundColor: context.colors.secondary,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(appTheme.spaces.space_700),
+          preferredSize: Size.fromHeight(context.spaces.space_700),
           child: AppBarWidget(
             title: constants.txtFeedbacks,
             actionButtonName: constants.btnAdd,
@@ -29,39 +29,39 @@ class SupportPage extends StatelessWidget {
           )),
       body: Padding(
         padding: EdgeInsets.only(
-            left: appTheme.spaces.space_300,
-            right: appTheme.spaces.space_300,
-            top: appTheme.spaces.space_200),
+            left: context.spaces.space_300,
+            right: context.spaces.space_300,
+            top: context.spaces.space_200),
         child: ListView.separated(
             itemBuilder: (context, index) {
               return Container(
-                padding: EdgeInsets.all(appTheme.spaces.space_200),
+                padding: EdgeInsets.all(context.spaces.space_200),
                 width: MediaQuery.sizeOf(context).width,
                 decoration: BoxDecoration(
-                    border: Border.all(color: appTheme.colors.textDisabled),
+                    border: Border.all(color: context.colors.textDisabled),
                     borderRadius:
-                        BorderRadius.circular(appTheme.spaces.space_100)),
+                        BorderRadius.circular(context.spaces.space_100)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Bad food',
-                      style: appTheme.typography.h400,
+                      style: context.typography.h400,
                     ),
                     SizedBox(
-                      height: appTheme.spaces.space_100,
+                      height: context.spaces.space_100,
                     ),
                     Text(
                       'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
-                      style: appTheme.typography.ui,
+                      style: context.typography.ui,
                     ),
                     SizedBox(
-                      height: appTheme.spaces.space_100,
+                      height: context.spaces.space_100,
                     ),
                     Text(
                       TimeOfDay.now().format(context),
-                      style: appTheme.typography.small
-                          .copyWith(color: appTheme.colors.textSubtlest),
+                      style: context.typography.small
+                          .copyWith(color: context.colors.textSubtlest),
                     )
                   ],
                 ),

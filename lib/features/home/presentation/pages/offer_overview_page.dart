@@ -18,7 +18,6 @@ class OfferOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     final constants = GetIt.I.get<HomeConstants>();
 
     return Scaffold(
@@ -28,19 +27,19 @@ class OfferOverviewPage extends StatelessWidget {
             TopImageWidget(imagePath: entity!.imagePath),
             Padding(
               padding: EdgeInsets.all(
-                theme.spaces.space_300,
+                context.spaces.space_300,
               ),
               child: Text(
                 textAlign: TextAlign.justify,
                 entity!.description,
-                style: theme.typography.h100.copyWith(
-                  color: theme.colors.text,
+                style: context.typography.h100.copyWith(
+                  color: context.colors.text,
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: theme.spaces.space_300,
+                horizontal: context.spaces.space_300,
               ),
               child: TitleWidget(title: constants.txtProducts),
             ),
