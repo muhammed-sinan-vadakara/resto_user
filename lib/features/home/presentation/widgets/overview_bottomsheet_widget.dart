@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
 import 'package:resto_user/features/home/presentation/widgets/addons_view_widget.dart';
@@ -9,6 +7,7 @@ import 'package:resto_user/features/profile/presentation/widgets/sized_box_16.da
 
 class OverviewBottomSheetWidget extends StatelessWidget {
   final ProductEntity entity;
+
   const OverviewBottomSheetWidget({super.key, required this.entity});
 
   @override

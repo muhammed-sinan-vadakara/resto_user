@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
@@ -7,16 +5,17 @@ import 'package:resto_user/core/themes/app_theme.dart';
 class CheckboxWidget extends HookWidget {
   final bool isChecked;
   final VoidCallback? onTap;
+
   const CheckboxWidget({
     super.key,
     this.isChecked = false,
     this.onTap,
   });
+
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
+
     return GestureDetector(
       onTap: onTap,
       child: Container(

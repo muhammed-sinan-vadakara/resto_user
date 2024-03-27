@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
-import 'package:resto_user/features/profile/presentation/widgets/sized_box_16.dart';
 
 class AddCartButtonWidget extends StatelessWidget {
   const AddCartButtonWidget({super.key});
@@ -14,6 +11,7 @@ class AddCartButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final assets = GetIt.I.get<AppAssetConstants>();
     final theme = AppTheme.of(context);
+
     return Container(
       width: MediaQuery.sizeOf(context).width,
       height: 60,
@@ -24,7 +22,7 @@ class AddCartButtonWidget extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Color(0xffffe6e6),
+                color: const Color(0xffffe6e6),
                 borderRadius: BorderRadius.circular(theme.spaces.space_100),
               ),
               child: Ink(

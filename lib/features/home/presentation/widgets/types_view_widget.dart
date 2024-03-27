@@ -12,10 +12,9 @@ class TypesViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int selectedOption = 1;
-    bool isSelected = false;
     final theme = AppTheme.of(context);
     final constants = GetIt.I.get<HomeConstants>();
+
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: theme.spaces.space_300,
