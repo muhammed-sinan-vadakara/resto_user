@@ -1,29 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:resto_user/core/constants/checkout_page/checkout_page_constants.dart';
+import 'package:resto_user/core/constants/authentication/authentication_constant.dart';
 import 'package:resto_user/core/constants/home_page/home_constants.dart';
 import 'package:resto_user/core/constants/chat_page_constants/chat_page_constants.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
-import 'package:resto_user/core/constants/my_order/my_order_page_constants.dart';
-import 'package:resto_user/core/constants/my_order/order_summary_page.dart';
 import 'package:resto_user/core/constants/profile/profile_page_constants.dart';
 import 'package:resto_user/core/dependencies/bloc_dependencies.dart';
 import 'package:resto_user/core/router/router.dart';
 import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
-import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource.dart';
-import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource_impl.dart';
-import 'package:resto_user/features/checkout/data/data_source/instruction_firestore_database.dart';
-import 'package:resto_user/features/checkout/data/data_source/instruction_firestore_datasource_impl.dart';
-import 'package:resto_user/features/checkout/data/repository/coupon_repository_impl.dart';
-import 'package:resto_user/features/checkout/data/repository/instruction_repository_impl.dart';
-import 'package:resto_user/features/checkout/domain/repository/coupon_repository.dart';
-import 'package:resto_user/features/history/data/datasource/my_order_datasource.dart';
-import 'package:resto_user/features/history/data/datasource/my_order_datasource_impl.dart';
-import 'package:resto_user/features/history/data/repository/my_order_repository_impl.dart';
-import 'package:resto_user/features/history/domain/repository/my_order_repository.dart';
-import 'package:resto_user/features/checkout/domain/repository/instruction_repository.dart';
+import 'package:resto_user/features/authentication/data/datasource/authentication_datasource.dart';
+import 'package:resto_user/features/authentication/data/datasource/authentication_datasource_impl.dart';
+import 'package:resto_user/features/authentication/data/datasource/details_add_firestore_datasource.dart';
+import 'package:resto_user/features/authentication/data/datasource/details_add_firestore_datasource_impl.dart';
+import 'package:resto_user/features/authentication/data/datasource/details_add_storage_datasorce_impl.dart';
+import 'package:resto_user/features/authentication/data/datasource/details_add_storage_datasource.dart';
+import 'package:resto_user/features/authentication/data/repositoies/auth_repositoies_impl.dart';
+import 'package:resto_user/features/authentication/domian/repositories/auth_repository.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource.dart';
 import 'package:resto_user/features/home/data/data_source/category_firestore_datasource_impl.dart';
 import 'package:resto_user/features/home/data/data_source/offer_firestore_datasource.dart';
@@ -36,6 +31,7 @@ import 'package:resto_user/features/home/data/repository/product_repository_impl
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 import 'package:resto_user/features/home/domain/repository/offer_repository.dart';
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
+
 import 'package:resto_user/features/map/data/datasource/geocode_api_datasource.dart';
 import 'package:resto_user/features/map/data/datasource/geocode_api_datasource_impl.dart';
 import 'package:resto_user/features/map/data/datasource/places_api_datasource.dart';
@@ -44,6 +40,7 @@ import 'package:resto_user/features/map/data/repository/map_repository_impl.dart
 import 'package:resto_user/features/map/domain/repository/map_repository.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source_impl.dart';
+
 
 final getIt = GetIt.instance;
 
@@ -90,6 +87,7 @@ void setupDependencies() {
 
   ///Profile
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
+
   getIt.registerSingleton<UserFirestoreDataSource>(
       UserFirestoreDataSourceImpl());
 
@@ -106,6 +104,21 @@ void setupDependencies() {
     latlongdatasource: GetIt.I.get<GeocodeAPIDataSource>(),
     placedatasource: GetIt.I.get<PlacesAPIDataSource>(),
   ));
+
+
+  //Authentication
+  getIt.registerSingleton<AuthenticationConstant>(AuthenticationConstant());
+  getIt.registerSingleton<FirebaseAuthDataSource>(
+      FirebaseAuthDataSourceImpl(FirebaseAuth.instance));
+  getIt.registerSingleton<DetailsAddStorageDataSource>(
+      DetailsAddStorageDataSourceImpl());
+  getIt.registerSingleton<DetailsAddFirestoreDatasource>(
+      DetailsAddFirestoreDatasourceImpl());
+  getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl(
+      datasource: GetIt.I.get(),
+      detailsAddDataSource: GetIt.I.get(),
+      detailsAddStoragedataSource: GetIt.I.get()));
+
 
   /// Set all the Bloc dependencies using this function
   setupBlocDependencies();
