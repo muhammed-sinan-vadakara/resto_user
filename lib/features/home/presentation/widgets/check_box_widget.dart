@@ -14,25 +14,23 @@ class CheckboxWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: theme.spaces.space_100 * 1.8,
-        height: theme.spaces.space_100 * 1.8,
+        width: context.spaces.space_100 * 1.8,
+        height: context.spaces.space_100 * 1.8,
         decoration: BoxDecoration(
-          color: isChecked ? theme.colors.secondary : Colors.transparent,
+          color: isChecked ? context.colors.secondary : Colors.transparent,
           border: Border.all(
-            color: theme.colors.primary,
+            color: context.colors.primary,
             width: 1,
           ),
         ),
         child: isChecked
             ? Icon(
                 Icons.check,
-                size: theme.spaces.space_200,
-                color: theme.colors.primary,
+                size: context.spaces.space_200,
+                color: context.colors.primary,
               )
             : null,
       ),

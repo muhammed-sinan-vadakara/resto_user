@@ -12,14 +12,13 @@ class MyOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     final constants = GetIt.I.get<MyOrderPageConstants>();
 
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(appTheme.spaces.space_700),
+            preferredSize: Size.fromHeight(context.spaces.space_700),
             child: AppBarWidget(
               title: constants.txtMyOrder,
             )),
@@ -29,13 +28,13 @@ class MyOrderPage extends StatelessWidget {
               Material(
                 surfaceTintColor: Colors.transparent,
                 child: TabBar(
-                    indicatorColor: appTheme.colors.primary,
+                    indicatorColor: context.colors.primary,
                     indicatorSize: TabBarIndicatorSize.tab,
                     indicatorPadding: EdgeInsets.symmetric(
-                        horizontal: appTheme.spaces.space_300),
-                    labelColor: appTheme.colors.primary,
-                    unselectedLabelColor: appTheme.colors.text,
-                    labelStyle: appTheme.typography.h700,
+                        horizontal: context.spaces.space_300),
+                    labelColor: context.colors.primary,
+                    unselectedLabelColor: context.colors.text,
+                    labelStyle: context.typography.h700,
                     tabs: [
                       Tab(
                         text: constants.txtCurrent,
@@ -49,9 +48,7 @@ class MyOrderPage extends StatelessWidget {
                 width: MediaQuery.sizeOf(context).width,
                 height: MediaQuery.sizeOf(context).height / 1.174,
                 child: const TabBarView(
-                    children: [
-                      OrderTapbarWidget(),
-                     HistoryTapbarWidget()]),
+                    children: [OrderTapbarWidget(), HistoryTapbarWidget()]),
               )
             ],
           ),

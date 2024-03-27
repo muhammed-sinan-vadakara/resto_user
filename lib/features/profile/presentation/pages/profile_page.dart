@@ -18,17 +18,17 @@ class ProfilePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     final constants = GetIt.I.get<ProfilePageConstants>();
+
     return Scaffold(
-      backgroundColor: appTheme.colors.secondary,
+      backgroundColor: context.colors.secondary,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(appTheme.spaces.space_700),
+        preferredSize: Size.fromHeight(context.spaces.space_700),
         child: AppBarWidget(title: constants.txtProfile),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: appTheme.spaces.space_300),
+          padding: EdgeInsets.symmetric(horizontal: context.spaces.space_300),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,7 +38,7 @@ class ProfilePage extends HookWidget {
                 alignment: Alignment.center,
                 child: Text(
                   'Zinadine Zidane',
-                  style: appTheme.typography.h600,
+                  style: context.typography.h600,
                 ),
               ),
               const SizedBox32(),
@@ -53,13 +53,13 @@ class ProfilePage extends HookWidget {
                 onTap: () => context.push(SupportPage.routePath),
                 child: Text(
                   constants.txtSupport,
-                  style: appTheme.typography.h300,
+                  style: context.typography.h300,
                 ),
               ),
               const SizedBox32(),
               Text(
                 constants.txtLogout,
-                style: appTheme.typography.h300,
+                style: context.typography.h300,
               ),
             ],
           ),

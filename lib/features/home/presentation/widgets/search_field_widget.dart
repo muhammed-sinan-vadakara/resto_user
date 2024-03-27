@@ -11,31 +11,31 @@ class SearchFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<HomeConstants>();
+
     return TextField(
       controller: searchController,
       onChanged: (keyword) {},
-      cursorColor: theme.colors.text,
+      cursorColor: context.colors.text,
       decoration: InputDecoration(
         hintText: constants.txtSearch,
-        hintStyle: theme.typography.h400.copyWith(
-            fontWeight: FontWeight.w400, color: theme.colors.textSubtlest),
+        hintStyle: context.typography.h400.copyWith(
+            fontWeight: FontWeight.w400, color: context.colors.textSubtlest),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(theme.spaces.space_100),
-          borderSide: BorderSide(color: theme.colors.textSubtle, width: 1),
+          borderRadius: BorderRadius.circular(context.spaces.space_100),
+          borderSide: BorderSide(color: context.colors.textSubtle, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(theme.spaces.space_100),
-          borderSide: BorderSide(color: theme.colors.textSubtle, width: 1),
+          borderRadius: BorderRadius.circular(context.spaces.space_100),
+          borderSide: BorderSide(color: context.colors.textSubtle, width: 1),
         ),
         suffixIcon: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               assets.icSearch,
-              width: theme.spaces.space_250,
+              width: context.spaces.space_250,
             ),
           ],
         ),

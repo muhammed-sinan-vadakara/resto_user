@@ -28,7 +28,7 @@ class HomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
-    final theme = AppTheme.of(context);
+
     final constants = GetIt.I.get<HomeConstants>();
 
     useEffect(() {
@@ -46,25 +46,25 @@ class HomePage extends HookWidget {
     }, []);
 
     return Scaffold(
-      backgroundColor: theme.colors.secondary,
+      backgroundColor: context.colors.secondary,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(theme.spaces.space_700),
+        preferredSize: Size.fromHeight(context.spaces.space_700),
         child: Padding(
-          padding: EdgeInsets.only(right: theme.spaces.space_150),
+          padding: EdgeInsets.only(right: context.spaces.space_150),
           child: const HomeAppBarWidget(),
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+          padding: EdgeInsets.symmetric(horizontal: context.spaces.space_300),
           child: Column(
             children: [
               SizedBox(
-                height: theme.spaces.space_400,
+                height: context.spaces.space_400,
               ),
               SearchFieldWidget(searchController: searchController),
               SizedBox(
-                height: theme.spaces.space_400,
+                height: context.spaces.space_400,
               ),
               BlocBuilder<OfferBloc, OfferBlocState>(builder: (context, state) {
                 if (state.offers == null) {
@@ -75,16 +75,16 @@ class HomePage extends HookWidget {
                 );
               }),
               SizedBox(
-                height: theme.spaces.space_400,
+                height: context.spaces.space_400,
               ),
               TitleWidget(
                 title: constants.txtCategory,
               ),
               SizedBox(
-                height: theme.spaces.space_250,
+                height: context.spaces.space_250,
               ),
               SizedBox(
-                height: theme.spaces.space_100 * 10,
+                height: context.spaces.space_100 * 10,
                 child: BlocBuilder<CategoryBloc, CategoryBlocState>(
                     builder: (context, state) {
                   if (state.categories == null) {
@@ -95,13 +95,13 @@ class HomePage extends HookWidget {
                 }),
               ),
               SizedBox(
-                height: theme.spaces.space_250,
+                height: context.spaces.space_250,
               ),
               TitleWidget(
                 title: constants.txtItems,
               ),
               SizedBox(
-                height: theme.spaces.space_250,
+                height: context.spaces.space_250,
               ),
               BlocBuilder<ProductBloc, ProductBlocState>(
                   builder: (context, state) {

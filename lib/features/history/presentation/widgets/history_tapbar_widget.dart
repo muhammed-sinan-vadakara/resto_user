@@ -7,13 +7,12 @@ class HistoryTapbarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     return Scaffold(
-      backgroundColor: appTheme.colors.secondary,
+      backgroundColor: context.colors.secondary,
       body: Column(
         children: [
           SizedBox(
-            height: appTheme.spaces.space_200,
+            height: context.spaces.space_200,
           ),
           const HistoryOrdersListviewWidget(),
         ],

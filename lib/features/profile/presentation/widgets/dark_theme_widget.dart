@@ -11,14 +11,14 @@ class DarkThemeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     final constants = GetIt.I.get<ProfilePageConstants>();
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           constants.txtDarkTheme,
-          style: appTheme.typography.h300,
+          style: context.typography.h300,
         ),
         BlocBuilder<ToggleThemeBloc, bool>(
           builder: (context, state) => Switch(
@@ -26,8 +26,8 @@ class DarkThemeWidget extends StatelessWidget {
               Icons.circle,
               color: Colors.transparent,
             )),
-            activeColor: appTheme.colors.primary,
-            thumbColor: MaterialStatePropertyAll(appTheme.colors.primary),
+            activeColor: context.colors.primary,
+            thumbColor: MaterialStatePropertyAll(context.colors.primary),
             trackOutlineColor:
                 const MaterialStatePropertyAll(Colors.transparent),
             value: state,

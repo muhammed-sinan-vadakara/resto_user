@@ -13,7 +13,6 @@ class CouponWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     return ListView.builder(
       itemCount: entity.length,
       shrinkWrap: true,
@@ -53,15 +52,15 @@ class CouponWidget extends StatelessWidget {
           }
         }
         return Padding(
-          padding: EdgeInsets.symmetric(vertical: theme.spaces.space_150),
+          padding: EdgeInsets.symmetric(vertical: context.spaces.space_150),
           child: Container(
             decoration: BoxDecoration(
-              color: theme.colors.secondary,
-              boxShadow: [theme.boxShadow.secondary],
-              borderRadius: BorderRadius.circular(theme.spaces.space_150),
+              color: context.colors.secondary,
+              boxShadow: [context.boxShadow.secondary],
+              borderRadius: BorderRadius.circular(context.spaces.space_150),
             ),
             child: Padding(
-              padding: EdgeInsets.only(top: theme.spaces.space_200),
+              padding: EdgeInsets.only(top: context.spaces.space_200),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,35 +69,35 @@ class CouponWidget extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
                       entity[index].title!,
-                      style: theme.typography.h600,
+                      style: context.typography.h600,
                     ),
                   ),
                   const SizedBox16(),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: theme.spaces.space_200),
+                        horizontal: context.spaces.space_200),
                     child: Text(
                       conditionText,
-                      style: theme.typography.h300
-                          .copyWith(color: theme.colors.primary),
+                      style: context.typography.h300
+                          .copyWith(color: context.colors.primary),
                     ),
                   ),
                   const SizedBox16(),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: theme.spaces.space_200),
+                        horizontal: context.spaces.space_200),
                     child: Container(
                         decoration: BoxDecoration(
-                            color: theme.colors.textInverse,
-                            borderRadius:
-                                BorderRadius.circular(theme.spaces.space_100)),
+                            color: context.colors.textInverse,
+                            borderRadius: BorderRadius.circular(
+                                context.spaces.space_100)),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: theme.spaces.space_100,
-                              vertical: theme.spaces.space_50),
+                              horizontal: context.spaces.space_100,
+                              vertical: context.spaces.space_50),
                           child: Text(
                             entity[index].code.toString(),
-                            style: theme.typography.h300,
+                            style: context.typography.h300,
                           ),
                         )),
                   ),
@@ -112,12 +111,13 @@ class CouponWidget extends StatelessWidget {
                           .add(SetSelectedCouponEvent(couponCode));
                     },
                     child: Container(
-                      height: theme.spaces.space_500,
+                      height: context.spaces.space_500,
                       decoration: BoxDecoration(
-                        color: theme.colors.primary,
+                        color: context.colors.primary,
                         borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(theme.spaces.space_100),
-                          bottomRight: Radius.circular(theme.spaces.space_100),
+                          bottomLeft: Radius.circular(context.spaces.space_100),
+                          bottomRight:
+                              Radius.circular(context.spaces.space_100),
                         ),
                       ),
                       child: BlocBuilder<CouponBloc, CouponBlocState>(
@@ -129,8 +129,8 @@ class CouponWidget extends StatelessWidget {
                                 state.selectedCoupon == couponData.code
                                     ? 'APPLIED'
                                     : 'TAP TO APPLY',
-                                style: theme.typography.h500
-                                    .copyWith(color: theme.colors.secondary),
+                                style: context.typography.h500
+                                    .copyWith(color: context.colors.secondary),
                               ),
                             ],
                           );

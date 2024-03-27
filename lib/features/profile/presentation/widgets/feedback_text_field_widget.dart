@@ -13,18 +13,17 @@ class FeedbackTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: appTheme.spaces.space_300),
+      padding: EdgeInsets.symmetric(horizontal: context.spaces.space_300),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: appTheme.typography.h400,
+            style: context.typography.h400,
           ),
           SizedBox(
-            height: appTheme.spaces.space_100,
+            height: context.spaces.space_100,
           ),
           TextField(
             maxLines: null,
@@ -32,16 +31,16 @@ class FeedbackTextFieldWidget extends StatelessWidget {
             decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: appTheme.colors.textDisabled,
-                        width: appTheme.spaces.space_25),
+                        color: context.colors.textDisabled,
+                        width: context.spaces.space_25),
                     borderRadius:
-                        BorderRadius.circular(appTheme.spaces.space_100)),
+                        BorderRadius.circular(context.spaces.space_100)),
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: appTheme.colors.textDisabled,
-                        width: appTheme.spaces.space_25),
+                        color: context.colors.textDisabled,
+                        width: context.spaces.space_25),
                     borderRadius:
-                        BorderRadius.circular(appTheme.spaces.space_100))),
+                        BorderRadius.circular(context.spaces.space_100))),
           ),
         ],
       ),

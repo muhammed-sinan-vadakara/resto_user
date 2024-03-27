@@ -17,7 +17,6 @@ class ChatPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     final constants = GetIt.I.get<ChatPageConstants>();
     final TextEditingController messageController = useTextEditingController();
 
@@ -31,7 +30,7 @@ class ChatPage extends HookWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(theme.spaces.space_700),
+        preferredSize: Size.fromHeight(context.spaces.space_700),
         child: AppBarWidget(title: constants.txtChat),
       ),
       body: const ChatWidget(),

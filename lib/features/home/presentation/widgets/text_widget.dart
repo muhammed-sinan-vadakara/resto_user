@@ -7,10 +7,9 @@ class TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     return Text(
       text,
-      style: theme.typography.h400,
+      style: context.typography.h400,
     );
   }
 }

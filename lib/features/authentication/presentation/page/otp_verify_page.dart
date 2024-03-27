@@ -15,7 +15,7 @@ class OtpVerificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<AppAssetConstants>();
-    final theme = AppTheme.of(context);
+
     final otpController = useTextEditingController();
 
     return Scaffold(
@@ -46,8 +46,8 @@ class OtpVerificationPage extends StatelessWidget {
                   ),
                   child: Text(
                     "Enter OTP",
-                    style: theme.typography.uiSemibold
-                        .copyWith(color: theme.colors.text),
+                    style: context.typography.uiSemibold
+                        .copyWith(color: context.colors.text),
                   ),
                 ),
                 Row(
@@ -57,28 +57,8 @@ class OtpVerificationPage extends StatelessWidget {
                       textFields: TextFeildWidget(
                         textController: otpController,
                       ),
-                      theme: theme,
                     ),
                     OtpBoxWidget(
-                      textFields: TextFeildWidget(
-                        textController: otpController,
-                      ),
-                      theme: theme,
-                    ),
-                    OtpBoxWidget(
-                      textFields: TextFeildWidget(
-                        textController: otpController,
-                      ),
-                      theme: theme,
-                    ),
-                    OtpBoxWidget(
-                      textFields: TextFeildWidget(
-                        textController: otpController,
-                      ),
-                      theme: theme,
-                    ),
-                    OtpBoxWidget(
-                      theme: theme,
                       textFields: TextFeildWidget(
                         textController: otpController,
                       ),
@@ -87,7 +67,21 @@ class OtpVerificationPage extends StatelessWidget {
                       textFields: TextFeildWidget(
                         textController: otpController,
                       ),
-                      theme: theme,
+                    ),
+                    OtpBoxWidget(
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
+                    ),
+                    OtpBoxWidget(
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
+                    ),
+                    OtpBoxWidget(
+                      textFields: TextFeildWidget(
+                        textController: otpController,
+                      ),
                     ),
                   ],
                 ),
@@ -116,11 +110,11 @@ class OtpVerificationPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: AuthElevatedButtonWidget(
-        colours: theme.colors.primary,
+        colours: context.colors.primary,
         text: Text(
           "Verify OTP",
-          style: theme.typography.uiSemibold
-              .copyWith(color: theme.colors.secondary),
+          style: context.typography.uiSemibold
+              .copyWith(color: context.colors.secondary),
         ),
         onPressed: () {},
       ),

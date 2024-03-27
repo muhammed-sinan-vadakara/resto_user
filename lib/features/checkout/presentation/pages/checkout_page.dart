@@ -29,7 +29,6 @@ class CheckOutPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<CheckoutPageConstants>();
     var onChanged = useState<bool>(false);
@@ -37,31 +36,31 @@ class CheckOutPage extends HookWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(theme.spaces.space_700),
+        preferredSize: Size.fromHeight(context.spaces.space_700),
         child: AppBarWidget(title: constants.txtAppBarTitle),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+          padding: EdgeInsets.symmetric(horizontal: context.spaces.space_300),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: theme.spaces.space_300,
+                height: context.spaces.space_300,
               ),
               BoxWidget(
                 leadingIcon: assets.icTimer,
                 content:
                     '${constants.txtDelivery} 15-20 ${constants.txtMinutes}',
-                style: theme.typography.h400,
+                style: context.typography.h400,
               ),
               SizedBox(
-                height: theme.spaces.space_300,
+                height: context.spaces.space_300,
               ),
               InstructionBottomWidget(
                 leadingIcon: assets.icInstruction,
                 content: constants.txtInstructions,
-                style: theme.typography.h400,
+                style: context.typography.h400,
                 onPressed: () {
                   if (instructionController.text.isNotEmpty) {
                     BlocProvider.of<InstructionBloc>(context).add(
@@ -75,11 +74,11 @@ class CheckOutPage extends HookWidget {
                 controller: instructionController,
               ),
               SizedBox(
-                height: theme.spaces.space_300,
+                height: context.spaces.space_300,
               ),
               const BillDetailsWidget(),
               SizedBox(
-                height: theme.spaces.space_300,
+                height: context.spaces.space_300,
               ),
               BlocBuilder<CouponBloc, CouponBlocState>(
                 builder: (context, state) {
@@ -91,9 +90,9 @@ class CheckOutPage extends HookWidget {
                         : 'Coupons',
                     style: TextStyle(
                         color: isCouponApplied
-                            ? theme.colors.primary
-                            : theme.colors.text,
-                        fontWeight: theme.typography.h400.fontWeight),
+                            ? context.colors.primary
+                            : context.colors.text,
+                        fontWeight: context.typography.h400.fontWeight),
                     onPressed: () {
                       context.push(CouponsPage.routePath);
                     },
@@ -110,7 +109,7 @@ class CheckOutPage extends HookWidget {
                 },
               ),
               SizedBox(
-                height: theme.spaces.space_300,
+                height: context.spaces.space_300,
               ),
               BoxWidget(
                 leadingIcon: assets.icDelivery,
@@ -121,10 +120,10 @@ class CheckOutPage extends HookWidget {
                     onChanged.value = newValue;
                   },
                 ),
-                style: theme.typography.h400,
+                style: context.typography.h400,
               ),
               SizedBox(
-                height: theme.spaces.space_300,
+                height: context.spaces.space_300,
               ),
               const AddressWidget(),
             ],

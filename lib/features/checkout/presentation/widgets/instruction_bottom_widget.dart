@@ -24,7 +24,6 @@ class InstructionBottomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<CheckoutPageConstants>();
-    final theme = AppTheme.of(context);
 
     void showBottomSheet() {
       showModalBottomSheet(
@@ -36,34 +35,34 @@ class InstructionBottomWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: theme.spaces.space_300),
+              SizedBox(height: context.spaces.space_300),
               Padding(
                 padding:
-                    EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+                    EdgeInsets.symmetric(horizontal: context.spaces.space_300),
                 child: Text(
                   constants.txtSpecialInstruction,
-                  style: theme.typography.h400.copyWith(
-                    fontSize: theme.spaces.space_200,
+                  style: context.typography.h400.copyWith(
+                    fontSize: context.spaces.space_200,
                   ),
                 ),
               ),
-              SizedBox(height: theme.spaces.space_100),
+              SizedBox(height: context.spaces.space_100),
               Padding(
                 padding:
-                    EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+                    EdgeInsets.symmetric(horizontal: context.spaces.space_300),
                 child: const Divider(),
               ),
-              SizedBox(height: theme.spaces.space_200),
+              SizedBox(height: context.spaces.space_200),
               Padding(
                 padding:
-                    EdgeInsets.symmetric(horizontal: theme.spaces.space_300),
+                    EdgeInsets.symmetric(horizontal: context.spaces.space_300),
                 child: TextField(
                   controller: controller,
                   decoration: InputDecoration(
                     hintText: constants.txtEnterSplInstruction,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
-                        Radius.circular(theme.spaces.space_100),
+                        Radius.circular(context.spaces.space_100),
                       ),
                     ),
                   ),
@@ -78,30 +77,30 @@ class InstructionBottomWidget extends StatelessWidget {
     }
 
     return Container(
-      height: theme.spaces.space_700,
+      height: context.spaces.space_700,
       decoration: BoxDecoration(
-        color: theme.colors.secondary,
-        boxShadow: [theme.boxShadow.secondary],
+        color: context.colors.secondary,
+        boxShadow: [context.boxShadow.secondary],
         borderRadius: BorderRadius.circular(
-          theme.spaces.space_150,
+          context.spaces.space_150,
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_50),
+        padding: EdgeInsets.symmetric(horizontal: context.spaces.space_50),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: theme.spaces.space_250,
-              width: theme.spaces.space_300,
+              height: context.spaces.space_250,
+              width: context.spaces.space_300,
               child: SvgPicture.asset(
                 leadingIcon,
                 colorFilter:
-                    ColorFilter.mode(theme.colors.text, BlendMode.srcATop),
+                    ColorFilter.mode(context.colors.text, BlendMode.srcATop),
               ),
             ),
             SizedBox(
-              width: theme.spaces.space_100,
+              width: context.spaces.space_100,
             ),
             Text(
               content,
@@ -112,7 +111,7 @@ class InstructionBottomWidget extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(Icons.arrow_forward_ios_outlined,
-                  size: theme.spaces.space_250),
+                  size: context.spaces.space_250),
               onPressed: () {
                 showBottomSheet();
               },

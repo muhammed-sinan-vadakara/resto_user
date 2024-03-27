@@ -24,16 +24,15 @@ class CouponsPage extends HookWidget {
       return null;
     }, []);
 
-    final theme = AppTheme.of(context);
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(theme.spaces.space_700),
+          preferredSize: Size.fromHeight(context.spaces.space_700),
           child: const AppBarWidget(title: 'Payment Coupons For you')),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: theme.spaces.space_300,
-              vertical: theme.spaces.space_300),
+              horizontal: context.spaces.space_300,
+              vertical: context.spaces.space_300),
           child: Column(
             children: [
               SizedBox(child: BlocBuilder<CouponBloc, CouponBlocState>(
