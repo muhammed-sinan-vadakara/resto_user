@@ -12,35 +12,33 @@ class TypesViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int selectedOption = 1;
-    bool isSelected = false;
-    final theme = AppTheme.of(context);
     final constants = GetIt.I.get<HomeConstants>();
+
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: theme.spaces.space_300,
-        vertical: theme.spaces.space_100,
+        horizontal: context.spaces.space_300,
+        vertical: context.spaces.space_100,
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: theme.colors.secondary,
-          boxShadow: [theme.boxShadow.primary],
+          color: context.colors.secondary,
+          boxShadow: [context.boxShadow.primary],
           borderRadius: BorderRadius.circular(
-            theme.spaces.space_100,
+            context.spaces.space_100,
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(theme.spaces.space_150),
+          padding: EdgeInsets.all(context.spaces.space_150),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 constants.txtType,
-                style: theme.typography.h700,
+                style: context.typography.h700,
               ),
               const Divider(),
               SizedBox(
-                height: entity.types.length * theme.spaces.space_300,
+                height: entity.types.length * context.spaces.space_300,
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: entity.types.length,
@@ -53,7 +51,7 @@ class TypesViewWidget extends StatelessWidget {
                           children: [
                             TextWidget(text: entity.types[index].price),
                             SizedBox(
-                              width: theme.spaces.space_200,
+                              width: context.spaces.space_200,
                             ),
                             RadioButtonWidget(
                               onTap: () {},

@@ -11,31 +11,31 @@ class ProfileImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final assets = GetIt.I.get<AppAssetConstants>();
-    final appTheme = AppTheme.of(context);
+
     return Align(
       alignment: Alignment.center,
       child: Container(
-          height: appTheme.spaces.space_300 * 7,
-          width: appTheme.spaces.space_300 * 7,
+          height: context.spaces.space_300 * 7,
+          width: context.spaces.space_300 * 7,
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                  color: appTheme.colors.textDisabled,
-                  width: appTheme.spaces.space_25)),
+                  color: context.colors.textDisabled,
+                  width: context.spaces.space_25)),
           child: Stack(
             children: [
               Center(
                 child: SvgPicture.asset(
                   assets.icUser,
-                  height: appTheme.spaces.space_500,
+                  height: context.spaces.space_500,
                 ),
               ),
               Align(
                   alignment: Alignment.bottomRight,
                   child: IconButton(
                       style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(
-                              appTheme.colors.primary)),
+                          backgroundColor:
+                              MaterialStatePropertyAll(context.colors.primary)),
                       onPressed: () =>
                           ImagePickerUtils.showDialogueForImagePicker(context),
                       icon: SvgPicture.asset(assets.icPencil)))

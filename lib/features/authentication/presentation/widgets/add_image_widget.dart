@@ -12,7 +12,7 @@ class AddImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final images = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<AuthenticationConstant>();
-    final appTheme = AppTheme.of(context);
+    final appTheme = (context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,

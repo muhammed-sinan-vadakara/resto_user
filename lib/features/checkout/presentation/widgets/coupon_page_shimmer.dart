@@ -8,8 +8,8 @@ class CouponPageShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = AppTheme.of(context).colors;
-    final spaces = AppTheme.of(context).spaces;
+    final color = context.colors;
+    final spaces = context.spaces;
     return ListView.builder(
       shrinkWrap: true,
       itemCount: 4,

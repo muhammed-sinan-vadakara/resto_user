@@ -7,43 +7,42 @@ class LoadingProductWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     return GridView.builder(
       physics: const ClampingScrollPhysics(),
       itemCount: 3,
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: theme.spaces.space_250,
-          mainAxisSpacing: theme.spaces.space_250,
-          mainAxisExtent: theme.spaces.space_900 * 2.75),
+          crossAxisSpacing: context.spaces.space_250,
+          mainAxisSpacing: context.spaces.space_250,
+          mainAxisExtent: context.spaces.space_900 * 2.75),
       itemBuilder: (context, index) {
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_75),
+          padding: EdgeInsets.symmetric(horizontal: context.spaces.space_75),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: theme.colors.secondary,
-                  borderRadius: BorderRadius.circular(theme.spaces.space_100),
+                  color: context.colors.secondary,
+                  borderRadius: BorderRadius.circular(context.spaces.space_100),
                   boxShadow: [
-                    theme.boxShadow.primary,
+                    context.boxShadow.primary,
                   ],
                 ),
                 child: SizedBox(
-                  width: theme.spaces.space_500 * 3.7,
-                  height: theme.spaces.space_500 * 3.7,
+                  width: context.spaces.space_500 * 3.7,
+                  height: context.spaces.space_500 * 3.7,
                   child: Shimmer.fromColors(
-                    baseColor: theme.colors.textInverse,
-                    highlightColor: theme.colors.textSubtle,
+                    baseColor: context.colors.textInverse,
+                    highlightColor: context.colors.textSubtle,
                     child: Container(
-                      width: theme.spaces.space_500 * 3.7,
-                      height: theme.spaces.space_500 * 3.7,
+                      width: context.spaces.space_500 * 3.7,
+                      height: context.spaces.space_500 * 3.7,
                       decoration: BoxDecoration(
-                        color: theme.colors.textInverse,
+                        color: context.colors.textInverse,
                         borderRadius: BorderRadius.circular(
-                          theme.spaces.space_100,
+                          context.spaces.space_100,
                         ),
                       ),
                     ),
@@ -51,19 +50,19 @@ class LoadingProductWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: theme.spaces.space_75,
+                height: context.spaces.space_75,
               ),
               SizedBox(
-                width: theme.spaces.space_500 * 3.7,
-                height: theme.spaces.space_150,
+                width: context.spaces.space_500 * 3.7,
+                height: context.spaces.space_150,
                 child: Shimmer.fromColors(
-                  baseColor: theme.colors.textInverse,
-                  highlightColor: theme.colors.textSubtle,
+                  baseColor: context.colors.textInverse,
+                  highlightColor: context.colors.textSubtle,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: theme.colors.primary,
+                        color: context.colors.primary,
                         borderRadius:
-                            BorderRadius.circular(theme.spaces.space_50)),
+                            BorderRadius.circular(context.spaces.space_50)),
                   ),
                 ),
               ),

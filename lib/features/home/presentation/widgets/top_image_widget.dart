@@ -12,14 +12,14 @@ class TopImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<HomeConstants>();
+
     return Stack(
       children: [
         Container(
           width: MediaQuery.sizeOf(context).width,
-          height: theme.spaces.space_500 * 6.5,
+          height: context.spaces.space_500 * 6.5,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(imagePath),
@@ -28,19 +28,19 @@ class TopImageWidget extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: theme.spaces.space_300,
-          left: theme.spaces.space_200,
+          top: context.spaces.space_300,
+          left: context.spaces.space_200,
           child: Container(
             decoration: BoxDecoration(
-              color: theme.colors.secondary,
+              color: context.colors.secondary,
               borderRadius: BorderRadius.circular(
-                theme.spaces.space_200,
+                context.spaces.space_200,
               ),
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  vertical: theme.spaces.space_75,
-                  horizontal: theme.spaces.space_200),
+                  vertical: context.spaces.space_75,
+                  horizontal: context.spaces.space_200),
               child: Ink(
                 child: InkWell(
                   onTap: () {
@@ -50,14 +50,14 @@ class TopImageWidget extends StatelessWidget {
                     children: [
                       SvgPicture.asset(
                         assets.icArrowBackward,
-                        width: theme.spaces.space_100,
+                        width: context.spaces.space_100,
                       ),
                       SizedBox(
-                        width: theme.spaces.space_100,
+                        width: context.spaces.space_100,
                       ),
                       Text(
                         constants.txtOffer,
-                        style: theme.typography.h400,
+                        style: context.typography.h400,
                       ),
                     ],
                   ),

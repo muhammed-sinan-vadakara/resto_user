@@ -16,7 +16,7 @@ class DetailsAddingPage extends StatelessWidget {
     final imagesAndIcons = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<AuthenticationConstant>();
     final nameController = TextEditingController();
-    final theme = AppTheme.of(context);
+    final theme = (context);
 
     return Scaffold(
       body: GestureDetector(
@@ -108,7 +108,7 @@ class DetailsAddingPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: AuthElevatedButtonWidget(
-        colours: theme.colors.primary,
+        colours: context.colors.primary,
         text: Text(
           constants.txtSave,
           style: theme.typography.uiSemibold.copyWith(

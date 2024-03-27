@@ -8,101 +8,99 @@ class CartListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-
     return ListView.separated(
       separatorBuilder: (context, index) => SizedBox(
-        height: theme.spaces.space_200,
+        height: context.spaces.space_200,
       ),
       shrinkWrap: true,
       itemCount: 3,
       itemBuilder: (context, index) {
         return Container(
-          height: theme.spaces.space_600 * 2,
+          height: context.spaces.space_600 * 2,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-              border: Border.all(color: theme.colors.textDisabled),
-              borderRadius: BorderRadius.circular(theme.spaces.space_100)),
+              border: Border.all(color: context.colors.textDisabled),
+              borderRadius: BorderRadius.circular(context.spaces.space_100)),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_125),
+            padding: EdgeInsets.symmetric(horizontal: context.spaces.space_125),
             child: Row(
               children: [
                 Container(
-                  height: theme.spaces.space_900,
-                  width: theme.spaces.space_900,
+                  height: context.spaces.space_900,
+                  width: context.spaces.space_900,
                   decoration: BoxDecoration(
                       borderRadius:
-                          BorderRadius.circular(theme.spaces.space_100),
-                      color: theme.colors.textDisabled),
+                          BorderRadius.circular(context.spaces.space_100),
+                      color: context.colors.textDisabled),
                 ),
                 SizedBox(
-                  width: theme.spaces.space_150,
+                  width: context.spaces.space_150,
                 ),
                 Padding(
                   padding:
-                      EdgeInsets.symmetric(vertical: theme.spaces.space_125),
+                      EdgeInsets.symmetric(vertical: context.spaces.space_125),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         entity[index].productId,
-                        style: theme.typography.h400
-                            .copyWith(color: theme.colors.text),
+                        style: context.typography.h400
+                            .copyWith(color: context.colors.text),
                       ),
                       Text(
                         'Burger Factory LTD',
-                        style: theme.typography.h400
-                            .copyWith(color: theme.colors.textSubtle),
+                        style: context.typography.h400
+                            .copyWith(color: context.colors.textSubtle),
                       ),
                       Text(
                         '25',
-                        style: theme.typography.h400
-                            .copyWith(color: theme.colors.primary),
+                        style: context.typography.h400
+                            .copyWith(color: context.colors.primary),
                       )
                     ],
                   ),
                 ),
                 SizedBox(
-                  width: theme.spaces.space_500,
+                  width: context.spaces.space_500,
                 ),
                 Row(
                   children: [
                     InkWell(
                       onTap: () {},
                       child: Container(
-                        height: theme.spaces.space_300,
-                        width: theme.spaces.space_300,
+                        height: context.spaces.space_300,
+                        width: context.spaces.space_300,
                         decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.circular(theme.spaces.space_100),
-                            color: theme.colors.textInverse),
+                                BorderRadius.circular(context.spaces.space_100),
+                            color: context.colors.textInverse),
                         child: Icon(
                           Icons.remove,
-                          size: theme.spaces.space_200,
+                          size: context.spaces.space_200,
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: theme.spaces.space_150,
+                      width: context.spaces.space_150,
                     ),
                     const Text('1'),
                     SizedBox(
-                      width: theme.spaces.space_150,
+                      width: context.spaces.space_150,
                     ),
                     InkWell(
                       onTap: () {},
                       child: Container(
-                        height: theme.spaces.space_300,
-                        width: theme.spaces.space_300,
+                        height: context.spaces.space_300,
+                        width: context.spaces.space_300,
                         decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.circular(theme.spaces.space_100),
-                            color: theme.colors.primary),
+                                BorderRadius.circular(context.spaces.space_100),
+                            color: context.colors.primary),
                         child: Icon(
                           Icons.add,
-                          size: theme.spaces.space_200,
-                          color: theme.colors.secondary,
+                          size: context.spaces.space_200,
+                          color: context.colors.secondary,
                         ),
                       ),
                     ),

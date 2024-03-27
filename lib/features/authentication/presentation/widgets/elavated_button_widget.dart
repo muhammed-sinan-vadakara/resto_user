@@ -14,14 +14,13 @@ class AuthElevatedButtonWidget extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: appTheme.spaces.space_100,
-        horizontal: appTheme.spaces.space_300,
+        vertical: context.spaces.space_100,
+        horizontal: context.spaces.space_300,
       ),
       child: SizedBox(
-        height: appTheme.spaces.space_600,
+        height: context.spaces.space_600,
         width: MediaQuery.sizeOf(context).width,
         child: ElevatedButton(
             style: ButtonStyle(
@@ -30,7 +29,7 @@ class AuthElevatedButtonWidget extends StatelessWidget {
               shape: MaterialStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
-                    appTheme.spaces.space_100,
+                    context.spaces.space_100,
                   ),
                 ),
               ),
@@ -39,8 +38,8 @@ class AuthElevatedButtonWidget extends StatelessWidget {
             child: text
             // Text(
             //   text,
-            //   style: appTheme.typography.uiSemibold
-            //       .copyWith(color: appTheme.colors.secondary),
+            //   style: context.typography.uiSemibold
+            //       .copyWith(color: context.colors.secondary),
             // ),
             ),
       ),

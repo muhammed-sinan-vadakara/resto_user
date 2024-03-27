@@ -20,7 +20,7 @@ class AuthTextFieldWidget extends StatelessWidget {
       required this.Controller});
   @override
   Widget build(BuildContext context) {
-    final apptheme = AppTheme.of(context);
+    final apptheme = (context);
     return TextField(
       controller: Controller,
       showCursor: cursor,
@@ -35,9 +35,9 @@ class AuthTextFieldWidget extends StatelessWidget {
             .copyWith(color: apptheme.colors.textDisabled),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
-            AppTheme.of(context).spaces.space_100,
+            apptheme.spaces.space_100,
           ),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             width: 0.1,
           ),
         ),

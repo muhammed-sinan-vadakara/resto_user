@@ -45,7 +45,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
   Widget build(BuildContext context) {
     final images = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<AuthenticationConstant>();
-    final theme = AppTheme.of(context);
+    final theme = (context);
 
     final otpController = otpController1.text +
         otpController2.text +
@@ -97,7 +97,6 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           hintTexts: constants.txtBlank,
                           keyboardType: TextInputType.number,
                         ),
-                        theme: theme,
                       ),
                       OtpBoxWidget(
                         textFields: OtpTextFeildWidget(
@@ -105,7 +104,6 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           hintTexts: constants.txtBlank,
                           keyboardType: TextInputType.number,
                         ),
-                        theme: theme,
                       ),
                       OtpBoxWidget(
                         textFields: OtpTextFeildWidget(
@@ -113,7 +111,6 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           textController: otpController3,
                           hintTexts: constants.txtBlank,
                         ),
-                        theme: theme,
                       ),
                       OtpBoxWidget(
                         textFields: OtpTextFeildWidget(
@@ -121,10 +118,8 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           textController: otpController4,
                           hintTexts: constants.txtBlank,
                         ),
-                        theme: theme,
                       ),
                       OtpBoxWidget(
-                        theme: theme,
                         textFields: OtpTextFeildWidget(
                           textController: otpController5,
                           keyboardType: TextInputType.number,
@@ -137,7 +132,6 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           hintTexts: constants.txtBlank,
                           keyboardType: TextInputType.number,
                         ),
-                        theme: theme,
                       ),
                     ],
                   ),
@@ -148,7 +142,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         padding: EdgeInsets.only(
                           left: theme.spaces.space_50,
                         ),
-                        child: Text(
+                        child: const Text(
                           "00:00",
                         ),
                       ),
@@ -167,7 +161,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
         ),
       ),
       bottomNavigationBar: AuthElevatedButtonWidget(
-        colours: theme.colors.primary,
+        colours: context.colors.primary,
         text: Text(
           constants.txtVerifyOtp,
           style: theme.typography.uiSemibold.copyWith(

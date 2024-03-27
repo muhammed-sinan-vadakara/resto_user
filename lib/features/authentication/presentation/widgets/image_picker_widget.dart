@@ -30,7 +30,7 @@ class ImagePickerWidget extends StatelessWidget {
               fit: BoxFit.cover,
             );
           }
-
+          final constants = (context);
           return InkWell(
             onTap: () async {
               final imageSelected =
@@ -38,14 +38,13 @@ class ImagePickerWidget extends StatelessWidget {
               context.read<ImagePickerBloc>().setImage(imageSelected);
             },
             child: Container(
-              height: AppTheme.of(context).spaces.space_500 * 6,
+              height: constants.spaces.space_500 * 6,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                    AppTheme.of(context).spaces.space_100),
+                borderRadius: BorderRadius.circular(constants.spaces.space_100),
                 border: Border.all(
-                  color: AppTheme.of(context).colors.textSubtle,
-                  width: AppTheme.of(context).spaces.space_25,
+                  color: constants.colors.textSubtle,
+                  width: constants.spaces.space_25,
                 ),
               ),
               child: imageToShow ??

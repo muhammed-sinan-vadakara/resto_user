@@ -21,7 +21,8 @@ class LoginPage extends HookWidget {
   Widget build(BuildContext context) {
     final images = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<AuthenticationConstant>();
-    final theme = AppTheme.of(context);
+    final theme = (context);
+
     final phoneNumberController = useTextEditingController();
 
     return Scaffold(
@@ -89,7 +90,7 @@ class LoginPage extends HookWidget {
                         phoneNumber: phoneNumberController.text));
               }),
           AuthElevatedButtonWidget(
-            colours: theme.colors.textDisabled,
+            colours: context.colors.textDisabled,
             text: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -112,7 +113,7 @@ class LoginPage extends HookWidget {
             },
           ),
           SizedBox(
-            height: AppTheme.of(context).spaces.space_200,
+            height: theme.spaces.space_200,
           )
         ],
       ),

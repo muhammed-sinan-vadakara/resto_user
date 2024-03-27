@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
 import 'package:resto_user/features/home/presentation/widgets/addons_view_widget.dart';
@@ -9,12 +7,11 @@ import 'package:resto_user/features/profile/presentation/widgets/sized_box_16.da
 
 class OverviewBottomSheetWidget extends StatelessWidget {
   final ProductEntity entity;
+
   const OverviewBottomSheetWidget({super.key, required this.entity});
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-
     return SizedBox(
       width: MediaQuery.sizeOf(context).width,
       child: SingleChildScrollView(
@@ -22,42 +19,42 @@ class OverviewBottomSheetWidget extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: theme.spaces.space_300,
-                vertical: theme.spaces.space_100,
+                horizontal: context.spaces.space_300,
+                vertical: context.spaces.space_100,
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: theme.colors.secondary,
-                  boxShadow: [theme.boxShadow.primary],
+                  color: context.colors.secondary,
+                  boxShadow: [context.boxShadow.primary],
                   borderRadius: BorderRadius.circular(
-                    theme.spaces.space_100,
+                    context.spaces.space_100,
                   ),
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(
-                    theme.spaces.space_150,
+                    context.spaces.space_150,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: theme.spaces.space_500 * 5,
+                        height: context.spaces.space_500 * 5,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                               image: NetworkImage(
                                 entity.imagePath,
                               ),
                               fit: BoxFit.cover),
-                          color: theme.colors.textInverse,
+                          color: context.colors.textInverse,
                           borderRadius: BorderRadius.circular(
-                            theme.spaces.space_100,
+                            context.spaces.space_100,
                           ),
                         ),
                       ),
                       const SizedBox16(),
                       Text(
                         entity.name,
-                        style: theme.typography.h600,
+                        style: context.typography.h600,
                       ),
                       const SizedBox16(),
                       const Row(
