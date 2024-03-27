@@ -1,11 +1,12 @@
 name: resto_user
 description: "A new Flutter project."
-
-publish_to: 'none'
+publish_to: 'none' 
 version: 1.0.0+1
 environment:
   sdk: '>=3.2.6 <4.0.0'
 
+
+  
 dependencies:
   flutter:
     sdk: flutter
@@ -35,6 +36,7 @@ dependencies:
   crypto: ^3.0.3
   uuid: ^4.2.2
   dio: ^5.4.1
+  lottie: ^3.1.0
 
 
 dev_dependencies:
@@ -52,6 +54,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/animations/
   fonts:
     - family: Inter
       fonts:
@@ -73,6 +76,10 @@ flutter:
           weight: 800
         - asset: assets/fonts/Inter/Inter-Black.ttf
           weight: 900 
+
+
+ 
+ 
 
 
  

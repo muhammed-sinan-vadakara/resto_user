@@ -1,3 +1,5 @@
+**/*.freezed.dart
+**/*.g.dart
 # Flutter-related
 **/Flutter/ephemeral/
 **/Pods/

@@ -27,5 +27,6 @@ class GetLocationUseCase {
     } catch (e) {
       throw Exception("Error");
     }
+    throw ('');
   }
 }
