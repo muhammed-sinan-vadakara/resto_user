@@ -7,6 +7,6 @@ class AuthenticationBlocState with _$AuthenticationBlocState {
   factory AuthenticationBlocState({
     required String? error,
     required int? resendToken,
-    required String? verificationId,
+    required String verificationId,
   }) = _AuthenticationBlocState;
 }

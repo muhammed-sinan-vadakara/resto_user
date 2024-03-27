@@ -77,6 +77,8 @@ void setupDependencies() {
 
   ///Profile
   getIt.registerSingleton<ProfilePageConstants>(ProfilePageConstants());
+
+  //Authentication
   getIt.registerSingleton<AuthenticationConstant>(AuthenticationConstant());
   getIt.registerSingleton<FirebaseAuthDataSource>(
       FirebaseAuthDataSourceImpl(FirebaseAuth.instance));

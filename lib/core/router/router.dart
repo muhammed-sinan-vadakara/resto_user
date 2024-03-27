@@ -15,7 +15,7 @@ import 'package:resto_user/main.dart';
 
 final router = GoRouter(
   initialLocation: LoginPage.routePath,
-  // initialLocation: OtpVerificationPage.routePath,
+  // initialLocation: DetailsAddingPage.routePath,
   navigatorKey: MyApp.navigatorKey,
   routes: [
     GoRoute(

@@ -19,34 +19,35 @@ class OtpVerificationPage extends StatefulWidget {
 }
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
-  // late FocusNode myFocusNode;
+  late FocusNode myFocusNode;
 
-  // @override
-  // void initState() {
-  //   super.initState();
+  @override
+  void initState() {
+    super.initState();
 
-  //   myFocusNode = FocusNode();
-  // }
+    myFocusNode = FocusNode();
+  }
 
-  // void dispose() {
-  //   myFocusNode.dispose();
+  void dispose() {
+    myFocusNode.dispose();
 
-  //   super.dispose();
-  // }
+    super.dispose();
+  }
+
+  final otpController1 = TextEditingController();
+  final otpController2 = TextEditingController();
+  final otpController3 = TextEditingController();
+  final otpController4 = TextEditingController();
+  final otpController5 = TextEditingController();
+  final otpController6 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final images = GetIt.I.get<AppAssetConstants>();
     final constants = GetIt.I.get<AuthenticationConstant>();
     final theme = AppTheme.of(context);
-    final otpController1 = TextEditingController();
-    final otpController2 = TextEditingController();
-    final otpController3 = TextEditingController();
-    final otpController4 = TextEditingController();
-    final otpController5 = TextEditingController();
-    final otpController6 = TextEditingController();
 
-    final otp = otpController1.text +
+    final otpController = otpController1.text +
         otpController2.text +
         otpController3.text +
         otpController4.text +
@@ -59,15 +60,15 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
+              padding: EdgeInsets.symmetric(
+                horizontal: theme.spaces.space_300,
               ),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 24,
-                      bottom: 104,
+                    padding: EdgeInsets.only(
+                      top: theme.spaces.space_300,
+                      bottom: theme.spaces.space_100 * 13,
                     ),
                     child: SizedBox(
                       // height: MediaQuery.sizeOf(context).height,
@@ -78,8 +79,8 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      right: 270,
+                    padding: EdgeInsets.only(
+                      right: theme.spaces.space_100 * 34,
                     ),
                     child: Text(
                       constants.txtOtp,
@@ -143,9 +144,9 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(
-                          left: 5,
+                          left: theme.spaces.space_50,
                         ),
                         child: Text(
                           "00:00",
@@ -175,7 +176,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
         ),
         onPressed: () {
           context.read<AuthenticationBloc>().add(OtpVerificationEvent(
-                otp: otp,
+                otp: otpController,
               ));
         },
       ),

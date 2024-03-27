@@ -30,16 +30,16 @@ class LoginPage extends HookWidget {
           onTap: () => FocusScope.of(context).unfocus(),
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
+              padding: EdgeInsets.symmetric(
+                horizontal: theme.spaces.space_300,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 24,
-                      bottom: 64,
+                    padding: EdgeInsets.only(
+                      top: theme.spaces.space_300,
+                      bottom: theme.spaces.space_800,
                     ),
                     child: SizedBox(
                       // height: MediaQuery.sizeOf(context).height,
@@ -49,10 +49,13 @@ class LoginPage extends HookWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    constants.txtMobileNumber,
-                    style: theme.typography.uiSemibold
-                        .copyWith(color: theme.colors.text),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: theme.spaces.space_125),
+                    child: Text(
+                      constants.txtMobileNumber,
+                      style: theme.typography.uiSemibold
+                          .copyWith(color: theme.colors.text),
+                    ),
                   ),
                   AuthTextFieldWidget(
                     Controller: phoneNumberController,

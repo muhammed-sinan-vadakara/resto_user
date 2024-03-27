@@ -36,5 +36,6 @@ void setupBlocDependencies() {
 
   getIt.registerSingleton<InstructionBloc>(InstructionBloc());
 
+  ///Authentication feature bloc
   getIt.registerSingleton<AuthenticationBloc>(AuthenticationBloc());
 }

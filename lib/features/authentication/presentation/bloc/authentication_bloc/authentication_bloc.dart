@@ -34,7 +34,7 @@ class AuthenticationBloc
           ),
         ) {
     on<LoginWithPhoneNumberEvent>(loginWithPhoneNumber);
-    // on<OtpVerificationEvent>(otpVerification);
+    on<OtpVerificationEvent>(otpVerification);
     // on<LoginWithGoogleEvent>(loginWithGoogleVerification);
   }
 
@@ -51,11 +51,18 @@ class AuthenticationBloc
   }
 
   Future<void> otpVerification(
-      OtpVerificationEvent event, Emitter<AuthenticationBlocState> emit) async {
+    OtpVerificationEvent event,
+    Emitter<AuthenticationBlocState> emit,
+  ) async {
     await VerifyOtpUsecase(repository: GetIt.I.get())(
       state.verificationId.toString(),
       event.otp,
     );
+    emit(AuthenticationBlocState(
+      error: null,
+      resendToken: null,
+      verificationId: "",
+    ));
     Future.sync(
         () => MyApp.navigatorKey.currentContext?.go(HomePage.routePath));
   }
