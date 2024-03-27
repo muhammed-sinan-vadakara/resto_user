@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:resto_user/features/map/presentation/widgets/map_textfield_widget.dart';
+import 'package:resto_user/features/map/presentation/widgets/map_rawautocomplet_widget.dart';
 
 class Map extends HookWidget {
   static const routePath = '/map';
@@ -12,7 +12,7 @@ class Map extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useTextEditingController();
+    // final searchController = useTextEditingController();
 
     final mapController =
         useMemoized(() => Completer<GoogleMapController>(), []);
@@ -55,17 +55,6 @@ class Map extends HookWidget {
       return null;
     }, []);
 
-// Future<void> _goToPlace(Map<String, dynamic> place) async {
-//   final double lat = place['geometry']['location']['lat'];
-//   final double lng = place['geometry']['location']['lng'];
-
-//   final GoogleMapController controller = await mapController.future;
-//   controller.animateCamera(
-//     CameraUpdate.newCameraPosition(
-//       CameraPosition(target: LatLng(lat, lng), zoom: 15),
-//     ),
-//   );
-// }
     return Scaffold(
       body: Stack(children: [
         GoogleMap(
@@ -81,12 +70,12 @@ class Map extends HookWidget {
           },
           markers: markers.value,
         ),
-        SafeArea(
-            child: Align(
-                alignment: Alignment.topCenter,
-                child: MapTextFieldWidget(
-                  searchcontroller: controller,
-                ))),
+        const SafeArea(
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: RawAutoWidget(),
+          ),
+        ),
         Positioned(
             right: 20,
             bottom: 20,
