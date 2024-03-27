@@ -5,8 +5,12 @@ import 'package:resto_user/features/authentication/presentation/page/login_page.
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
+import 'package:resto_user/features/home/domain/entity/offer_entity/offer_entity.dart';
+import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
+import 'package:resto_user/features/home/presentation/pages/offer_overview_page.dart';
+import 'package:resto_user/features/home/presentation/widgets/overview_bottomsheet_widget.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
@@ -35,6 +39,12 @@ final router = GoRouter(
     GoRoute(
       path: SupportPage.routePath,
       builder: (context, state) => const SupportPage(),
+    ),
+    GoRoute(
+      path: OfferOverviewPage.routePath,
+      builder: (context, state) => OfferOverviewPage(
+        entity: state.extra as OfferEntity,
+      ),
     ),
     GoRoute(
       path: HomePage.routePath,
