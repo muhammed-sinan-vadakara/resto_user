@@ -24,6 +24,10 @@ import 'package:resto_user/features/home/data/repository/product_repository_impl
 import 'package:resto_user/features/home/domain/repository/category_repository.dart';
 import 'package:resto_user/features/home/domain/repository/offer_repository.dart';
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
+import 'package:resto_user/features/map/data/datasource/geocode_api_datasource.dart';
+import 'package:resto_user/features/map/data/datasource/geocode_api_datasource_impl.dart';
+import 'package:resto_user/features/map/data/datasource/places_api_datasource.dart';
+import 'package:resto_user/features/map/data/datasource/places_api_datasource_impl.dart';
 import 'package:resto_user/features/map/data/repository/map_repository_impl.dart';
 import 'package:resto_user/features/map/domain/repository/map_repository.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
@@ -80,7 +84,13 @@ void setupDependencies() {
   getIt.registerSingleton<CouponRepository>(
       CouponRepositoryImpl(datasource: GetIt.I.get()));
 
-// map
+  ///Map
+  getIt.registerSingleton<GeocodeAPIDataSource>(GeocodeAPIDataSourceIMPL());
+  getIt.registerSingleton<PlacesAPIDataSource>(PlaceApiDatasourceIMPL());
+  getIt.registerSingleton<MapAPIRepository>(MapAPIRepositoryIMPL(
+    latlongdatasource: GetIt.I.get<GeocodeAPIDataSource>(),
+    placedatasource: GetIt.I.get<PlacesAPIDataSource>(),
+  ));
 
   /// Set all the Bloc dependencies using this function
   setupBlocDependencies();

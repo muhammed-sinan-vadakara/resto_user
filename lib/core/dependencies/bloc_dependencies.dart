@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:resto_user/features/home/data/repository/product_repository_impl.dart';
 import 'package:resto_user/features/home/presentation/bloc/category_bloc/category_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
+import 'package:resto_user/features/map/presentation/bloc/map_bloc.dart';
 import 'package:resto_user/features/profile/presentation/provider/theme/theme_bloc.dart';
 import 'package:resto_user/features/profile/presentation/provider/toggle_theme/toggle_theme_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
@@ -20,7 +21,9 @@ void setupBlocDependencies() {
   getIt.registerSingleton<CouponBloc>(CouponBloc());
 
   ///Product feature blocs
-   getIt.registerSingleton<ProductBloc>(ProductBloc());
+  getIt.registerSingleton<ProductBloc>(ProductBloc());
   ProductRepoImpl(dataSource: GetIt.I.get());
-  
+
+  //Map
+  getIt.registerSingleton<MapBloc>(MapBloc());
 }

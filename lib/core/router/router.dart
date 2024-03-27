@@ -7,6 +7,7 @@ import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
+import 'package:resto_user/features/map/presentation/bloc/map_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
@@ -25,7 +26,8 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Map.routePath,
-      builder: (context, state) => const Map(),
+      builder: (context, state) => BlocProvider<MapBloc>(
+          create: (context) => MapBloc(), child: const Map()),
     ),
     GoRoute(
       path: ProfilePage.routePath,
