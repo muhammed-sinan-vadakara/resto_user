@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
 import 'package:resto_user/features/home/presentation/widgets/add_cart_button_widget.dart';
@@ -42,29 +43,8 @@ class ProductGridViewWidget extends StatelessWidget {
                     showModalBottomSheet<dynamic>(
                         isScrollControlled: true,
                         context: context,
-                        builder: (BuildContext bc) {
-                          return Stack(
-                            children: [
-                              Container(
-                                height: 750,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0),
-                                  ),
-                                ),
-                                child: OverviewBottomSheetWidget(
-                                  entity: productData,
-                                ),
-                              ),
-                              const Positioned(
-                                bottom: 0,
-                                child: AddCartButtonWidget(),
-                              )
-                            ],
-                          );
-                        });
+                        builder: (context) => ProductDetailsBottomSheetWidget(
+                            productData: productData));
                   },
                   child: Container(
                     width: context.spaces.space_500 * 3.7,
@@ -100,6 +80,42 @@ class ProductGridViewWidget extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class ProductDetailsBottomSheetWidget extends StatelessWidget {
+  const ProductDetailsBottomSheetWidget({
+    super.key,
+    required this.productData,
+  });
+
+  final ProductEntity productData;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.9,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(context.spaces.space_250),
+                  topRight: Radius.circular(context.spaces.space_250),
+                ),
+              ),
+              child: OverviewBottomSheetWidget(
+                entity: productData,
+              ),
+            ),
+          ),
+          const AddCartButtonWidget()
+        ],
+      ),
     );
   }
 }

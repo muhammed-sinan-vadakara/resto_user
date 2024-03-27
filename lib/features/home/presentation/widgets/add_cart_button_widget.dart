@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get_it/get_it.dart';
-import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 
 class AddCartButtonWidget extends StatelessWidget {
@@ -10,75 +6,35 @@ class AddCartButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final assets = GetIt.I.get<AppAssetConstants>();
-
     return Container(
-      width: double.infinity,
+      width: MediaQuery.sizeOf(context).width,
       color: context.colors.secondary,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.spaces.space_300),
+        padding: EdgeInsets.symmetric(
+            horizontal: context.spaces.space_200,
+            vertical: context.spaces.space_300),
         child: Row(
           children: [
-            Material(
-              child: Ink(
-                decoration: BoxDecoration(
-                  color: const Color(0xffffe6e6),
-                  borderRadius: BorderRadius.circular(context.spaces.space_100),
-                ),
-                child: InkWell(
-                  onTap: () {},
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: context.spaces.space_150,
-                      horizontal: context.spaces.space_150,
-                    ),
-                    // child: SvgPicture.asset(
-                    //   assets.icMinimize,
-                    //   height: context.spaces.space_200,
-                    //   width: context.spaces.space_25,
-                    //   colorFilter: ColorFilter.mode(
-                    //     context.colors.primary,
-                    //     BlendMode.srcATop,
-                    //   ),
-                    // ),
-                    child: const Icon(Icons.remove),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: context.spaces.space_200,
-            ),
-            Text(
-              '1',
-              style: context.typography.h700,
-            ),
-            SizedBox(
-              width: context.spaces.space_200,
-            ),
-            Container(
-              decoration: BoxDecoration(
+            CounterButtonWidget(
+              color: const Color(0xffffe6e6),
+              icon: Icon(
+                Icons.remove,
                 color: context.colors.primary,
-                borderRadius: BorderRadius.circular(context.spaces.space_100),
               ),
-              child: Ink(
-                child: InkWell(
-                  onTap: () {},
-                  child: Padding(
-                    padding: EdgeInsets.all(context.spaces.space_200),
-                    child: SvgPicture.asset(
-                      assets.icAdd,
-                      height: context.spaces.space_200,
-                      colorFilter: ColorFilter.mode(
-                          context.colors.secondary, BlendMode.srcATop),
-                    ),
-                  ),
-                ),
+              onPressed: () {},
+            ),
+            SizedBox(width: context.spaces.space_200),
+            Text('1', style: context.typography.h700),
+            SizedBox(width: context.spaces.space_200),
+            CounterButtonWidget(
+              color: context.colors.primary,
+              icon: Icon(
+                Icons.add,
+                color: context.colors.secondary,
               ),
+              onPressed: () {},
             ),
-            SizedBox(
-              width: context.spaces.space_200,
-            ),
+            SizedBox(width: context.spaces.space_200),
             Expanded(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -104,6 +60,42 @@ class AddCartButtonWidget extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class CounterButtonWidget extends StatelessWidget {
+  final Widget icon;
+  final VoidCallback onPressed;
+  final Color color;
+
+  const CounterButtonWidget({
+    super.key,
+    required this.icon,
+    required this.onPressed,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Ink(
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(context.spaces.space_100),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(context.spaces.space_100),
+          onTap: onPressed,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: context.spaces.space_150,
+              horizontal: context.spaces.space_150,
+            ),
+            child: icon,
+          ),
         ),
       ),
     );

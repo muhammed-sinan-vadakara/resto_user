@@ -8,6 +8,7 @@ import 'package:resto_user/features/home/presentation/widgets/text_widget.dart';
 
 class TypesViewWidget extends StatelessWidget {
   final ProductEntity entity;
+
   const TypesViewWidget({super.key, required this.entity});
 
   @override
@@ -16,7 +17,7 @@ class TypesViewWidget extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: context.spaces.space_300,
+        horizontal: context.spaces.space_200,
         vertical: context.spaces.space_100,
       ),
       child: Container(
@@ -37,31 +38,30 @@ class TypesViewWidget extends StatelessWidget {
                 style: context.typography.h700,
               ),
               const Divider(),
-              SizedBox(
-                height: entity.types.length * context.spaces.space_300,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: entity.types.length,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextWidget(text: entity.types[index].name),
-                        Row(
-                          children: [
-                            TextWidget(text: entity.types[index].price),
-                            SizedBox(
-                              width: context.spaces.space_200,
-                            ),
-                            RadioButtonWidget(
-                              onTap: () {},
-                            ),
-                          ],
-                        ),
-                      ],
-                    );
-                  },
-                ),
+              ListView.separated(
+                shrinkWrap: true,
+                itemCount: entity.types.length,
+                separatorBuilder: (context, index) =>
+                    SizedBox(height: context.spaces.space_100),
+                itemBuilder: (context, index) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextWidget(text: entity.types[index].name),
+                      Row(
+                        children: [
+                          TextWidget(text: entity.types[index].price),
+                          SizedBox(
+                            width: context.spaces.space_200,
+                          ),
+                          RadioButtonWidget(
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
               ),
             ],
           ),

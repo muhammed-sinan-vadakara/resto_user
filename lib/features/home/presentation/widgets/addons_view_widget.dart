@@ -15,7 +15,7 @@ class AddonsViewWidget extends StatelessWidget {
     final constants = GetIt.I.get<HomeConstants>();
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: context.spaces.space_300,
+        horizontal: context.spaces.space_200,
         vertical: context.spaces.space_100,
       ),
       child: Container(
@@ -36,31 +36,30 @@ class AddonsViewWidget extends StatelessWidget {
                 style: context.typography.h700,
               ),
               const Divider(),
-              SizedBox(
-                height: entity.addOns.length * context.spaces.space_300,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: entity.addOns.length,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextWidget(text: entity.addOns[index].name),
-                        Row(
-                          children: [
-                            TextWidget(text: entity.addOns[index].price),
-                            SizedBox(
-                              width: context.spaces.space_200,
-                            ),
-                            CheckboxWidget(
-                              onTap: () {},
-                            ),
-                          ],
-                        ),
-                      ],
-                    );
-                  },
-                ),
+              ListView.separated(
+                shrinkWrap: true,
+                itemCount: entity.addOns.length,
+                separatorBuilder: (context, index) =>
+                    SizedBox(height: context.spaces.space_100),
+                itemBuilder: (context, index) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextWidget(text: entity.addOns[index].name),
+                      Row(
+                        children: [
+                          TextWidget(text: entity.addOns[index].price),
+                          SizedBox(
+                            width: context.spaces.space_200,
+                          ),
+                          CheckboxWidget(
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
               ),
             ],
           ),
