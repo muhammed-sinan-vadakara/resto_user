@@ -16,7 +16,7 @@ class AuthElevatedButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: context.spaces.space_300,
+        vertical: context.spaces.space_100,
         horizontal: context.spaces.space_300,
       ),
       child: SizedBox(
