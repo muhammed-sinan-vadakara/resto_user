@@ -7,7 +7,6 @@ import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
 import 'package:resto_user/features/home/domain/entity/offer_entity/offer_entity.dart';
-import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/pages/order_placed_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc.dart';
@@ -16,7 +15,6 @@ import 'package:resto_user/features/history/presentation/pages/my_order_page.dar
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/home/presentation/pages/offer_overview_page.dart';
-import 'package:resto_user/features/home/presentation/widgets/overview_bottomsheet_widget.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
