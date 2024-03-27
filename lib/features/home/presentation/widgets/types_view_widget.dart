@@ -1,3 +1,4 @@
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/home_page/home_constants.dart';
@@ -6,7 +7,7 @@ import 'package:resto_user/features/home/domain/entity/product_entity/product_en
 import 'package:resto_user/features/home/presentation/widgets/radio_button_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/text_widget.dart';
 
-class TypesViewWidget extends StatelessWidget {
+class TypesViewWidget extends HookWidget {
   final ProductEntity entity;
 
   const TypesViewWidget({super.key, required this.entity});
@@ -14,6 +15,8 @@ class TypesViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<HomeConstants>();
+
+    final selectedProductType = useState(entity.types.first.id);
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -38,11 +41,9 @@ class TypesViewWidget extends StatelessWidget {
                 style: context.typography.h700,
               ),
               const Divider(),
-              ListView.separated(
+              ListView.builder(
                 shrinkWrap: true,
                 itemCount: entity.types.length,
-                separatorBuilder: (context, index) =>
-                    SizedBox(height: context.spaces.space_100),
                 itemBuilder: (context, index) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,7 +56,13 @@ class TypesViewWidget extends StatelessWidget {
                             width: context.spaces.space_200,
                           ),
                           RadioButtonWidget(
-                            onTap: () {},
+                            groupValue: selectedProductType.value,
+                            value: entity.types[index].id,
+                            isChecked: selectedProductType.value ==
+                                entity.types[index].id,
+                            onChanged: (value) {
+                              selectedProductType.value = value!;
+                            },
                           ),
                         ],
                       ),
