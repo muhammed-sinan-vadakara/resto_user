@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
@@ -12,35 +13,35 @@ class AddCartButtonWidget extends StatelessWidget {
     final assets = GetIt.I.get<AppAssetConstants>();
 
     return Container(
-      width: MediaQuery.sizeOf(context).width,
-      height: 60,
+      width: double.infinity,
       color: context.colors.secondary,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: context.spaces.space_300),
         child: Row(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0xffffe6e6),
-                borderRadius: BorderRadius.circular(context.spaces.space_100),
-              ),
+            Material(
               child: Ink(
+                decoration: BoxDecoration(
+                  color: const Color(0xffffe6e6),
+                  borderRadius: BorderRadius.circular(context.spaces.space_100),
+                ),
                 child: InkWell(
                   onTap: () {},
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      vertical: context.spaces.space_200,
-                      horizontal: context.spaces.space_100,
+                      vertical: context.spaces.space_150,
+                      horizontal: context.spaces.space_150,
                     ),
-                    child: SvgPicture.asset(
-                      assets.icMinimize,
-                      height: context.spaces.space_200,
-                      width: context.spaces.space_25,
-                      colorFilter: ColorFilter.mode(
-                        context.colors.primary,
-                        BlendMode.srcATop,
-                      ),
-                    ),
+                    // child: SvgPicture.asset(
+                    //   assets.icMinimize,
+                    //   height: context.spaces.space_200,
+                    //   width: context.spaces.space_25,
+                    //   colorFilter: ColorFilter.mode(
+                    //     context.colors.primary,
+                    //     BlendMode.srcATop,
+                    //   ),
+                    // ),
+                    child: const Icon(Icons.remove),
                   ),
                 ),
               ),
@@ -76,27 +77,28 @@ class AddCartButtonWidget extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: context.spaces.space_400,
+              width: context.spaces.space_200,
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    context.spaces.space_100,
+            Expanded(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      context.spaces.space_100,
+                    ),
                   ),
+                  backgroundColor: context.colors.primary,
                 ),
-                backgroundColor: context.colors.primary,
-              ),
-              onPressed: () {},
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.spaces.space_400,
-                  vertical: context.spaces.space_150 * 1.2,
-                ),
-                child: Text(
-                  'Add To Cart',
-                  style: context.typography.h400.copyWith(
-                    color: context.colors.secondary,
+                onPressed: () {},
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: context.spaces.space_150 * 1.2,
+                  ),
+                  child: Text(
+                    'Add To Cart',
+                    style: context.typography.h400.copyWith(
+                      color: context.colors.secondary,
+                    ),
                   ),
                 ),
               ),
