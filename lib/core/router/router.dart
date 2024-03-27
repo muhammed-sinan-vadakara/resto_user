@@ -15,7 +15,9 @@ import 'package:resto_user/features/history/presentation/pages/my_order_page.dar
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/home/presentation/pages/offer_overview_page.dart';
+
 import 'package:resto_user/features/map/presentation/bloc/map_bloc.dart';
+
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/support_page.dart';

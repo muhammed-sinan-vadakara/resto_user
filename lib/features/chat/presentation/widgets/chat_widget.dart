@@ -43,36 +43,34 @@ class MessageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-
     return Align(
       alignment: message.receiverId == "user1"
           ? Alignment.centerLeft
           : Alignment.centerRight,
       child: Container(
-        padding: EdgeInsets.all(theme.spaces.space_200),
+        padding: EdgeInsets.all(context.spaces.space_200),
         margin: EdgeInsets.only(
-          top: theme.spaces.space_100,
-          bottom: theme.spaces.space_100,
+          top: context.spaces.space_100,
+          bottom: context.spaces.space_100,
           left: message.senderId != "user1"
-              ? theme.spaces.space_200
-              : theme.spaces.space_100,
+              ? context.spaces.space_200
+              : context.spaces.space_100,
           right: message.senderId != "user1"
-              ? theme.spaces.space_100
-              : theme.spaces.space_200,
+              ? context.spaces.space_100
+              : context.spaces.space_200,
         ),
         decoration: BoxDecoration(
           borderRadius: message.receiverId == "user1"
               ? BorderRadius.only(
-                  topRight: Radius.circular(theme.spaces.space_200),
-                  bottomLeft: Radius.circular(theme.spaces.space_200),
-                  bottomRight: Radius.circular(theme.spaces.space_200))
+                  topRight: Radius.circular(context.spaces.space_200),
+                  bottomLeft: Radius.circular(context.spaces.space_200),
+                  bottomRight: Radius.circular(context.spaces.space_200))
               : BorderRadius.only(
-                  topLeft: Radius.circular(theme.spaces.space_200),
-                  bottomLeft: Radius.circular(theme.spaces.space_200),
-                  bottomRight: Radius.circular(theme.spaces.space_200)),
+                  topLeft: Radius.circular(context.spaces.space_200),
+                  bottomLeft: Radius.circular(context.spaces.space_200),
+                  bottomRight: Radius.circular(context.spaces.space_200)),
           color: message.senderId == "user1"
-              ? theme.colors.primary
+              ? context.colors.primary
               : Colors.grey[200],
         ),
         child: Column(
@@ -81,16 +79,16 @@ class MessageContainer extends StatelessWidget {
             Text(
               message.message,
               style: message.receiverId == 'user1'
-                  ? theme.typography.h400.copyWith(color: theme.colors.text)
-                  : theme.typography.h400
-                      .copyWith(color: theme.colors.secondary),
+                  ? context.typography.h400.copyWith(color: context.colors.text)
+                  : context.typography.h400
+                      .copyWith(color: context.colors.secondary),
             ),
             Text(
               ('${message.timestamp.hour}:${message.timestamp.minute}'),
               style: message.receiverId == 'user1'
-                  ? theme.typography.h100.copyWith(color: theme.colors.text)
-                  : theme.typography.h100
-                      .copyWith(color: theme.colors.secondary),
+                  ? context.typography.h100.copyWith(color: context.colors.text)
+                  : context.typography.h100
+                      .copyWith(color: context.colors.secondary),
             ),
           ],
         ),

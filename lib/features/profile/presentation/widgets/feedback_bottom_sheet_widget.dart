@@ -17,8 +17,9 @@ class FeedbackBottomSheet extends HookWidget {
   Widget build(BuildContext context) {
     final titleController = useTextEditingController();
     final descriptionController = useTextEditingController();
-    final appTheme = AppTheme.of(context);
+
     final constants = GetIt.I.get<ProfilePageConstants>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Padding(
@@ -26,8 +27,8 @@ class FeedbackBottomSheet extends HookWidget {
         child: Container(
           width: MediaQuery.sizeOf(context).width,
           decoration: BoxDecoration(
-              color: appTheme.colors.secondary,
-              borderRadius: BorderRadius.circular(appTheme.spaces.space_200)),
+              color: context.colors.secondary,
+              borderRadius: BorderRadius.circular(context.spaces.space_200)),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -35,7 +36,7 @@ class FeedbackBottomSheet extends HookWidget {
                 const SizedBox32(),
                 Text(
                   constants.txtAddFeedback,
-                  style: appTheme.typography.h600,
+                  style: context.typography.h600,
                 ),
                 const SizedBox32(),
                 FeedbackTextFieldWidget(
@@ -51,19 +52,19 @@ class FeedbackBottomSheet extends HookWidget {
                 const SizedBox16(),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: appTheme.spaces.space_300),
+                      horizontal: context.spaces.space_300),
                   child: Container(
-                    height: appTheme.spaces.space_700,
+                    height: context.spaces.space_700,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            color: appTheme.colors.textDisabled,
-                            width: appTheme.spaces.space_25),
+                            color: context.colors.textDisabled,
+                            width: context.spaces.space_25),
                         borderRadius:
-                            BorderRadius.circular(appTheme.spaces.space_100)),
+                            BorderRadius.circular(context.spaces.space_100)),
                     child: Center(
                       child: Text(
                         constants.txtaddAttachments,
-                        style: appTheme.typography.h400,
+                        style: context.typography.h400,
                       ),
                     ),
                   ),

@@ -42,11 +42,10 @@ class ImagePickerUtils {
     await showDialog(
       context: context,
       builder: (context) {
-        final theme = AppTheme.of(context);
         final constants = GetIt.I.get<ProfilePageConstants>();
 
         return AlertDialog(
-            backgroundColor: theme.colors.secondary,
+            backgroundColor: context.colors.secondary,
             title: Column(
               children: [
                 TextButton(
@@ -56,7 +55,7 @@ class ImagePickerUtils {
                       Future.sync(() => context.pop());
                     },
                     child: Text(constants.txtCamera,
-                        style: theme.typography.h500)),
+                        style: context.typography.h500)),
                 TextButton(
                     onPressed: () async {
                       imageCompleter.complete(
@@ -65,7 +64,7 @@ class ImagePickerUtils {
                       Future.sync(() => context.pop());
                     },
                     child: Text(constants.txtGallery,
-                        style: theme.typography.h500)),
+                        style: context.typography.h500)),
 
                 /// Show the delete option if required
                 if (showDeleteOption)
@@ -78,8 +77,8 @@ class ImagePickerUtils {
                         Future.sync(() => context.pop());
                       },
                       child: Text(constants.txtDelete,
-                          style: theme.typography.h500
-                              .copyWith(color: theme.colors.primary))),
+                          style: context.typography.h500
+                              .copyWith(color: context.colors.primary))),
               ],
             ));
       },

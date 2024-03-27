@@ -11,7 +11,6 @@ class CarouselSliderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     return CarouselSlider.builder(
       itemCount: entity.length,
       itemBuilder: (context, index, realIndex) {
@@ -31,7 +30,7 @@ class CarouselSliderWidget extends StatelessWidget {
         );
       },
       options: CarouselOptions(
-        height: theme.spaces.space_500 * 6,
+        height: context.spaces.space_500 * 6,
         enlargeCenterPage: true,
         autoPlay: true,
         aspectRatio: 16 / 9,

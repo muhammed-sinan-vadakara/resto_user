@@ -11,44 +11,44 @@ class AddressWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<CheckoutPageConstants>();
-    final theme = AppTheme.of(context);
+
     final assets = GetIt.I.get<AppAssetConstants>();
     return Container(
       decoration: BoxDecoration(
-        color: theme.colors.secondary,
-        boxShadow: [theme.boxShadow.secondary],
-        borderRadius: BorderRadius.circular(theme.spaces.space_150),
+        color: context.colors.secondary,
+        boxShadow: [context.boxShadow.secondary],
+        borderRadius: BorderRadius.circular(context.spaces.space_150),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: theme.spaces.space_250,
-            vertical: theme.spaces.space_200),
+            horizontal: context.spaces.space_250,
+            vertical: context.spaces.space_200),
         child: Column(
           children: [
             Row(
               children: [
                 Text(
                   constants.txtAddress,
-                  style: theme.typography.h600,
+                  style: context.typography.h600,
                 ),
                 const Expanded(child: SizedBox()),
                 Ink(
                   child: InkWell(
                       borderRadius:
-                          BorderRadius.circular(theme.spaces.space_100),
+                          BorderRadius.circular(context.spaces.space_100),
                       onTap: () {},
                       child: Icon(
                         Icons.arrow_forward_ios_outlined,
-                        size: theme.spaces.space_250,
+                        size: context.spaces.space_250,
                       )),
                 ),
               ],
             ),
             Divider(
-              color: theme.colors.textDisabled,
+              color: context.colors.textDisabled,
             ),
             SizedBox(
-              height: theme.spaces.space_100,
+              height: context.spaces.space_100,
             ),
             Row(
               children: [
@@ -62,13 +62,13 @@ class AddressWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: theme.spaces.space_100),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: context.spaces.space_100),
                   child: SizedBox(
-                    width: theme.spaces.space_300 * 11,
+                    width: context.spaces.space_300 * 11,
                     child: Text(
                       'ManikyaNagar,Street-Number seventeen,sahembupram,Ernakulam,kerala',
-                      style: theme.typography.h200,
+                      style: context.typography.h200,
                     ),
                   ),
                 ),

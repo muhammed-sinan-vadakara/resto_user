@@ -7,7 +7,7 @@ class SizedBox32 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppTheme.of(context).spaces.space_400,
+      height: context.spaces.space_400,
     );
   }
 }

@@ -7,12 +7,11 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     return Row(
       children: [
         Text(
           title,
-          style: theme.typography.h600,
+          style: context.typography.h600,
         ),
       ],
     );

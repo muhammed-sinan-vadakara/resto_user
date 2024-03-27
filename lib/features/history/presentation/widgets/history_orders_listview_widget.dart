@@ -8,7 +8,6 @@ class HistoryOrdersListviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     final constants = GetIt.I.get<MyOrderPageConstants>();
     return ListView.builder(
       shrinkWrap: true,
@@ -17,22 +16,22 @@ class HistoryOrdersListviewWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: appTheme.spaces.space_300,
-              vertical: appTheme.spaces.space_150),
+              horizontal: context.spaces.space_300,
+              vertical: context.spaces.space_150),
           child: Container(
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height / 6.80,
             decoration: BoxDecoration(
                 border:
-                    Border.all(width: 1.3, color: appTheme.colors.textDisabled),
-                borderRadius: BorderRadius.circular(appTheme.spaces.space_100)),
+                    Border.all(width: 1.3, color: context.colors.textDisabled),
+                borderRadius: BorderRadius.circular(context.spaces.space_100)),
 
             /// image
             child: Row(
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: appTheme.spaces.space_125),
+                      horizontal: context.spaces.space_125),
                   child: Container(
                     height: MediaQuery.sizeOf(context).height / 10,
                     width: MediaQuery.sizeOf(context).width / 4.50,
@@ -42,7 +41,7 @@ class HistoryOrdersListviewWidget extends StatelessWidget {
                                 "https://www.kitchensanctuary.com/wp-content/uploads/2019/08/Crispy-Chicken-Burger-square-FS-4518.jpg"),
                             fit: BoxFit.fill),
                         borderRadius:
-                            BorderRadius.circular(appTheme.spaces.space_100)),
+                            BorderRadius.circular(context.spaces.space_100)),
                   ),
                 ),
                 // ),
@@ -55,13 +54,13 @@ class HistoryOrdersListviewWidget extends StatelessWidget {
                         children: [
                           Text(
                             constants.txtChickenBurger,
-                            style: appTheme.typography.h700
-                                .copyWith(color: appTheme.colors.text),
+                            style: context.typography.h700
+                                .copyWith(color: context.colors.text),
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: appTheme.spaces.space_125,
+                        height: context.spaces.space_125,
                       ),
 
                       /// Row 1
@@ -70,18 +69,18 @@ class HistoryOrdersListviewWidget extends StatelessWidget {
                         children: [
                           Text(
                             constants.txtPrice,
-                            style: appTheme.typography.h700
-                                .copyWith(color: appTheme.colors.primary),
+                            style: context.typography.h700
+                                .copyWith(color: context.colors.primary),
                           ),
                           Text(
                             constants.txtDelivered,
-                            style: appTheme.typography.h600
-                                .copyWith(color: appTheme.colors.primary),
+                            style: context.typography.h600
+                                .copyWith(color: context.colors.primary),
                           )
                         ],
                       ),
                       SizedBox(
-                        height: appTheme.spaces.space_125,
+                        height: context.spaces.space_125,
                       ),
 
                       /// Row 2
@@ -91,14 +90,14 @@ class HistoryOrdersListviewWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 20),
                             child: Text(
                               constants.txtDate,
-                              style: appTheme.typography.h200
-                                  .copyWith(color: appTheme.colors.text),
+                              style: context.typography.h200
+                                  .copyWith(color: context.colors.text),
                             ),
                           ),
                           Text(
                             constants.txtTime,
-                            style: appTheme.typography.h200
-                                .copyWith(color: appTheme.colors.text),
+                            style: context.typography.h200
+                                .copyWith(color: context.colors.text),
                           )
                         ],
                       ),

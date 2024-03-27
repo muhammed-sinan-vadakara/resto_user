@@ -14,15 +14,14 @@ class CategoryListViewWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     return ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: theme.spaces.space_150),
+            padding: EdgeInsets.symmetric(horizontal: context.spaces.space_150),
             child: SizedBox(
-              width: theme.spaces.space_900,
+              width: context.spaces.space_900,
               child: Column(
                 children: [
                   InkWell(
@@ -32,7 +31,7 @@ class CategoryListViewWidget extends HookWidget {
                           );
                     },
                     child: CircleAvatar(
-                      radius: theme.spaces.space_250,
+                      radius: context.spaces.space_250,
                       backgroundImage: NetworkImage(entity[index].imagePath),
                     ),
                   ),

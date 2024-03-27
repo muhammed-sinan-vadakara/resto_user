@@ -14,62 +14,61 @@ class AppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     final assets = GetIt.I.get<AppAssetConstants>();
     return AppBar(
-      backgroundColor: appTheme.colors.secondary,
+      backgroundColor: context.colors.secondary,
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 0,
       elevation: 0,
-      titleSpacing: appTheme.spaces.space_300,
+      titleSpacing: context.spaces.space_300,
       title: Transform.translate(
-        offset: Offset(-appTheme.spaces.space_200, 0),
+        offset: Offset(-context.spaces.space_200, 0),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Ink(
               child: InkWell(
-                borderRadius: BorderRadius.circular(appTheme.spaces.space_100),
+                borderRadius: BorderRadius.circular(context.spaces.space_100),
                 onTap: () => context.pop(),
                 child: Padding(
-                  padding: EdgeInsets.all(appTheme.spaces.space_200),
+                  padding: EdgeInsets.all(context.spaces.space_200),
                   child: SvgPicture.asset(
                     assets.icArrowBackward,
-                    height: appTheme.spaces.space_200,
+                    height: context.spaces.space_200,
                     colorFilter: ColorFilter.mode(
-                        appTheme.colors.text, BlendMode.srcATop),
+                        context.colors.text, BlendMode.srcATop),
                   ),
                 ),
               ),
             ),
             SizedBox(
-              width: appTheme.spaces.space_100,
+              width: context.spaces.space_100,
             ),
             Text(
               title,
-              style: appTheme.typography.h600,
+              style: context.typography.h600,
             )
           ],
         ),
       ),
       actions: [
         Transform.translate(
-          offset: Offset(appTheme.spaces.space_100, 0),
+          offset: Offset(context.spaces.space_100, 0),
           child: Padding(
-            padding: EdgeInsets.only(right: appTheme.spaces.space_300),
+            padding: EdgeInsets.only(right: context.spaces.space_300),
             child: Ink(
-              height: appTheme.spaces.space_500,
+              height: context.spaces.space_500,
               child: InkWell(
-                borderRadius: BorderRadius.circular(appTheme.spaces.space_100),
+                borderRadius: BorderRadius.circular(context.spaces.space_100),
                 onTap: onPressed,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: appTheme.spaces.space_100),
+                      horizontal: context.spaces.space_100),
                   child: Center(
                     child: Text(
                       actionButtonName ?? '',
-                      style: appTheme.typography.h600.copyWith(
-                        color: appTheme.colors.primary,
+                      style: context.typography.h600.copyWith(
+                        color: context.colors.primary,
                       ),
                     ),
                   ),

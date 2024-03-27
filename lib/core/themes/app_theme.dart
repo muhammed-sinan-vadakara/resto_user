@@ -5,24 +5,20 @@ import 'package:resto_user/core/themes/extensions/color_extension.dart';
 import 'package:resto_user/core/themes/extensions/space_extension.dart';
 import 'package:resto_user/core/themes/extensions/typography_extension.dart';
 
-final class AppTheme {
-  final BuildContext context;
-
-  AppTheme.of(this.context);
-
+extension AppTheme on BuildContext {
   AppColorExtension get colors {
-    return Theme.of(context).extension<AppColorExtension>()!;
+    return Theme.of(this).extension<AppColorExtension>()!;
   }
 
   AppSpaceExtension get spaces {
-    return Theme.of(context).extension<AppSpaceExtension>()!;
+    return Theme.of(this).extension<AppSpaceExtension>()!;
   }
 
   AppTypographyExtension get typography {
-    return Theme.of(context).extension<AppTypographyExtension>()!;
+    return Theme.of(this).extension<AppTypographyExtension>()!;
   }
 
   AppBoxShadowExtension get boxShadow {
-    return Theme.of(context).extension<AppBoxShadowExtension>()!;
+    return Theme.of(this).extension<AppBoxShadowExtension>()!;
   }
 }

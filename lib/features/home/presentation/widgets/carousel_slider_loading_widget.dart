@@ -8,23 +8,22 @@ class CarouselSliderLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
     return CarouselSlider.builder(
       itemCount: 3,
       itemBuilder: (context, index, realIndex) {
         return Shimmer.fromColors(
-          baseColor: theme.colors.textInverse,
-          highlightColor: theme.colors.textSubtle,
+          baseColor: context.colors.textInverse,
+          highlightColor: context.colors.textSubtle,
           child: Container(
             decoration: BoxDecoration(
-              color: theme.colors.text,
+              color: context.colors.text,
               borderRadius: BorderRadius.circular(8.0),
             ),
           ),
         );
       },
       options: CarouselOptions(
-        height: theme.spaces.space_500 * 6,
+        height: context.spaces.space_500 * 6,
         enlargeCenterPage: true,
         autoPlay: true,
         aspectRatio: 16 / 9,

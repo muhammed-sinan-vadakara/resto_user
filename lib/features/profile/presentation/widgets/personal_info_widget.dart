@@ -9,36 +9,36 @@ class PersonalInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
     final constants = GetIt.I.get<ProfilePageConstants>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           constants.txtPersonalInfo,
-          style: appTheme.typography.h400,
+          style: context.typography.h400,
         ),
         SizedBox(
-          height: appTheme.spaces.space_100,
+          height: context.spaces.space_100,
         ),
         Container(
-          padding: EdgeInsets.all(appTheme.spaces.space_200),
+          padding: EdgeInsets.all(context.spaces.space_200),
           width: MediaQuery.sizeOf(context).width,
           decoration: BoxDecoration(
-              border: Border.all(color: appTheme.colors.textDisabled),
-              borderRadius: BorderRadius.circular(appTheme.spaces.space_200)),
+              border: Border.all(color: context.colors.textDisabled),
+              borderRadius: BorderRadius.circular(context.spaces.space_200)),
           child: Column(
             children: [
               PersonalInfoRowWidget(
                   keyName: constants.txtUserName, value: 'Shamjad'),
               SizedBox(
-                height: appTheme.spaces.space_200,
+                height: context.spaces.space_200,
               ),
               PersonalInfoRowWidget(
                   keyName: constants.txtMobileNumber, value: '9746395588'),
               SizedBox(
-                height: appTheme.spaces.space_200,
+                height: context.spaces.space_200,
               ),
               PersonalInfoRowWidget(
                   keyName: constants.txtEmail, value: 'shamjad@gmail.com')

@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final constants = GetIt.I.get<AppAssetConstants>();
-    final theme = AppTheme.of(context);
+
     final phoneNumberController = useTextEditingController();
 
     return Scaffold(
@@ -50,8 +50,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: Text(
                     "Enter Mobile Number",
-                    style: theme.typography.uiSemibold
-                        .copyWith(color: theme.colors.text),
+                    style: context.typography.uiSemibold
+                        .copyWith(color: context.colors.text),
                   ),
                 ),
                 TextFeildWidget(textController: phoneNumberController)
@@ -64,17 +64,17 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AuthElevatedButtonWidget(
-            colours: theme.colors.primary,
+            colours: context.colors.primary,
             text: Text(
               "Send OTP",
-              style: theme.typography.uiSemibold.copyWith(
-                color: theme.colors.secondary,
+              style: context.typography.uiSemibold.copyWith(
+                color: context.colors.secondary,
               ),
             ),
             onPressed: () {},
           ),
           AuthElevatedButtonWidget(
-            colours: theme.colors.textDisabled,
+            colours: context.colors.textDisabled,
             text: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -86,8 +86,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Text(
                   "Sign up with Google",
-                  style: theme.typography.uiSemibold.copyWith(
-                    color: theme.colors.text,
+                  style: context.typography.uiSemibold.copyWith(
+                    color: context.colors.text,
                   ),
                 ),
               ],
