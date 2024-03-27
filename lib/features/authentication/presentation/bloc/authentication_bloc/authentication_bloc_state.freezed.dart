@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthenticationBlocState {
   String? get error => throw _privateConstructorUsedError;
   int? get resendToken => throw _privateConstructorUsedError;
-  String? get verificationId => throw _privateConstructorUsedError;
+  String get verificationId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthenticationBlocStateCopyWith<AuthenticationBlocState> get copyWith =>
@@ -31,7 +31,7 @@ abstract class $AuthenticationBlocStateCopyWith<$Res> {
           $Res Function(AuthenticationBlocState) then) =
       _$AuthenticationBlocStateCopyWithImpl<$Res, AuthenticationBlocState>;
   @useResult
-  $Res call({String? error, int? resendToken, String? verificationId});
+  $Res call({String? error, int? resendToken, String verificationId});
 }
 
 /// @nodoc
@@ -50,7 +50,7 @@ class _$AuthenticationBlocStateCopyWithImpl<$Res,
   $Res call({
     Object? error = freezed,
     Object? resendToken = freezed,
-    Object? verificationId = freezed,
+    Object? verificationId = null,
   }) {
     return _then(_value.copyWith(
       error: freezed == error
@@ -61,10 +61,10 @@ class _$AuthenticationBlocStateCopyWithImpl<$Res,
           ? _value.resendToken
           : resendToken // ignore: cast_nullable_to_non_nullable
               as int?,
-      verificationId: freezed == verificationId
+      verificationId: null == verificationId
           ? _value.verificationId
           : verificationId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -78,7 +78,7 @@ abstract class _$$AuthenticationBlocStateImplCopyWith<$Res>
       __$$AuthenticationBlocStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? error, int? resendToken, String? verificationId});
+  $Res call({String? error, int? resendToken, String verificationId});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class __$$AuthenticationBlocStateImplCopyWithImpl<$Res>
   $Res call({
     Object? error = freezed,
     Object? resendToken = freezed,
-    Object? verificationId = freezed,
+    Object? verificationId = null,
   }) {
     return _then(_$AuthenticationBlocStateImpl(
       error: freezed == error
@@ -107,10 +107,10 @@ class __$$AuthenticationBlocStateImplCopyWithImpl<$Res>
           ? _value.resendToken
           : resendToken // ignore: cast_nullable_to_non_nullable
               as int?,
-      verificationId: freezed == verificationId
+      verificationId: null == verificationId
           ? _value.verificationId
           : verificationId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -128,7 +128,7 @@ class _$AuthenticationBlocStateImpl implements _AuthenticationBlocState {
   @override
   final int? resendToken;
   @override
-  final String? verificationId;
+  final String verificationId;
 
   @override
   String toString() {
@@ -163,14 +163,14 @@ abstract class _AuthenticationBlocState implements AuthenticationBlocState {
   factory _AuthenticationBlocState(
       {required final String? error,
       required final int? resendToken,
-      required final String? verificationId}) = _$AuthenticationBlocStateImpl;
+      required final String verificationId}) = _$AuthenticationBlocStateImpl;
 
   @override
   String? get error;
   @override
   int? get resendToken;
   @override
-  String? get verificationId;
+  String get verificationId;
   @override
   @JsonKey(ignore: true)
   _$$AuthenticationBlocStateImplCopyWith<_$AuthenticationBlocStateImpl>
