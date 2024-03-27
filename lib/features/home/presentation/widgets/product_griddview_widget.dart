@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
+import 'package:resto_user/features/home/presentation/widgets/add_cart_button_widget.dart';
 import 'package:resto_user/features/home/presentation/widgets/overview_bottomsheet_widget.dart';
 
 class ProductGridViewWidget extends StatelessWidget {
@@ -39,22 +40,30 @@ class ProductGridViewWidget extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    // showModalBottomSheet(
-                    //   context: context,
-                    //   builder: (context) => const OverviewBottomSheetWidget(),
-                    // );
                     showModalBottomSheet<dynamic>(
                         isScrollControlled: true,
                         context: context,
                         builder: (BuildContext bc) {
-                          return Container(
-                            height: 750,
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
+                          return Stack(
+                            children: [
+                              Container(
+                                height: 750,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0))),
-                            child: const OverviewBottomSheetWidget(),
+                                    topRight: Radius.circular(20.0),
+                                  ),
+                                ),
+                                child: OverviewBottomSheetWidget(
+                                  entity: productData,
+                                ),
+                              ),
+                              const Positioned(
+                                bottom: 0,
+                                child: AddCartButtonWidget(),
+                              )
+                            ],
                           );
                         });
                   },

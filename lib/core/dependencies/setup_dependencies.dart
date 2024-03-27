@@ -105,7 +105,9 @@ void setupDependencies() {
   getIt.registerSingleton<OrderSummaryPageConstants>(
       OrderSummaryPageConstants());
   getIt.registerSingleton<MyOrderDataSource>(MyOrderDatasourceImpl());
-  getIt.registerSingleton<MyOrderRepository>(MyOrderRepositoryImpl(dataSource: GetIt.I.get()));
+  getIt.registerSingleton<MyOrderRepository>(
+      MyOrderRepositoryImpl(dataSource: GetIt.I.get()));
+
   /// Chat
   getIt.registerSingleton<MessageDataSource>(MessageDataSourceImpl());
   getIt.registerSingleton<MessageRepository>(

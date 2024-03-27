@@ -6,6 +6,8 @@ import 'package:resto_user/features/authentication/presentation/page/otp_verify_
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
+import 'package:resto_user/features/home/domain/entity/offer_entity/offer_entity.dart';
+import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
 import 'package:resto_user/features/checkout/presentation/pages/order_placed_page.dart';
 import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc.dart';
@@ -13,6 +15,8 @@ import 'package:resto_user/features/history/presentation/bloc/history_bloc/my_or
 import 'package:resto_user/features/history/presentation/pages/my_order_page.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
+import 'package:resto_user/features/home/presentation/pages/offer_overview_page.dart';
+import 'package:resto_user/features/home/presentation/widgets/overview_bottomsheet_widget.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/support_page.dart';
@@ -23,7 +27,7 @@ import 'package:resto_user/features/home/presentation/bloc/category_bloc/categor
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 
 final router = GoRouter(
-  initialLocation: MyOrderPage.routePath,
+  initialLocation: HomePage.routePath,
   routes: [
     GoRoute(
       path: CartPage.routPath,
@@ -33,8 +37,9 @@ final router = GoRouter(
     GoRoute(
       path: MyOrderPage.routePath,
       builder: (context, state) => BlocProvider<MyOrderBloc>(
-        create: (context) => MyOrderBloc(),child: const MyOrderPage(),),
-       
+        create: (context) => MyOrderBloc(),
+        child: const MyOrderPage(),
+      ),
     ),
     GoRoute(
       path: Map.routePath,
@@ -48,6 +53,12 @@ final router = GoRouter(
     GoRoute(
       path: SupportPage.routePath,
       builder: (context, state) => const SupportPage(),
+    ),
+    GoRoute(
+      path: OfferOverviewPage.routePath,
+      builder: (context, state) => OfferOverviewPage(
+        entity: state.extra as OfferEntity,
+      ),
     ),
     GoRoute(
       path: HomePage.routePath,

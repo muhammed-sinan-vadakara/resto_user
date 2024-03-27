@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/offer_entity/offer_entity.dart';
+import 'package:resto_user/features/home/presentation/pages/offer_overview_page.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   final List<OfferEntity> entity;
@@ -14,7 +16,9 @@ class CarouselSliderWidget extends StatelessWidget {
       itemCount: entity.length,
       itemBuilder: (context, index, realIndex) {
         return InkWell(
-          onTap: () {},
+          onTap: () {
+            context.push(OfferOverviewPage.routePath, extra: entity[index]);
+          },
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
@@ -37,6 +41,5 @@ class CarouselSliderWidget extends StatelessWidget {
         viewportFraction: 1,
       ),
     );
-    
   }
 }

@@ -16,6 +16,7 @@ class AppAssetConstants {
   final icRemove = '${_iconsPath}remove_icon.svg';
   final icSearch = '${_iconsPath}search_icon.svg';
   final icUser = '${_iconsPath}user_icon.svg';
+  final icMinimize = '${_iconsPath}minimize_icon.svg';
 
   ///image
   final image = "${_imagePath}login_background.svg";
