@@ -16,6 +16,10 @@ import 'package:resto_user/features/cart/data/datasource/cart_datasource.dart';
 import 'package:resto_user/features/cart/data/datasource/cart_datasource_impl.dart';
 import 'package:resto_user/features/cart/data/repository/cart_repository_impl.dart';
 import 'package:resto_user/features/cart/domain/repository/cart_repository.dart';
+import 'package:resto_user/features/chat/data/data%20source/message_data_source.dart';
+import 'package:resto_user/features/chat/data/data%20source/message_data_source_impl.dart';
+import 'package:resto_user/features/chat/data/repository/message_repository_impl.dart';
+import 'package:resto_user/features/chat/domain/repository/message_repository.dart';
 import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource.dart';
 import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource_impl.dart';
 import 'package:resto_user/features/checkout/data/data_source/instruction_firestore_database.dart';
@@ -42,10 +46,6 @@ import 'package:resto_user/features/home/domain/repository/offer_repository.dart
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source_impl.dart';
-import 'package:resto_user/features/chat/data/data%20source/message_data_source.dart';
-import 'package:resto_user/features/chat/data/data%20source/message_data_source_impl.dart';
-import 'package:resto_user/features/chat/data/repository/message_repository_impl.dart';
-import 'package:resto_user/features/chat/domain/repository/message_repository.dart';
 
 final getIt = GetIt.instance;
 

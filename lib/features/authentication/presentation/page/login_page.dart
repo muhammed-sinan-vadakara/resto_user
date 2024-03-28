@@ -1,61 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:resto_user/core/constants/app_assets/app_asset_constants.dart';
+import 'package:resto_user/core/constants/authentication/authentication_constant.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
+import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:resto_user/features/authentication/presentation/widgets/auth_text_feild_widget.dart';
 import 'package:resto_user/features/authentication/presentation/widgets/elavated_button_widget.dart';
-import 'package:resto_user/features/authentication/presentation/widgets/text_feild_widget.dart';
 
-class LoginPage extends StatefulHookWidget {
+class LoginPage extends HookWidget {
   static const routePath = "/loginPage";
-  const LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
+  const LoginPage({
+    super.key,
+  });
 
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    final constants = GetIt.I.get<AppAssetConstants>();
+    final images = GetIt.I.get<AppAssetConstants>();
+    final constants = GetIt.I.get<AuthenticationConstant>();
+    final theme = (context);
 
     final phoneNumberController = useTextEditingController();
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 24,
-                    bottom: 104,
-                  ),
-                  child: SizedBox(
-                    // height: MediaQuery.sizeOf(context).height,
-                    width: MediaQuery.sizeOf(context).width,
-                    child: SvgPicture.asset(
-                      constants.image,
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: theme.spaces.space_300,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: theme.spaces.space_300,
+                      bottom: theme.spaces.space_800,
+                    ),
+                    child: SizedBox(
+                      // height: MediaQuery.sizeOf(context).height,
+                      width: MediaQuery.sizeOf(context).width,
+                      child: SvgPicture.asset(
+                        images.image,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    right: 190,
+                  Padding(
+                    padding: EdgeInsets.only(bottom: theme.spaces.space_125),
+                    child: Text(
+                      constants.txtMobileNumber,
+                      style: theme.typography.uiSemibold
+                          .copyWith(color: theme.colors.text),
+                    ),
                   ),
-                  child: Text(
-                    "Enter Mobile Number",
-                    style: context.typography.uiSemibold
-                        .copyWith(color: context.colors.text),
-                  ),
-                ),
-                TextFeildWidget(textController: phoneNumberController)
-              ],
+                  AuthTextFieldWidget(
+                    Controller: phoneNumberController,
+                    hintText:
+                        constants.txtEnterYour + constants.txtMobileNumber,
+                    keyboardType: TextInputType.phone,
+                    cursor: true,
+                    onChanged: (p0) {},
+                    style: TextStyle(),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -64,15 +77,18 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AuthElevatedButtonWidget(
-            colours: context.colors.primary,
-            text: Text(
-              "Send OTP",
-              style: context.typography.uiSemibold.copyWith(
-                color: context.colors.secondary,
+              colours: theme.colors.primary,
+              text: Text(
+                constants.txtSendOtp,
+                style: theme.typography.uiSemibold.copyWith(
+                  color: theme.colors.secondary,
+                ),
               ),
-            ),
-            onPressed: () {},
-          ),
+              onPressed: () {
+                context.read<AuthenticationBloc>().add(
+                    LoginWithPhoneNumberEvent(
+                        phoneNumber: phoneNumberController.text));
+              }),
           AuthElevatedButtonWidget(
             colours: context.colors.textDisabled,
             text: Row(
@@ -81,18 +97,23 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.only(right: 16),
                   child: SvgPicture.asset(
-                    constants.icGoogle,
+                    images.icGoogle,
                   ),
                 ),
                 Text(
-                  "Sign up with Google",
-                  style: context.typography.uiSemibold.copyWith(
-                    color: context.colors.text,
+                  constants.txtSignupGoogle,
+                  style: theme.typography.uiSemibold.copyWith(
+                    color: theme.colors.text,
                   ),
                 ),
               ],
             ),
-            onPressed: () {},
+            onPressed: () {
+              context.read<AuthenticationBloc>().add(LoginWithGoogleEvent());
+            },
+          ),
+          SizedBox(
+            height: theme.spaces.space_200,
           )
         ],
       ),
