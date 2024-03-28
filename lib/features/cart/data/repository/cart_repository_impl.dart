@@ -1,4 +1,5 @@
 import 'package:resto_user/features/cart/data/datasource/cart_datasource.dart';
+import 'package:resto_user/features/cart/data/model/cart_model.dart';
 import 'package:resto_user/features/cart/domain/entity/cart_entity.dart';
 import 'package:resto_user/features/cart/domain/repository/cart_repository.dart';
 
@@ -18,14 +19,24 @@ class CartRepositoryImpl implements CartRepository {
       ];
     }
   }
-  
+
   @override
   Future<int> addQuantity(int currentQty) {
     return dataSource.addQuantity(currentQty);
   }
-  
+
   @override
   Future<int> decrementQty(int currentQty) {
     return dataSource.decrementQty(currentQty);
+  }
+
+  @override
+  Future<void> addCart(CartEntity entity) async {
+    final addCart = CartModel(
+      productId: entity.productId,
+      type: entity.type,
+      quantity: entity.quantity,
+    );
+    await dataSource.addCart(addCart);
   }
 }
