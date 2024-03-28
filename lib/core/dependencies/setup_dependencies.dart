@@ -12,6 +12,10 @@ import 'package:resto_user/core/dependencies/bloc_dependencies.dart';
 import 'package:resto_user/core/router/router.dart';
 import 'package:resto_user/core/themes/dark_theme.dart';
 import 'package:resto_user/core/themes/light_theme.dart';
+import 'package:resto_user/features/cart/data/datasource/cart_datasource.dart';
+import 'package:resto_user/features/cart/data/datasource/cart_datasource_impl.dart';
+import 'package:resto_user/features/cart/data/repository/cart_repository_impl.dart';
+import 'package:resto_user/features/cart/domain/repository/cart_repository.dart';
 import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource.dart';
 import 'package:resto_user/features/checkout/data/data_source/coupon_firestore_datasource_impl.dart';
 import 'package:resto_user/features/checkout/data/data_source/instruction_firestore_database.dart';
@@ -107,6 +111,11 @@ void setupDependencies() {
   getIt.registerSingleton<MyOrderDataSource>(MyOrderDatasourceImpl());
   getIt.registerSingleton<MyOrderRepository>(
       MyOrderRepositoryImpl(dataSource: GetIt.I.get()));
+
+  /// cart
+  getIt.registerSingleton<CartDataSource>(CartDataSourceImpl());
+  getIt.registerSingleton<CartRepository>(
+      CartRepositoryImpl(dataSource: GetIt.I.get()));
 
   /// Chat
   getIt.registerSingleton<MessageDataSource>(MessageDataSourceImpl());

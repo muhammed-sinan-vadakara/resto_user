@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
-import 'package:resto_user/features/home/presentation/widgets/add_cart_button_widget.dart';
-import 'package:resto_user/features/home/presentation/widgets/overview_bottomsheet_widget.dart';
+import 'package:resto_user/features/home/presentation/widgets/product_details_bottomsheet_widget.dart';
 
 class ProductGridViewWidget extends StatelessWidget {
   final List<ProductEntity> entity;
@@ -43,7 +42,7 @@ class ProductGridViewWidget extends StatelessWidget {
                         isScrollControlled: true,
                         context: context,
                         builder: (context) => ProductDetailsBottomSheetWidget(
-                            productData: productData));
+                            entity: productData));
                   },
                   child: Container(
                     width: context.spaces.space_500 * 3.7,
@@ -79,42 +78,6 @@ class ProductGridViewWidget extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class ProductDetailsBottomSheetWidget extends StatelessWidget {
-  const ProductDetailsBottomSheetWidget({
-    super.key,
-    required this.productData,
-  });
-
-  final ProductEntity productData;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.9,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(context.spaces.space_250),
-                  topRight: Radius.circular(context.spaces.space_250),
-                ),
-              ),
-              child: OverviewBottomSheetWidget(
-                entity: productData,
-              ),
-            ),
-          ),
-          const AddCartButtonWidget()
-        ],
-      ),
     );
   }
 }
