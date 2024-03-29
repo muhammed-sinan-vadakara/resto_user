@@ -50,9 +50,7 @@ void setupDependencies() {
 
   /// Router dependencies
   getIt.registerSingleton<GoRouter>(router);
-  getIt.registerSingleton<ThemeData>(lightTheme);
   getIt.registerSingleton<ChatPageConstants>(ChatPageConstants());
-  // getIt.registerSingleton<ThemeData>(lightTheme);
   getIt.registerSingleton<AppAssetConstants>(AppAssetConstants());
   getIt.registerSingleton<ThemeData>(lightTheme, instanceName: 'light');
   getIt.registerSingleton<ThemeData>(darkTheme, instanceName: 'dark');

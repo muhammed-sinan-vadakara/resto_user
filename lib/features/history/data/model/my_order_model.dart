@@ -14,6 +14,8 @@ class MyOrderModel with _$MyOrderModel {
     required String uid,
     required String location,
     required String time,
+    required String date,
+    
     required List<OrderItemModel> items,
   }) = _MyOrderModel;
 

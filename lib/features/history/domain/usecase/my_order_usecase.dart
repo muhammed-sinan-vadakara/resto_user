@@ -17,6 +17,7 @@ class MyOrderUsecase {
                 uid: order.uid,
                 location: order.location,
                 time: order.time,
+                date: order.date,
                 items: [
                   for (final data in order.items)
                     OrderItemEntity(
