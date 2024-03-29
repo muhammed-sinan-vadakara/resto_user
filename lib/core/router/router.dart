@@ -14,7 +14,7 @@ import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 import 'package:resto_user/main.dart';
 
 final router = GoRouter(
-  initialLocation: HomePage.routePath,
+  initialLocation: LoginPage.routePath,
   navigatorKey: MyApp.navigatorKey,
   routes: [
     GoRoute(
