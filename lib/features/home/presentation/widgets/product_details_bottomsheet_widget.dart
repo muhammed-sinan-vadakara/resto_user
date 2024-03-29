@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:resto_user/core/constants/home_page/home_constants.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/cart/presentation/bloc/cart_bloc.dart';
@@ -197,6 +198,7 @@ class ProductDetailsBottomSheetWidget extends HookWidget {
                               quantity: counter.value,
                               type: selectedProductType.value),
                         );
+                    context.pop();
                   },
                 )
               ],

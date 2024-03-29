@@ -1,10 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:resto_user/features/authentication/presentation/page/details_adding_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/login_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
+import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
+import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 import 'package:resto_user/features/checkout/presentation/pages/checkout_page.dart';
@@ -57,8 +60,14 @@ final router = GoRouter(
     ),
     GoRoute(
       path: HomePage.routePath,
-      builder: (context, state) => BlocProvider<CategoryBloc>(
-        create: (context) => CategoryBloc(),
+      builder: (context, state) => MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => CategoryBloc()),
+          BlocProvider(create: (context) => OfferBloc()),
+          BlocProvider(
+            create: (context) => GetIt.I.get<ProductBloc>(),
+          ),
+        ],
         child: const HomePage(),
       ),
     ),
