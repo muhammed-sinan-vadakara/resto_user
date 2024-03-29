@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:resto_user/features/authentication/domian/usecases/google_verification_usecase.dart';
-import 'package:resto_user/features/authentication/domian/usecases/otp_verification_usecase.dart';
-import 'package:resto_user/features/authentication/domian/usecases/phone_number_verification_usecase.dart';
+import 'package:resto_user/features/authentication/domain/usecases/google_verification_usecase.dart';
+import 'package:resto_user/features/authentication/domain/usecases/otp_verification_usecase.dart';
+import 'package:resto_user/features/authentication/domain/usecases/phone_number_verification_usecase.dart';
 import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc_state.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
