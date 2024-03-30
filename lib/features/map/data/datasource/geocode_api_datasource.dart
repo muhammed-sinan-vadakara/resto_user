@@ -1,3 +1,5 @@
+import 'package:resto_user/features/map/data/model/geocode_api_model.dart';
+
 abstract interface class GeocodeAPIDataSource {
-  Future<List<({double lat, double long})>> getLatLong(String address);
+  Future<GeocodeApiModel> getLatLong(String address);
 }

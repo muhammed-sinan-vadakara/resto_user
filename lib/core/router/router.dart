@@ -6,8 +6,25 @@ import 'package:resto_user/features/authentication/presentation/page/details_add
 import 'package:resto_user/features/authentication/presentation/page/login_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
 import 'package:resto_user/features/cart/presentation/pages/cart_page.dart';
+
+
+import 'package:resto_user/features/checkout/presentation/bloc/coupon_bloc.dart';
+import 'package:resto_user/features/home/domain/entity/offer_entity/offer_entity.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/payment_bloc/payment_bloc.dart';
+import 'package:resto_user/features/checkout/presentation/pages/order_placed_page.dart';
+import 'package:resto_user/features/checkout/presentation/bloc/instruction_bloc/instruction_bloc.dart';
+import 'package:resto_user/features/history/presentation/bloc/history_bloc/my_order_bloc.dart';
+import 'package:resto_user/features/history/presentation/pages/my_order_page.dart';
 import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
 import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
+import 'package:resto_user/features/home/presentation/pages/offer_overview_page.dart';
+
+import 'package:resto_user/features/map/presentation/bloc/map_bloc.dart';
+
+
+import 'package:resto_user/features/home/presentation/bloc/offer_bloc/offer_bloc.dart';
+import 'package:resto_user/features/home/presentation/bloc/product_bloc/product_bloc.dart';
+
 import 'package:resto_user/features/map/presentation/page/map_page.dart';
 import 'package:resto_user/features/profile/presentation/pages/profile_page.dart';
 import 'package:resto_user/features/checkout/presentation/pages/checkout_page.dart';
@@ -26,7 +43,10 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Map.routePath,
-      builder: (context, state) => const Map(),
+      builder: (context, state) => BlocProvider<MapBloc>(
+        create: (context) => MapBloc(),
+        child: const Map(),
+      ),
     ),
     GoRoute(
       path: ProfilePage.routePath,

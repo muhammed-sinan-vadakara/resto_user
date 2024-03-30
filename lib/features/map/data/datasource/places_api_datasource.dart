@@ -1,4 +1,5 @@
+import 'package:resto_user/features/map/data/model/places_api_model.dart';
+
 abstract interface class PlacesAPIDataSource {
-  Future<List<({String address, String title})>> getAddress(
-      String searchKeyword);
+  Future<PlacesApiModel?> getAddress(String searchKeyword);
 }
