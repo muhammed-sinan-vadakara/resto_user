@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resto_user/core/themes/app_theme.dart';
 import 'package:resto_user/features/home/domain/entity/product_entity/product_entity.dart';
-import 'package:resto_user/features/home/presentation/widgets/add_cart_button_widget.dart';
-import 'package:resto_user/features/home/presentation/widgets/overview_bottomsheet_widget.dart';
+import 'package:resto_user/features/home/presentation/widgets/product_details_bottomsheet_widget.dart';
 
 class ProductGridViewWidget extends StatelessWidget {
   final List<ProductEntity> entity;
@@ -42,29 +41,8 @@ class ProductGridViewWidget extends StatelessWidget {
                     showModalBottomSheet<dynamic>(
                         isScrollControlled: true,
                         context: context,
-                        builder: (BuildContext bc) {
-                          return Stack(
-                            children: [
-                              Container(
-                                height: 750,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0),
-                                  ),
-                                ),
-                                child: OverviewBottomSheetWidget(
-                                  entity: productData,
-                                ),
-                              ),
-                              const Positioned(
-                                bottom: 0,
-                                child: AddCartButtonWidget(),
-                              )
-                            ],
-                          );
-                        });
+                        builder: (context) => ProductDetailsBottomSheetWidget(
+                            entity: productData));
                   },
                   child: Container(
                     width: context.spaces.space_500 * 3.7,

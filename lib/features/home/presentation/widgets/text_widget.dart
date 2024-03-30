@@ -9,7 +9,7 @@ class TextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: context.typography.h400,
+      style: context.typography.h300,
     );
   }
 }

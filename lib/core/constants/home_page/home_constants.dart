@@ -6,4 +6,5 @@ class HomeConstants {
   final String txtAddOns = 'Add-Ons';
   final String txtOffer = 'Offer';
   final String txtProducts = 'Products';
+  final String txtAddCart = 'Add to Cart';
 }
