@@ -37,22 +37,3 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsBlocState> {
     );
   }
 }
-
-
-
-
-//  Future<void> loginWithPhoneNumber(LoginWithPhoneNumberEvent event,
-//       Emitter<AuthenticationBlocState> emit) async {
-//     final verificationData = await PhoneNumberVerificationUsecase(
-//         repository: GetIt.I.get())(event.phoneNumber);
-//     AuthenticationBlocState(
-//         verificationId: verificationData.$1,
-//         resendToken: verificationData.$2,
-//         error: null);
-//     // emit(AuthenticationBlocState(
-//     //     error: null,
-//     //     resendToken: verificationData.$2,
-//     //     verificationId: verificationData.$1));
-//     Future.sync(() =>
-//         MyApp.navigatorKey.currentContext?.go(OtpVerificationPage.routePath));
-//   }
