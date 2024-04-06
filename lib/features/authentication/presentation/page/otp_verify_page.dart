@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -147,7 +148,14 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context
+                              .read<AuthenticationBloc>()
+                              .add(LoginWithGoogleEvent());
+                          //    onPressed: () => ref
+                          // .read(authenticationProvider.notifier)
+                          // .googleverification(context),
+                        },
                         child: Text(
                           constants.txtResendOtp,
                         ),

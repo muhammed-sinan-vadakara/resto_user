@@ -5,8 +5,8 @@ part 'authentication_bloc_state.freezed.dart';
 @freezed
 class AuthenticationBlocState with _$AuthenticationBlocState {
   factory AuthenticationBlocState({
-    required String? error,
-    required int? resendToken,
     required String verificationId,
+    required int? resendToken,
+    required String? error,
   }) = _AuthenticationBlocState;
 }

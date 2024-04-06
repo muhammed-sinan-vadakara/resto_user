@@ -151,7 +151,6 @@ class _$UserModelImpl extends _UserModel {
 
   @override
   final String imgPath;
-
   @override
   @JsonKey(name: 'user_name')
   final String userName;

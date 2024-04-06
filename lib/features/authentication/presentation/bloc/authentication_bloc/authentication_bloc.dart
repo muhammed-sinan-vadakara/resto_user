@@ -5,6 +5,7 @@ import 'package:resto_user/features/authentication/domian/usecases/google_verifi
 import 'package:resto_user/features/authentication/domian/usecases/otp_verification_usecase.dart';
 import 'package:resto_user/features/authentication/domian/usecases/phone_number_verification_usecase.dart';
 import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc_state.dart';
+import 'package:resto_user/features/authentication/presentation/page/details_adding_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 import 'package:resto_user/main.dart';
@@ -35,17 +36,21 @@ class AuthenticationBloc
         ) {
     on<LoginWithPhoneNumberEvent>(loginWithPhoneNumber);
     on<OtpVerificationEvent>(otpVerification);
-    // on<LoginWithGoogleEvent>(loginWithGoogleVerification);
+    on<LoginWithGoogleEvent>(loginWithGoogleVerification);
   }
 
   Future<void> loginWithPhoneNumber(LoginWithPhoneNumberEvent event,
       Emitter<AuthenticationBlocState> emit) async {
     final verificationData = await PhoneNumberVerificationUsecase(
         repository: GetIt.I.get())(event.phoneNumber);
-    emit(AuthenticationBlocState(
-        error: null,
+    AuthenticationBlocState(
+        verificationId: verificationData.$1,
         resendToken: verificationData.$2,
-        verificationId: verificationData.$1));
+        error: null);
+    // emit(AuthenticationBlocState(
+    //     error: null,
+    //     resendToken: verificationData.$2,
+    //     verificationId: verificationData.$1));
     Future.sync(() =>
         MyApp.navigatorKey.currentContext?.go(OtpVerificationPage.routePath));
   }
@@ -67,9 +72,12 @@ class AuthenticationBloc
         () => MyApp.navigatorKey.currentContext?.go(HomePage.routePath));
   }
 
-  Future<void> loginWithGoogleVerification(LoginWithGoogleEvent event) async {
-    await GoogleVerificationUsecase(repository: GetIt.I.get());
-    Future.sync(
-        () => MyApp.navigatorKey.currentContext?.go(HomePage.routePath));
+  Future<void> loginWithGoogleVerification(
+    LoginWithGoogleEvent event,
+    Emitter<AuthenticationBlocState> emit,
+  ) async {
+    await GoogleVerificationUsecase(repository: GetIt.I.get())();
+    Future.sync(() =>
+        MyApp.navigatorKey.currentContext?.go(DetailsAddingPage.routePath));
   }
 }
