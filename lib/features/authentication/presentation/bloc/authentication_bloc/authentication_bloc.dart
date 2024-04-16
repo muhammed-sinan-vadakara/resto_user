@@ -5,7 +5,6 @@ import 'package:resto_user/features/authentication/domian/usecases/google_verifi
 import 'package:resto_user/features/authentication/domian/usecases/otp_verification_usecase.dart';
 import 'package:resto_user/features/authentication/domian/usecases/phone_number_verification_usecase.dart';
 import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc_state.dart';
-import 'package:resto_user/features/authentication/presentation/page/details_adding_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 import 'package:resto_user/main.dart';
@@ -77,7 +76,7 @@ class AuthenticationBloc
     Emitter<AuthenticationBlocState> emit,
   ) async {
     await GoogleVerificationUsecase(repository: GetIt.I.get())();
-    Future.sync(() =>
-        MyApp.navigatorKey.currentContext?.go(DetailsAddingPage.routePath));
+    Future.sync(
+        () => MyApp.navigatorKey.currentContext?.go(HomePage.routePath));
   }
 }

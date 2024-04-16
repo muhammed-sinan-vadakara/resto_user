@@ -6,7 +6,7 @@ import 'package:resto_user/features/authentication/data/model/details_add_model.
 class DetailsAddFirestoreDatasourceImpl
     implements DetailsAddFirestoreDatasource {
   final collection = FirebaseFirestore.instance
-      .collection("users/${user!.uid.toString()}")
+      .collection("users")
       .withConverter(
           fromFirestore: DetailsAddModel.fromFirestore,
           toFirestore: (model, _) => model.toFirestore());
