@@ -2,9 +2,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resto_user/features/authentication/domian/usecases/google_verification_usecase.dart';
+import 'package:resto_user/features/authentication/domian/usecases/logout_usecase.dart';
 import 'package:resto_user/features/authentication/domian/usecases/otp_verification_usecase.dart';
 import 'package:resto_user/features/authentication/domian/usecases/phone_number_verification_usecase.dart';
 import 'package:resto_user/features/authentication/presentation/bloc/authentication_bloc/authentication_bloc_state.dart';
+import 'package:resto_user/features/authentication/presentation/page/login_page.dart';
 import 'package:resto_user/features/authentication/presentation/page/otp_verify_page.dart';
 import 'package:resto_user/features/home/presentation/pages/home_page.dart';
 import 'package:resto_user/main.dart';
@@ -23,6 +25,8 @@ class OtpVerificationEvent extends AuthenticationEvent {
 
 class LoginWithGoogleEvent extends AuthenticationEvent {}
 
+class LogoutEvent extends AuthenticationEvent {}
+
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationBlocState> {
   AuthenticationBloc()
@@ -36,6 +40,7 @@ class AuthenticationBloc
     on<LoginWithPhoneNumberEvent>(loginWithPhoneNumber);
     on<OtpVerificationEvent>(otpVerification);
     on<LoginWithGoogleEvent>(loginWithGoogleVerification);
+    on<LogoutEvent>(logout);
   }
 
   Future<void> loginWithPhoneNumber(LoginWithPhoneNumberEvent event,
@@ -79,4 +84,12 @@ class AuthenticationBloc
     Future.sync(
         () => MyApp.navigatorKey.currentContext?.go(HomePage.routePath));
   }
+}
+
+Future<void> logout(
+  LogoutEvent event,
+  Emitter<AuthenticationBlocState> emit,
+) async {
+  await LogoutUsecase(repository: GetIt.I.get())();
+  Future.sync(() => MyApp.navigatorKey.currentContext?.go(LoginPage.routePath));
 }
