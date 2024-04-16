@@ -51,10 +51,10 @@ class AuthenticationBloc
         verificationId: verificationData.$1,
         resendToken: verificationData.$2,
         error: null);
-    // emit(AuthenticationBlocState(
-    //     error: null,
-    //     resendToken: verificationData.$2,
-    //     verificationId: verificationData.$1));
+    emit(AuthenticationBlocState(
+        error: null,
+        resendToken: verificationData.$2,
+        verificationId: verificationData.$1));
     Future.sync(() =>
         MyApp.navigatorKey.currentContext?.go(OtpVerificationPage.routePath));
   }
