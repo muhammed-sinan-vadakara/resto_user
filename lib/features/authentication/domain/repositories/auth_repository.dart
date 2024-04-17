@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:resto_user/features/authentication/domian/entity/details_add_entity.dart';
+import 'package:resto_user/features/authentication/domain/entity/details_add_entity.dart';
 
 abstract class AuthRepository {
   Future<

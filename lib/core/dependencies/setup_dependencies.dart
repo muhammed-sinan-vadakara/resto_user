@@ -21,7 +21,7 @@ import 'package:resto_user/features/authentication/data/datasource/details_add_f
 import 'package:resto_user/features/authentication/data/datasource/details_add_storage_datasorce_impl.dart';
 import 'package:resto_user/features/authentication/data/datasource/details_add_storage_datasource.dart';
 import 'package:resto_user/features/authentication/data/repositoies/auth_repositoies_impl.dart';
-import 'package:resto_user/features/authentication/domian/repositories/auth_repository.dart';
+import 'package:resto_user/features/authentication/domain/repositories/auth_repository.dart';
 import 'package:resto_user/features/cart/data/datasource/cart_datasource.dart';
 import 'package:resto_user/features/cart/data/datasource/cart_datasource_impl.dart';
 import 'package:resto_user/features/cart/data/repository/cart_repository_impl.dart';

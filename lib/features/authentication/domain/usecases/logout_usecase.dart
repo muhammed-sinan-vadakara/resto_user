@@ -1,5 +1,5 @@
 import 'package:resto_user/core/exceptions/authentication/authentication_exception.dart';
-import 'package:resto_user/features/authentication/domian/repositories/auth_repository.dart';
+import 'package:resto_user/features/authentication/domain/repositories/auth_repository.dart';
 
 final class LogoutUsecase {
   final AuthRepository repository;
