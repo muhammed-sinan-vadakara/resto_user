@@ -176,7 +176,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
           ),
         ),
         onPressed: () {
-          context.read<AuthenticationBloc>().add(OtpVerificationEvent(
+          context.watch()<AuthenticationBloc>().add(OtpVerificationEvent(
                 otp: otpController,
               ));
         },
