@@ -4,8 +4,8 @@ import 'package:resto_user/features/authentication/data/datasource/authenticatio
 import 'package:resto_user/features/authentication/data/datasource/details_add_firestore_datasource.dart';
 import 'package:resto_user/features/authentication/data/datasource/details_add_storage_datasource.dart';
 import 'package:resto_user/features/authentication/data/model/details_add_model.dart';
-import 'package:resto_user/features/authentication/domian/entity/details_add_entity.dart';
-import 'package:resto_user/features/authentication/domian/repositories/auth_repository.dart';
+import 'package:resto_user/features/authentication/domain/entity/details_add_entity.dart';
+import 'package:resto_user/features/authentication/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuthDataSource datasource;
