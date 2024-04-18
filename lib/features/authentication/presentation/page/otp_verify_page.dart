@@ -147,7 +147,14 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context
+                              .read<AuthenticationBloc>()
+                              .add(LoginWithGoogleEvent());
+                          //    onPressed: () => ref
+                          // .read(authenticationProvider.notifier)
+                          // .googleverification(context),
+                        },
                         child: Text(
                           constants.txtResendOtp,
                         ),
@@ -169,7 +176,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
           ),
         ),
         onPressed: () {
-          context.read<AuthenticationBloc>().add(OtpVerificationEvent(
+          context.watch()<AuthenticationBloc>().add(OtpVerificationEvent(
                 otp: otpController,
               ));
         },

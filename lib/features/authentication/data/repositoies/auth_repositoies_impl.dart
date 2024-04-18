@@ -61,6 +61,11 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<void> logout() async {
+    await datasource.logout();
+  }
+
+  @override
   Future<String> upload(
     File fileToUpload,
     String filePath,

@@ -56,16 +56,12 @@ import 'package:resto_user/features/home/domain/repository/offer_repository.dart
 import 'package:resto_user/features/home/domain/repository/product_repository.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
 import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source_impl.dart';
-
 import 'package:resto_user/features/map/data/datasource/geocode_api_datasource.dart';
 import 'package:resto_user/features/map/data/datasource/geocode_api_datasource_impl.dart';
 import 'package:resto_user/features/map/data/datasource/places_api_datasource.dart';
 import 'package:resto_user/features/map/data/datasource/places_api_datasource_impl.dart';
 import 'package:resto_user/features/map/data/repository/map_repository_impl.dart';
 import 'package:resto_user/features/map/domain/repository/map_repository.dart';
-import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source.dart';
-import 'package:resto_user/features/profile/data/data_source/firestore/user_firestore_data_source_impl.dart';
-
 
 final getIt = GetIt.instance;
 
@@ -148,14 +144,14 @@ void setupDependencies() {
   getIt.registerSingleton<InstructionRepository>(
       InstructionRepositoryImpl(GetIt.I.get<InstructionFirestoreDatabase>()));
 
-  getIt.registerSingleton<UserFirestoreDataSource>(
-      UserFirestoreDataSourceImpl());
+  // getIt.registerSingleton<UserFirestoreDataSource>(
+  //     UserFirestoreDataSourceImpl());
 
-  ///Checkout
-  getIt.registerSingleton<CouponFireStoreDatasource>(
-      CouponFireStoreDatasourceImpl());
-  getIt.registerSingleton<CouponRepository>(
-      CouponRepositoryImpl(datasource: GetIt.I.get()));
+  // ///Checkout
+  // getIt.registerSingleton<CouponFireStoreDatasource>(
+  //     CouponFireStoreDatasourceImpl());
+  // getIt.registerSingleton<CouponRepository>(
+  //     CouponRepositoryImpl(datasource: GetIt.I.get()));
 
   ///Map
   getIt.registerSingleton<GeocodeAPIDataSource>(GeocodeAPIDataSourceIMPL());
@@ -164,7 +160,6 @@ void setupDependencies() {
     latlongdatasource: GetIt.I.get<GeocodeAPIDataSource>(),
     placedatasource: GetIt.I.get<PlacesAPIDataSource>(),
   ));
-
 
   //Authentication
   getIt.registerSingleton<AuthenticationConstant>(AuthenticationConstant());

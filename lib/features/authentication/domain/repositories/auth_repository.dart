@@ -17,6 +17,7 @@ abstract class AuthRepository {
   );
 
   Future<void> googleverifications();
+  Future<void> logout();
 
   Future<void> addDetails(
     DetailsAddEntity entity,
